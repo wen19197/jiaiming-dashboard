@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<title>家铭老师 · IG增长策略</title>
+<style>
+* { margin:0; padding:0; box-sizing:border-box; -webkit-tap-highlight-color:transparent; }
+html { font-size: 16px; }
+body { font-family: -apple-system, 'PingFang SC', 'Microsoft YaHei', sans-serif; background:#0f0f1a; color:#e8e8f0; min-height:100vh; overscroll-behavior:none; }
+
+/* ===== NAV TABS ===== */
+.tab-bar { position:fixed; bottom:0; left:0; right:0; background:#1a1a2e; border-top:1px solid rgba(255,100,150,0.2); display:flex; z-index:100; padding-bottom:env(safe-area-inset-bottom); }
+.tab { flex:1; display:flex; flex-direction:column; align-items:center; padding:7px 2px 5px; font-size:9px; color:#606080; cursor:pointer; transition:color .2s; gap:2px; }
+.tab.active { color:#ff6496; }
+.tab-icon { font-size:17px; line-height:1; }
+
+/* ===== MAIN SCROLL ===== */
+.main { padding-bottom: calc(64px + env(safe-area-inset-bottom)); }
+
+/* ===== SECTIONS ===== */
+.section { display:none; }
+.section.active { display:block; }
+
+/* ===== HEADER ===== */
+.header { background:linear-gradient(160deg,#1a1a2e,#0f3460); padding:20px 16px 16px; }
+.header-row { display:flex; align-items:center; gap:12px; margin-bottom:14px; }
+.ig-badge { background:linear-gradient(45deg,#f09433,#e6683c,#dc2743,#cc2366,#bc1888); border-radius:12px; padding:8px; flex-shrink:0; }
+.ig-badge svg { width:24px; height:24px; fill:white; display:block; }
+.header-text h1 { font-size:16px; font-weight:800; color:#fff; line-height:1.3; }
+.header-text p { font-size:11px; color:#8080a0; margin-top:2px; }
+
+/* Progress */
+.progress-box { background:rgba(255,255,255,0.07); border-radius:12px; padding:14px 16px; }
+.progress-meta { display:flex; justify-content:space-between; margin-bottom:8px; font-size:12px; }
+.progress-meta span { color:#a0a0c0; }
+.progress-meta strong { color:#ff6496; }
+.track { background:rgba(255,255,255,0.1); border-radius:99px; height:10px; overflow:visible; position:relative; }
+.fill { background:linear-gradient(90deg,#ff6496,#f7971e); height:100%; border-radius:99px; width:21.23%; position:relative; }
+.fill::after { content:'21.2%'; position:absolute; right:-4px; top:-22px; font-size:11px; color:#f7971e; font-weight:800; white-space:nowrap; }
+.progress-sub { display:flex; gap:8px; margin-top:14px; flex-wrap:wrap; }
+.p-chip { background:rgba(255,255,255,0.06); border-radius:8px; padding:6px 10px; font-size:11px; text-align:center; flex:1; min-width:80px; }
+.p-chip .val { font-size:16px; font-weight:800; color:#fff; display:block; }
+.p-chip .lbl { font-size:10px; color:#7070a0; display:block; margin-top:1px; }
+
+/* ===== CARD ===== */
+.card { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:16px; padding:16px; margin:12px 12px 0; }
+.card-title { font-size:14px; font-weight:700; color:#fff; margin-bottom:14px; display:flex; align-items:center; gap:8px; }
+.card-title .badge { background:linear-gradient(135deg,#ff6496,#f7971e); border-radius:5px; padding:2px 8px; font-size:10px; font-weight:700; color:#fff; }
+.card-title .badge-purple { background:linear-gradient(135deg,#a78bfa,#60a5fa); }
+.card-title .badge-green { background:linear-gradient(135deg,#34d399,#059669); }
+
+/* ===== KPI GRID ===== */
+.kpi-grid { display:grid; grid-template-columns:1fr 1fr; gap:10px; padding:0 12px; margin-top:12px; }
+.kpi { background:rgba(255,255,255,0.05); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:14px 12px; }
+.kpi.hot { border-color:rgba(255,100,150,0.35); background:rgba(255,100,150,0.07); }
+.kpi-icon { font-size:20px; margin-bottom:6px; }
+.kpi-val { font-size:22px; font-weight:900; color:#fff; line-height:1; }
+.kpi-val.pink { color:#ff6496; }
+.kpi-lbl { font-size:11px; color:#7070a0; margin-top:4px; }
+.kpi-sub { font-size:10px; color:#ff8ab8; margin-top:3px; font-weight:600; }
+
+/* ===== POST LIST ===== */
+.post-item { border-radius:12px; padding:12px 14px; margin-bottom:10px; border-left:3px solid transparent; display:flex; gap:12px; align-items:flex-start; }
+.post-item.r1 { border-color:#ff6496; background:rgba(255,100,150,0.08); }
+.post-item.r2 { border-color:#f7971e; background:rgba(247,151,30,0.07); }
+.post-item.r3 { border-color:#a78bfa; background:rgba(167,139,250,0.07); }
+.post-item.r4 { border-color:#34d399; background:rgba(52,211,153,0.07); }
+.post-item.r5 { border-color:#60a5fa; background:rgba(96,165,250,0.07); }
+.post-rank { font-size:22px; flex-shrink:0; line-height:1; margin-top:2px; }
+.post-info { flex:1; min-width:0; }
+.post-title { font-size:13px; font-weight:700; color:#fff; line-height:1.4; margin-bottom:5px; }
+.post-date { font-size:10px; color:#6060a0; margin-bottom:7px; }
+.chips { display:flex; flex-wrap:wrap; gap:5px; }
+.chip { font-size:10px; border-radius:5px; padding:2px 7px; background:rgba(255,255,255,0.08); color:#b0b0d0; }
+.chip.pink { background:rgba(255,100,150,0.2); color:#ff8ab8; font-weight:700; }
+.chip.green { background:rgba(52,211,153,0.15); color:#6ee7b7; }
+.chip.orange { background:rgba(247,151,30,0.15); color:#fbbf24; }
+.viral-badge { background:linear-gradient(135deg,#ff6496,#f7971e); border-radius:4px; padding:1px 6px; font-size:9px; font-weight:700; color:#fff; vertical-align:middle; margin-left:4px; }
+
+/* ===== CONTENT TYPE BARS ===== */
+.type-row { border-radius:12px; padding:12px 14px; margin-bottom:10px; }
+.type-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:6px; }
+.type-name { font-size:13px; font-weight:700; color:#fff; }
+.type-stars { font-size:12px; }
+.type-desc { font-size:11px; color:#b0b0c0; margin-bottom:7px; }
+.bar-bg { background:rgba(255,255,255,0.08); border-radius:99px; height:6px; overflow:hidden; }
+.bar { height:100%; border-radius:99px; }
+.type-note { font-size:10px; margin-top:5px; }
+
+/* ===== INSIGHT BOX ===== */
+.insight-box { background:rgba(255,100,150,0.08); border:1px solid rgba(255,100,150,0.25); border-radius:14px; padding:14px 16px; margin:12px 12px 0; }
+.insight-title { font-size:14px; font-weight:700; color:#ff8ab8; margin-bottom:12px; }
+.insight-item { display:flex; gap:10px; font-size:12px; color:#d0d0e8; line-height:1.6; margin-bottom:10px; }
+.insight-item:last-child { margin-bottom:0; }
+
+/* ===== TOPICS ===== */
+.topic-card { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.08); border-radius:14px; padding:14px; margin-bottom:10px; }
+.topic-cat { display:inline-block; font-size:10px; font-weight:700; letter-spacing:.5px; padding:3px 10px; border-radius:99px; margin-bottom:8px; }
+.cat-plate { background:rgba(255,100,150,0.2); color:#ff8ab8; }
+.cat-phone { background:rgba(96,165,250,0.2); color:#93c5fd; }
+.cat-house { background:rgba(167,139,250,0.2); color:#c4b5fd; }
+.cat-emotion { background:rgba(52,211,153,0.2); color:#6ee7b7; }
+.cat-series { background:rgba(247,151,30,0.2); color:#fbbf24; }
+.topic-title { font-size:14px; font-weight:700; color:#fff; line-height:1.4; margin-bottom:6px; }
+.topic-hook { font-size:12px; color:#a0a0c0; line-height:1.5; margin-bottom:8px; }
+.topic-tags { display:flex; flex-wrap:wrap; gap:5px; margin-bottom:7px; }
+.topic-tag { font-size:10px; color:#7070a0; background:rgba(255,255,255,0.06); border-radius:4px; padding:2px 7px; }
+.vp { font-size:11px; font-weight:700; }
+.vp-high { color:#ff6496; }
+.vp-med { color:#f7971e; }
+
+/* ===== SCHEDULE ===== */
+.schedule-scroll { display:flex; gap:8px; padding:0 12px; overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:4px; }
+.schedule-scroll::-webkit-scrollbar { display:none; }
+.day-card { background:rgba(255,255,255,0.04); border:1px solid rgba(255,255,255,0.07); border-radius:12px; padding:12px 10px; text-align:center; min-width:90px; flex-shrink:0; }
+.day-card.hot { background:rgba(255,100,150,0.12); border-color:rgba(255,100,150,0.4); }
+.day-name { font-size:13px; font-weight:700; color:#fff; }
+.day-icon { font-size:22px; margin:6px 0; }
+.day-type { font-size:10px; color:#a0a0c0; line-height:1.4; }
+.day-time { font-size:11px; font-weight:600; color:#ff6496; margin-top:5px; }
+
+/* ===== HEATMAP ===== */
+.heatmap-wrap { overflow-x:auto; -webkit-overflow-scrolling:touch; padding-bottom:4px; }
+.heatmap-wrap::-webkit-scrollbar { display:none; }
+.heatmap { display:grid; grid-template-columns:50px repeat(8,1fr); gap:5px; min-width:420px; align-items:center; }
+.h-lbl { font-size:10px; color:#6060a0; text-align:center; padding:4px 2px; }
+.h-day { font-size:11px; font-weight:700; color:#a0a0c0; padding:4px 0; }
+.h-day.hot { color:#ff6496; }
+.h-cell { border-radius:5px; padding:5px 2px; text-align:center; font-size:10px; }
+.h0 { background:rgba(255,100,150,0.05); color:#505070; }
+.h1 { background:rgba(255,100,150,0.15); color:#b0b0d0; }
+.h2 { background:rgba(255,100,150,0.30); color:#fff; }
+.h3 { background:rgba(255,100,150,0.55); color:#fff; font-weight:700; }
+.h4 { background:rgba(255,100,150,0.82); color:#fff; font-weight:800; }
+
+/* ===== ROADMAP ===== */
+.phase { border-radius:14px; padding:16px; margin-bottom:10px; }
+.phase-1 { background:rgba(255,100,150,0.08); border:1px solid rgba(255,100,150,0.2); }
+.phase-2 { background:rgba(247,151,30,0.08); border:1px solid rgba(247,151,30,0.2); }
+.phase-3 { background:rgba(167,139,250,0.08); border:1px solid rgba(167,139,250,0.2); }
+.phase-num { font-size:10px; font-weight:700; color:#7070a0; text-transform:uppercase; letter-spacing:1px; margin-bottom:4px; }
+.phase-title { font-size:17px; font-weight:800; color:#fff; margin-bottom:3px; }
+.phase-goal { font-size:12px; color:#ff8ab8; font-weight:600; margin-bottom:10px; }
+.phase-item { font-size:12px; color:#a0a0c0; display:flex; gap:6px; margin-bottom:6px; line-height:1.5; }
+.phase-item::before { content:'✓'; color:#34d399; flex-shrink:0; }
+
+/* ===== FORMULA BOX ===== */
+.formula-card { background:rgba(255,255,255,0.04); border-radius:12px; padding:14px; margin-bottom:10px; }
+.formula-card h4 { font-size:13px; font-weight:700; color:#ff8ab8; margin-bottom:8px; }
+.formula-item { font-size:12px; color:#c0c0d8; display:flex; gap:7px; margin-bottom:6px; line-height:1.5; }
+.formula-item::before { content:'→'; color:#ff6496; flex-shrink:0; }
+
+/* ===== SUMMARY BOX ===== */
+.summary-box { background:linear-gradient(135deg,rgba(255,100,150,0.1),rgba(247,151,30,0.08)); border:1px solid rgba(255,100,150,0.25); border-radius:16px; padding:18px; margin:12px 12px 0; }
+.summary-box h2 { font-size:15px; font-weight:800; color:#fff; margin-bottom:10px; }
+.summary-box p { font-size:13px; color:#e0e0f0; line-height:1.8; }
+
+/* ===== SECTION PADDING ===== */
+.sec-pad { padding:0 12px; }
+.mt12 { margin-top:12px; }
+.mt8 { margin-top:8px; }
+
+/* ===== PHONE TOPICS ===== */
+.field-scroll { display:flex; gap:8px; overflow-x:auto; padding:0 12px 4px; -webkit-overflow-scrolling:touch; }
+.field-scroll::-webkit-scrollbar { display:none; }
+.field-btn { flex-shrink:0; border:none; border-radius:10px; padding:8px 12px; font-size:12px; font-weight:700; cursor:pointer; transition:all .2s; background:rgba(255,255,255,0.07); color:#9090b0; font-family:inherit; }
+.field-btn.active { color:#fff; transform:scale(1.04); }
+.toggle-bar { display:flex; gap:8px; padding:12px 12px 0; }
+.toggle-btn { flex:1; border:none; border-radius:10px; padding:10px; font-size:13px; font-weight:700; cursor:pointer; font-family:inherit; transition:all .2s; background:rgba(255,255,255,0.07); color:#7070a0; }
+.toggle-btn.active-best { background:rgba(52,211,153,0.2); color:#6ee7b7; border:1px solid rgba(52,211,153,0.35); }
+.toggle-btn.active-worst { background:rgba(239,68,68,0.2); color:#fca5a5; border:1px solid rgba(239,68,68,0.35); }
+.field-info { margin:12px 12px 0; border-radius:14px; padding:14px 16px; }
+.field-info-name { font-size:18px; font-weight:900; color:#fff; margin-bottom:4px; }
+.field-info-trait { font-size:12px; margin-bottom:6px; }
+.field-info-nums { font-size:11px; color:#7070a0; }
+.field-type-badge { display:inline-block; font-size:10px; font-weight:700; border-radius:5px; padding:2px 8px; margin-bottom:8px; }
+.topic-num-card { border-radius:12px; padding:12px 14px; margin:0 12px 10px; display:flex; gap:12px; align-items:flex-start; }
+.topic-num-idx { font-size:20px; font-weight:900; min-width:28px; flex-shrink:0; line-height:1.3; }
+.topic-num-text { font-size:13px; color:#e8e8f0; line-height:1.6; flex:1; }
+
+/* page top spacing */
+.page-top { padding-top:12px; }
+.page-bottom { height:16px; }
+
+/* Section label */
+.sec-lbl { font-size:11px; font-weight:700; color:#7070a0; text-transform:uppercase; letter-spacing:1px; padding:16px 12px 8px; }
+
+/* highlight text */
+strong.pink { color:#ff6496; }
+strong.orange { color:#f7971e; }
+strong.green { color:#34d399; }
+
+/* Divider */
+.div { height:1px; background:rgba(255,255,255,0.06); margin:16px 12px 4px; }
+</style>
+</head>
+<body>
+
+<!-- ===== TAB BAR ===== -->
+<div class="tab-bar">
+  <div class="tab active" onclick="showTab('overview')">
+    <div class="tab-icon">📊</div>数据
+  </div>
+  <div class="tab" onclick="showTab('posts')">
+    <div class="tab-icon">🏆</div>帖子
+  </div>
+  <div class="tab" onclick="showTab('topics')">
+    <div class="tab-icon">🎬</div>选题
+  </div>
+  <div class="tab" onclick="showTab('plan')">
+    <div class="tab-icon">🗓</div>计划
+  </div>
+  <div class="tab" onclick="showTab('roadmap')">
+    <div class="tab-icon">🚀</div>路线
+  </div>
+  <div class="tab" onclick="showTab('phone')">
+    <div class="tab-icon">📱</div>号码选题
+  </div>
+</div>
+
+<!-- ===== MAIN ===== -->
+<div class="main">
+
+<!-- ========== TAB 1: OVERVIEW ========== -->
+<div id="tab-overview" class="section active">
+  <div class="page-top">
+
+    <!-- Header -->
+    <div class="header">
+      <div class="header-row">
+        <div class="ig-badge">
+          <svg viewBox="0 0 24 24"><path d="M12 2.163c3.204 0 3.584.012 4.85.07 3.252.148 4.771 1.691 4.919 4.919.058 1.265.069 1.645.069 4.849 0 3.205-.012 3.584-.069 4.849-.149 3.225-1.664 4.771-4.919 4.919-1.266.058-1.644.07-4.85.07-3.204 0-3.584-.012-4.849-.07-3.26-.149-4.771-1.699-4.919-4.92-.058-1.265-.07-1.644-.07-4.849 0-3.204.013-3.583.07-4.849.149-3.227 1.664-4.771 4.919-4.919 1.266-.057 1.645-.069 4.849-.069zm0-2.163c-3.259 0-3.667.014-4.947.072-4.358.2-6.78 2.618-6.98 6.98-.059 1.281-.073 1.689-.073 4.948 0 3.259.014 3.668.072 4.948.2 4.358 2.618 6.78 6.98 6.98 1.281.058 1.689.072 4.948.072 3.259 0 3.668-.014 4.948-.072 4.354-.2 6.782-2.618 6.979-6.98.059-1.28.073-1.689.073-4.948 0-3.259-.014-3.667-.072-4.947-.196-4.354-2.617-6.78-6.979-6.98-1.281-.059-1.69-.073-4.949-.073zm0 5.838c-3.403 0-6.162 2.759-6.162 6.162s2.759 6.163 6.162 6.163 6.162-2.759 6.162-6.163c0-3.403-2.759-6.162-6.162-6.162zm0 10.162c-2.209 0-4-1.79-4-4 0-2.209 1.791-4 4-4s4 1.791 4 4c0 2.21-1.791 4-4 4zm6.406-11.845c-.796 0-1.441.645-1.441 1.44s.645 1.44 1.441 1.44c.795 0 1.439-.645 1.439-1.44s-.644-1.44-1.439-1.44z"/></svg>
+        </div>
+        <div class="header-text">
+          <h1>家铭老师 · IG增长策略</h1>
+          <p>@official.liechiaming · 2026年5月17日分析</p>
+        </div>
+      </div>
+      <div class="progress-box">
+        <div class="progress-meta">
+          <span>粉丝增长进度</span>
+          <strong>2,123 / 10,000</strong>
+        </div>
+        <div class="track">
+          <div class="fill"></div>
+        </div>
+        <div class="progress-sub">
+          <div class="p-chip"><span class="val">2,123</span><span class="lbl">当前粉丝</span></div>
+          <div class="p-chip"><span class="val" style="color:#f7971e;">10K</span><span class="lbl">目标粉丝</span></div>
+          <div class="p-chip"><span class="val" style="color:#ff6496;">7,877</span><span class="lbl">还需增加</span></div>
+          <div class="p-chip"><span class="val">110</span><span class="lbl">总帖子数</span></div>
+        </div>
+      </div>
+    </div>
+
+    <!-- KPI -->
+    <div class="sec-lbl">📊 过去30天核心数据</div>
+    <div class="kpi-grid">
+      <div class="kpi hot">
+        <div class="kpi-icon">👁️</div>
+        <div class="kpi-val pink">351,960</div>
+        <div class="kpi-lbl">总浏览量</div>
+        <div class="kpi-sub">↑ 90.9% 非粉丝</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-icon">🎯</div>
+        <div class="kpi-val">184,841</div>
+        <div class="kpi-lbl">触达账号数</div>
+        <div class="kpi-sub">巨大增长潜力</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-icon">❤️</div>
+        <div class="kpi-val">26,261</div>
+        <div class="kpi-lbl">总互动数</div>
+        <div class="kpi-sub">Reels占99.9%</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-icon">👥</div>
+        <div class="kpi-val">10,840</div>
+        <div class="kpi-lbl">参与账号数</div>
+        <div class="kpi-sub">6,348次主页访问</div>
+      </div>
+    </div>
+
+    <!-- Key Insight -->
+    <div class="insight-box">
+      <div class="insight-title">🔍 爆款密码解码 — 6大关键发现</div>
+      <div class="insight-item"><span>💡</span><span>车牌"SIAM远点"爆款核心 = <strong>"警示+好奇心"</strong>标题公式：10,046次分享让内容自动病毒传播，这是目前最强的机制。</span></div>
+      <div class="insight-item"><span>💡</span><span><strong>90.9%</strong>浏览来自非粉丝 → 内容已突破算法推送边界，保持高分享率就能持续曝光给新受众。</span></div>
+      <div class="insight-item"><span>💡</span><span>粉丝<strong>最活跃时间</strong>：凌晨3-6点（约600人），晚上9点（544人）。建议固定晚上8:30–9:00发布。</span></div>
+      <div class="insight-item"><span>💡</span><span>内容排名：<strong>车牌 &gt; 门牌 &gt; 情感观点 &gt; 手机系列 &gt; 改运方案</strong>。纯观点内容（如"做自己就好"964浏览）应停止制作。</span></div>
+      <div class="insight-item"><span>💡</span><span><strong>在车内拍摄</strong>的内容（车牌/车内讨论）均优于室内拍摄——移动场景增加真实感和紧迫感。</span></div>
+      <div class="insight-item"><span>💡</span><span>复制"车牌警示型"公式，<strong>每个爆款可带500–806个新粉丝</strong>。只需10–15个爆款就能达到1万粉丝！</span></div>
+    </div>
+
+    <!-- Content type analysis -->
+    <div class="card">
+      <div class="card-title">📈 内容类型表现分析</div>
+
+      <div class="type-row" style="background:rgba(255,100,150,0.1);border-left:4px solid #ff6496;">
+        <div class="type-header"><span class="type-name">🚗 车牌号码内容</span><span class="type-stars" style="color:#ff6496;">★★★★★</span></div>
+        <div class="type-desc">警示型最高180K浏览 | 测评型62K浏览</div>
+        <div class="bar-bg"><div class="bar" style="width:100%;background:linear-gradient(90deg,#ff6496,#f7971e);"></div></div>
+        <div class="type-note" style="color:#a0a0c0;">✅ 核心爆款公式 · 高分享率 · 招新粉丝最强</div>
+      </div>
+
+      <div class="type-row" style="background:rgba(167,139,250,0.1);border-left:4px solid #a78bfa;">
+        <div class="type-header"><span class="type-name">🏠 门牌号码内容</span><span class="type-stars" style="color:#a78bfa;">★★★★</span></div>
+        <div class="type-desc">最高26K浏览 · 1.1K互动 · 上升趋势</div>
+        <div class="bar-bg"><div class="bar" style="width:75%;background:#a78bfa;"></div></div>
+        <div class="type-note" style="color:#a0a0c0;">🔥 新兴爆款类型 · 应增加频率</div>
+      </div>
+
+      <div class="type-row" style="background:rgba(52,211,153,0.1);border-left:4px solid #34d399;">
+        <div class="type-header"><span class="type-name">💬 情感/观点内容</span><span class="type-stars" style="color:#34d399;">★★★★</span></div>
+        <div class="type-desc">最高67K浏览 · 高评论率</div>
+        <div class="bar-bg"><div class="bar" style="width:65%;background:#34d399;"></div></div>
+        <div class="type-note" style="color:#a0a0c0;">✅ 适合结合数字能量角度切入</div>
+      </div>
+
+      <div class="type-row" style="background:rgba(96,165,250,0.1);border-left:4px solid #60a5fa;">
+        <div class="type-header"><span class="type-name">📱 手机号码实测系列</span><span class="type-stars" style="color:#60a5fa;">★★★</span></div>
+        <div class="type-desc">9.6K浏览 · 高互动 · 建立系列感</div>
+        <div class="bar-bg"><div class="bar" style="width:45%;background:#60a5fa;"></div></div>
+        <div class="type-note" style="color:#a0a0c0;">✅ 适合培养忠实粉丝 · 提升粘性</div>
+      </div>
+
+      <div class="type-row" style="background:rgba(247,151,30,0.1);border-left:4px solid #f7971e;">
+        <div class="type-header"><span class="type-name">🔧 改运/解决方案</span><span class="type-stars" style="color:#f7971e;">★★★</span></div>
+        <div class="type-desc">6.6K浏览 · 高价值感知</div>
+        <div class="bar-bg"><div class="bar" style="width:40%;background:#f7971e;"></div></div>
+        <div class="type-note" style="color:#a0a0c0;">⚡ 适合导流到私信和课程</div>
+      </div>
+
+      <div class="type-row" style="background:rgba(255,255,255,0.03);border-left:4px solid #303050;">
+        <div class="type-header"><span class="type-name" style="color:#606080;">💭 纯观点/做自己</span><span class="type-stars" style="color:#404060;">★</span></div>
+        <div class="type-desc" style="color:#505070;">平均不足1K浏览 · 低互动</div>
+        <div class="bar-bg"><div class="bar" style="width:8%;background:#303050;"></div></div>
+        <div class="type-note" style="color:#505070;">❌ 应减少此类型内容</div>
+      </div>
+    </div>
+
+    <div class="page-bottom"></div>
+  </div>
+</div>
+
+<!-- ========== TAB 2: POSTS ========== -->
+<div id="tab-posts" class="section">
+  <div class="page-top">
+    <div class="sec-lbl">🏆 历史爆款帖子分析</div>
+
+    <div class="card">
+      <div class="card-title">🥇 所有时间最佳帖子</div>
+
+      <div class="post-item r1">
+        <div class="post-rank">🥇</div>
+        <div class="post-info">
+          <div class="post-title">看到这样的车牌 最好SIAM远点 <span class="viral-badge">病毒爆款</span></div>
+          <div class="post-date">2026年3月18日 · 车牌警示型</div>
+          <div class="chips">
+            <span class="chip pink">👁️ 180,530浏览</span>
+            <span class="chip pink">🔁 10,046分享</span>
+            <span class="chip green">👥 +806新粉丝</span>
+            <span class="chip orange">❤️ 5,594赞</span>
+            <span class="chip">💬 516评论</span>
+            <span class="chip">🔖 1,627收藏</span>
+            <span class="chip">📊 18,120互动</span>
+            <span class="chip">🚫 97.5%非粉丝</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="post-item r2">
+        <div class="post-rank">🥈</div>
+        <div class="post-info">
+          <div class="post-title">不要再偷偷送妈妈去养老院</div>
+          <div class="post-date">2026年3月3日 · 情感观点型</div>
+          <div class="chips">
+            <span class="chip pink">👁️ 67,365浏览</span>
+            <span class="chip orange">❤️ 1,033赞</span>
+            <span class="chip">💬 95评论</span>
+            <span class="chip">87.3%非粉丝</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="post-item r3">
+        <div class="post-rank">🥉</div>
+        <div class="post-info">
+          <div class="post-title">9999车牌一定好吗？</div>
+          <div class="post-date">2026年4月19日 · 车牌测评型</div>
+          <div class="chips">
+            <span class="chip pink">👁️ 62,100浏览</span>
+            <span class="chip orange">💥 2,200互动</span>
+            <span class="chip green">车牌内容</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="post-item r4">
+        <div class="post-rank">4️⃣</div>
+        <div class="post-info">
+          <div class="post-title">什么样的门牌住了容易忧郁</div>
+          <div class="post-date">2026年5月12日 · 门牌分析型</div>
+          <div class="chips">
+            <span class="chip pink">👁️ 26,100浏览</span>
+            <span class="chip orange">💥 1,100互动</span>
+            <span class="chip">新兴话题</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="post-item r5">
+        <div class="post-rank">5️⃣</div>
+        <div class="post-info">
+          <div class="post-title">挑选100位幸运儿 实测你的手机号码 EP.0</div>
+          <div class="post-date">2026年4月3日 · 互动参与型</div>
+          <div class="chips">
+            <span class="chip">👁️ 5,265浏览</span>
+            <span class="chip green">+31新粉丝</span>
+            <span class="chip">❤️ 62 💬 39</span>
+            <span class="chip">🔁 39分享</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Mega viral breakdown -->
+    <div class="card mt12" style="border-color:rgba(255,100,150,0.35);background:rgba(255,100,150,0.06);">
+      <div class="card-title">🔥 爆款解剖：为什么"SIAM远点"那么火？</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:12px;">
+        <div style="background:rgba(255,100,150,0.12);border-radius:10px;padding:10px;text-align:center;">
+          <div style="font-size:22px;font-weight:900;color:#ff6496;">55%</div>
+          <div style="font-size:10px;color:#a0a0c0;margin-top:2px;">互动来自分享</div>
+        </div>
+        <div style="background:rgba(52,211,153,0.12);border-radius:10px;padding:10px;text-align:center;">
+          <div style="font-size:22px;font-weight:900;color:#34d399;">+806</div>
+          <div style="font-size:10px;color:#a0a0c0;margin-top:2px;">单帖新增粉丝</div>
+        </div>
+        <div style="background:rgba(247,151,30,0.12);border-radius:10px;padding:10px;text-align:center;">
+          <div style="font-size:22px;font-weight:900;color:#f7971e;">97.5%</div>
+          <div style="font-size:10px;color:#a0a0c0;margin-top:2px;">非粉丝触达</div>
+        </div>
+        <div style="background:rgba(167,139,250,0.12);border-radius:10px;padding:10px;text-align:center;">
+          <div style="font-size:22px;font-weight:900;color:#a78bfa;">10,046</div>
+          <div style="font-size:10px;color:#a0a0c0;margin-top:2px;">总分享次数</div>
+        </div>
+      </div>
+      <div style="font-size:12px;color:#d0d0e8;line-height:1.7;">
+        🔑 <strong style="color:#ff6496;">成功公式</strong>：车牌特征 + "千万要避开"警示语气 + 车内实拍 + 简洁大字幕<br>
+        ↳ 让观众看完后立刻想分享给身边有同款车牌的朋友
+      </div>
+    </div>
+
+    <div class="page-bottom"></div>
+  </div>
+</div>
+
+<!-- ========== TAB 3: TOPICS ========== -->
+<div id="tab-topics" class="section">
+  <div class="page-top">
+    <div class="sec-lbl">🎬 爆款视频选题库</div>
+
+    <div class="sec-pad">
+
+      <div class="topic-card">
+        <span class="topic-cat cat-plate">🚗 车牌 · 警示型</span>
+        <div class="topic-title">看到这种车牌，千万不要跟在后面开车</div>
+        <div class="topic-hook">复制"SIAM远点"爆款公式 — 制造恐惧感+强迫分享冲动。观众会立刻@有这种车牌的朋友。</div>
+        <div class="topic-tags"><span class="topic-tag">#车牌号码</span><span class="topic-tag">#数字能量</span><span class="topic-tag">#车牌分析</span></div>
+        <div class="vp vp-high">🔥 爆款潜力：极高 · 预估10万+浏览</div>
+      </div>
+
+      <div class="topic-card">
+        <span class="topic-cat cat-plate">🚗 车牌 · 测评型</span>
+        <div class="topic-title">马来西亚最常见的5个车牌，哪个最招财？哪个最危险？</div>
+        <div class="topic-hook">排名式内容让人忍不住看完。"最常见"引发强共鸣，人人都想知道自己的车牌上榜没有。</div>
+        <div class="topic-tags"><span class="topic-tag">#招财车牌</span><span class="topic-tag">#车牌排行</span></div>
+        <div class="vp vp-high">🔥 爆款潜力：极高 · 评论区会很热闹</div>
+      </div>
+
+      <div class="topic-card">
+        <span class="topic-cat cat-plate">🚗 车牌 · 互动型</span>
+        <div class="topic-title">把你的车牌号码放评论区，我来告诉你能不能开Grab/送货</div>
+        <div class="topic-hook">极强互动收割机。粉丝疯狂留车牌号，评论区爆炸 = 算法大推。</div>
+        <div class="topic-tags"><span class="topic-tag">#车牌测评</span><span class="topic-tag">#Grab司机</span></div>
+        <div class="vp vp-high">🔥 爆款潜力：极高 · 评论数可达1000+</div>
+      </div>
+
+      <div class="topic-card">
+        <span class="topic-cat cat-plate">🚗 车牌 · 故事型</span>
+        <div class="topic-title">这辆车牌让他破产了——真实案例分析</div>
+        <div class="topic-hook">真实案例+数字能量解读。情节感强，让人想分享"警示"给身边有车的人。</div>
+        <div class="topic-tags"><span class="topic-tag">#真实案例</span><span class="topic-tag">#车牌能量</span></div>
+        <div class="vp vp-high">🔥 爆款潜力：高</div>
+      </div>
+
+      <div class="topic-card">
+        <span class="topic-cat cat-house">🏠 门牌 · 警示型</span>
+        <div class="topic-title">住在这种门牌号的人，夫妻关系一定很差</div>
+        <div class="topic-hook">家庭关系是所有人痛点。"住在XX号"直接让人对号入座，分享给老公/老婆。</div>
+        <div class="topic-tags"><span class="topic-tag">#门牌号码</span><span class="topic-tag">#婚姻</span><span class="topic-tag">#数字能量</span></div>
+        <div class="vp vp-high">🔥 爆款潜力：极高 · 情感共鸣强</div>
+      </div>
+
+      <div class="topic-card">
+        <span class="topic-cat cat-house">🏠 门牌 · 测评型</span>
+        <div class="topic-title">你的单位门牌适合做生意吗？3秒看出来</div>
+        <div class="topic-hook">"3秒看出来"降低进入门槛，适合做生意的人群高度感兴趣，转发率高。</div>
+        <div class="topic-tags"><span class="topic-tag">#门牌</span><span class="topic-tag">#做生意</span><span class="topic-tag">#招财</span></div>
+        <div class="vp vp-high">🔥 爆款潜力：高</div>
+      </div>
+
+      <div class="topic-card">
+        <span class="topic-cat cat-phone">📱 手机号码 · 互动型</span>
+        <div class="topic-title">100人挑战 EP.2：把手机号最后4位放评论，我帮你测</div>
+        <div class="topic-hook">系列续集增加忠实粉丝粘性。参与门槛低，每个人都能玩，评论区自然爆炸。</div>
+        <div class="topic-tags"><span class="topic-tag">#手机号码</span><span class="topic-tag">#数字测评</span><span class="topic-tag">#互动</span></div>
+        <div class="vp vp-med">⚡ 爆款潜力：中高 · 粉丝粘性强</div>
+      </div>
+
+      <div class="topic-card">
+        <span class="topic-cat cat-phone">📱 手机号码 · 警示型</span>
+        <div class="topic-title">这种手机号码的人，钱永远存不住</div>
+        <div class="topic-hook">财富焦虑是最大公约数。让人立刻对照自己的号码，分享冲动极强。</div>
+        <div class="topic-tags"><span class="topic-tag">#手机号码</span><span class="topic-tag">#财运</span><span class="topic-tag">#数字能量</span></div>
+        <div class="vp vp-high">🔥 爆款潜力：高</div>
+      </div>
+
+      <div class="topic-card">
+        <span class="topic-cat cat-phone">📱 手机号码 · 职业型</span>
+        <div class="topic-title">适合做销售的手机号码长什么样？</div>
+        <div class="topic-hook">职场定向内容让目标人群精准共鸣。销售/创业者会主动分享给同行。</div>
+        <div class="topic-tags"><span class="topic-tag">#销售</span><span class="topic-tag">#手机号码</span><span class="topic-tag">#事业</span></div>
+        <div class="vp vp-med">⚡ 爆款潜力：中高</div>
+      </div>
+
+      <div class="topic-card">
+        <span class="topic-cat cat-emotion">💬 情感 · 观点型</span>
+        <div class="topic-title">为什么有些人天生有贵人缘？答案在数字里</div>
+        <div class="topic-hook">将情感话题与数字能量结合。"贵人缘"是所有人都想要的，共鸣超强。</div>
+        <div class="topic-tags"><span class="topic-tag">#贵人</span><span class="topic-tag">#数字能量</span><span class="topic-tag">#人际关系</span></div>
+        <div class="vp vp-high">🔥 爆款潜力：高</div>
+      </div>
+
+      <div class="topic-card">
+        <span class="topic-cat cat-emotion">💬 婚姻 · 警示型</span>
+        <div class="topic-title">选错号码结婚，离婚率高3倍——真实数据</div>
+        <div class="topic-hook">婚姻+数字能量+数据感=极强分享动机。已婚/准备结婚人群必看。</div>
+        <div class="topic-tags"><span class="topic-tag">#婚姻</span><span class="topic-tag">#结婚</span><span class="topic-tag">#数字能量</span></div>
+        <div class="vp vp-high">🔥 爆款潜力：极高</div>
+      </div>
+
+      <div class="topic-card">
+        <span class="topic-cat cat-series">🎯 改运系列</span>
+        <div class="topic-title">你的手机号码不改，打工命很难变老板命</div>
+        <div class="topic-hook">阶层跃升焦虑+解决方案。"打工/老板"对比极具张力，触发转发。</div>
+        <div class="topic-tags"><span class="topic-tag">#改运</span><span class="topic-tag">#创业</span><span class="topic-tag">#财运</span></div>
+        <div class="vp vp-high">🔥 爆款潜力：高 · 导流效果极佳</div>
+      </div>
+
+    </div>
+    <div class="page-bottom"></div>
+  </div>
+</div>
+
+<!-- ========== TAB 4: PLAN ========== -->
+<div id="tab-plan" class="section">
+  <div class="page-top">
+
+    <!-- Follower active heatmap -->
+    <div class="sec-lbl">⏰ 粉丝活跃时间热力图</div>
+    <div class="card">
+      <div style="font-size:11px;color:#8080a0;margin-bottom:10px;">（周一是最活跃日）</div>
+      <div class="heatmap-wrap">
+        <div class="heatmap">
+          <div></div>
+          <div class="h-lbl">12AM</div>
+          <div class="h-lbl">3AM</div>
+          <div class="h-lbl">6AM</div>
+          <div class="h-lbl">9AM</div>
+          <div class="h-lbl">12PM</div>
+          <div class="h-lbl">3PM</div>
+          <div class="h-lbl">6PM</div>
+          <div class="h-lbl">9PM</div>
+
+          <div class="h-day hot">周一🔥</div>
+          <div class="h-cell h3">560</div>
+          <div class="h-cell h4">623</div>
+          <div class="h-cell h4">617</div>
+          <div class="h-cell h2">277</div>
+          <div class="h-cell h1">116</div>
+          <div class="h-cell h2">321</div>
+          <div class="h-cell h3">467</div>
+          <div class="h-cell h3">544</div>
+
+          <div class="h-day">其他日</div>
+          <div class="h-cell h2">~400</div>
+          <div class="h-cell h2">~450</div>
+          <div class="h-cell h2">~440</div>
+          <div class="h-cell h1">~200</div>
+          <div class="h-cell h0">~80</div>
+          <div class="h-cell h1">~230</div>
+          <div class="h-cell h2">~330</div>
+          <div class="h-cell h2">~390</div>
+        </div>
+      </div>
+      <div style="margin-top:12px;background:rgba(255,100,150,0.1);border-radius:8px;padding:10px;font-size:12px;color:#d0d0e8;line-height:1.6;">
+        💡 <strong style="color:#ff6496;">最佳发布时间：晚上8:30–9:00</strong><br>
+        周一发布爆款类内容效果最佳
+      </div>
+    </div>
+
+    <!-- Weekly schedule -->
+    <div class="sec-lbl">📅 7天发布计划</div>
+    <div class="schedule-scroll">
+      <div class="day-card hot">
+        <div class="day-name">周一</div>
+        <div class="day-icon">🚗</div>
+        <div class="day-type"><strong>车牌警示型</strong><br>爆款主力内容</div>
+        <div class="day-time">晚上 9:00</div>
+      </div>
+      <div class="day-card">
+        <div class="day-name">周二</div>
+        <div class="day-icon">📱</div>
+        <div class="day-type">手机号码互动<br>留评论测评</div>
+        <div class="day-time">晚上 8:30</div>
+      </div>
+      <div class="day-card">
+        <div class="day-name">周三</div>
+        <div class="day-icon">🏠</div>
+        <div class="day-type">门牌号码分析<br>警示/测评型</div>
+        <div class="day-time">晚上 9:00</div>
+      </div>
+      <div class="day-card">
+        <div class="day-name">周四</div>
+        <div class="day-icon">💬</div>
+        <div class="day-type">情感观点内容<br>结合数字角度</div>
+        <div class="day-time">晚上 8:00</div>
+      </div>
+      <div class="day-card">
+        <div class="day-name">周五</div>
+        <div class="day-icon">🚗</div>
+        <div class="day-type">车牌测评型<br>排名/对比型</div>
+        <div class="day-time">晚上 9:00</div>
+      </div>
+      <div class="day-card">
+        <div class="day-name">周六</div>
+        <div class="day-icon">🔧</div>
+        <div class="day-type">改运方案<br>导流私信</div>
+        <div class="day-time">晚上 8:30</div>
+      </div>
+      <div class="day-card">
+        <div class="day-name">周日</div>
+        <div class="day-icon">🎯</div>
+        <div class="day-type">系列内容<br>100人挑战EP</div>
+        <div class="day-time">晚上 9:00</div>
+      </div>
+    </div>
+
+    <!-- Formula guide -->
+    <div class="sec-lbl">⚡ 爆款公式 & 制作指南</div>
+
+    <div class="card">
+      <div class="card-title">🎯 病毒标题公式</div>
+      <div class="formula-card">
+        <div class="formula-item"><strong>警示型：</strong>"看到[具体数字/号码]，最好[紧急行动]"</div>
+        <div class="formula-item"><strong>揭秘型：</strong>"[XX]车牌的人，背后隐藏一个秘密"</div>
+        <div class="formula-item"><strong>对比型：</strong>"同样努力，为什么他发财你没有？看看你们的号码"</div>
+        <div class="formula-item"><strong>排名型：</strong>"全马最[好/差]的5种车牌号码"</div>
+        <div class="formula-item"><strong>互动型：</strong>"把你的[号码]放评论区，我告诉你[结果]"</div>
+        <div class="formula-item"><strong>身份认同型：</strong>"这种号码的人天生有X特质"</div>
+      </div>
+
+      <div class="card-title mt12">🎬 拍摄制作技巧</div>
+      <div class="formula-card">
+        <div class="formula-item">在车内/开车途中拍摄增加真实感（已验证有效）</div>
+        <div class="formula-item">开头3秒必须出现数字/号码画面，立刻勾住观众</div>
+        <div class="formula-item">大字幕覆盖整个画面（参考爆款帖子风格）</div>
+        <div class="formula-item">用红色/黄色字幕颜色增加紧迫感</div>
+        <div class="formula-item">视频长度控制在30-60秒，不超过90秒</div>
+        <div class="formula-item">结尾留钩子："下一条我会分析[XXX]，记得关注"</div>
+      </div>
+
+      <div class="card-title mt12">📌 Hashtag & Caption策略</div>
+      <div class="formula-card">
+        <div class="formula-item">核心标签：#数字能量 #数字能量学 #车牌号码 #门牌号码</div>
+        <div class="formula-item">长尾标签：#手机号码 #改运 #马来西亚华人 #招财</div>
+        <div class="formula-item">Caption第一句必须重复标题核心冲突</div>
+        <div class="formula-item">Caption结尾加"你的号码是多少？评论区告诉我"</div>
+        <div class="formula-item">发布后30分钟内回复所有评论（算法奖励）</div>
+        <div class="formula-item">标签数量控制在8-12个，不要超过15个</div>
+      </div>
+    </div>
+
+    <div class="page-bottom"></div>
+  </div>
+</div>
+
+<!-- ========== TAB 5: ROADMAP ========== -->
+<div id="tab-roadmap" class="section">
+  <div class="page-top">
+    <div class="sec-lbl">🗺️ 达到10K粉丝路线图</div>
+
+    <div class="sec-pad">
+      <div class="phase phase-1">
+        <div class="phase-num">第一阶段 · 0–60天</div>
+        <div class="phase-title">🚀 爆款复制期</div>
+        <div class="phase-goal">目标：2,123 → 4,000 粉丝</div>
+        <div class="phase-item">每周3–4条Reels，专注车牌+门牌内容</div>
+        <div class="phase-item">严格执行警示型标题公式</div>
+        <div class="phase-item">每发布后2小时内积极回复评论</div>
+        <div class="phase-item">停止发布纯观点/无数字结合内容</div>
+        <div class="phase-item">固定晚上9:00发布，尤其周一</div>
+        <div class="phase-item">标题加入"千万不要"、"最好避开"等词</div>
+      </div>
+
+      <div class="phase phase-2 mt12">
+        <div class="phase-num">第二阶段 · 60–120天</div>
+        <div class="phase-title">🔥 互动扩张期</div>
+        <div class="phase-goal">目标：4,000 → 7,000 粉丝</div>
+        <div class="phase-item">启动"把你的号码放评论区"互动系列</div>
+        <div class="phase-item">100人实测挑战系列持续更新至EP.10</div>
+        <div class="phase-item">开始Stories互动：投票/问答/直播</div>
+        <div class="phase-item">主动私信参与评论的粉丝</div>
+        <div class="phase-item">与马来西亚华人KOL合拍一条内容</div>
+        <div class="phase-item">增加门牌内容到每周2条</div>
+      </div>
+
+      <div class="phase phase-3 mt12">
+        <div class="phase-num">第三阶段 · 120–180天</div>
+        <div class="phase-title">⭐ 冲刺1万期</div>
+        <div class="phase-goal">目标：7,000 → 10,000+ 粉丝</div>
+        <div class="phase-item">制造话题：挑战全马最差/最好车牌</div>
+        <div class="phase-item">每月至少1条超级爆款（目标50K+浏览）</div>
+        <div class="phase-item">开始直播答疑（增加直播粉丝增长）</div>
+        <div class="phase-item">推出"家铭老师数字改运系列"品牌内容</div>
+        <div class="phase-item">建立Telegram/WhatsApp社群导流</div>
+        <div class="phase-item">考虑1–2条Boost Reel（助推热门内容）</div>
+      </div>
+    </div>
+
+    <!-- Summary -->
+    <div class="summary-box">
+      <h2>🎯 一句话核心策略</h2>
+      <p>你的爆款密码已经找到了：<strong class="pink">车牌/门牌 + 警示型标题 + 在车里拍 = 10万+浏览</strong>。每周制作3-4条这个公式的内容，<strong class="orange">预计4-6个月内就能突破1万粉丝</strong>。你离目标只差约<strong class="green">10个爆款帖子</strong>的距离！</p>
+    </div>
+
+    <!-- Math breakdown -->
+    <div class="card mt12">
+      <div class="card-title">🔢 达标数学计算</div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:8px;">
+        <div style="background:rgba(255,100,150,0.08);border-radius:10px;padding:12px;text-align:center;">
+          <div style="font-size:18px;font-weight:900;color:#ff6496;">+806</div>
+          <div style="font-size:10px;color:#a0a0c0;margin-top:3px;">每个爆款最多<br>新增粉丝数</div>
+        </div>
+        <div style="background:rgba(247,151,30,0.08);border-radius:10px;padding:12px;text-align:center;">
+          <div style="font-size:18px;font-weight:900;color:#f7971e;">×10–15</div>
+          <div style="font-size:10px;color:#a0a0c0;margin-top:3px;">所需爆款帖数<br>（保守估计）</div>
+        </div>
+        <div style="background:rgba(52,211,153,0.08);border-radius:10px;padding:12px;text-align:center;">
+          <div style="font-size:18px;font-weight:900;color:#34d399;">7,877</div>
+          <div style="font-size:10px;color:#a0a0c0;margin-top:3px;">还需增加<br>粉丝数</div>
+        </div>
+        <div style="background:rgba(167,139,250,0.08);border-radius:10px;padding:12px;text-align:center;">
+          <div style="font-size:18px;font-weight:900;color:#a78bfa;">4–6月</div>
+          <div style="font-size:10px;color:#a0a0c0;margin-top:3px;">预估达成<br>时间</div>
+        </div>
+      </div>
+    </div>
+
+    <div style="text-align:center;padding:20px 12px;font-size:12px;color:#505070;">
+      📊 数据来源：Instagram Insights @official.liechiaming<br>
+      分析日期：2026年5月17日 · 由 Claude Cowork Mode 生成<br>
+      <span style="color:#ff6496;margin-top:4px;display:block;">🚀 加油家铭老师！2,123 → 10,000！</span>
+    </div>
+
+    <div class="page-bottom"></div>
+  </div>
+</div>
+
+<!-- ========== TAB 6: PHONE TOPICS ========== -->
+<div id="tab-phone" class="section">
+  <div class="page-top">
+    <div class="sec-lbl">📱 电话号码磁场选题库</div>
+
+    <div class="insight-box" style="margin:0 12px;">
+      <div class="insight-title">🎯 使用方法</div>
+      <div class="insight-item"><span>📌</span><span>选一个磁场 → 切换「最好/最差」→ 每一条都是一个视频开篇情景，老师在拍摄时按自己的语言和经历输出完整内容。</span></div>
+      <div class="insight-item"><span>💡</span><span>开篇情景是钩子，不是完整脚本。情景 → 引入数字能量磁场概念 → 解读 → 改运建议。</span></div>
+    </div>
+
+    <!-- Field selector -->
+    <div class="field-scroll" style="margin-top:14px;" id="field-scroll"></div>
+
+    <!-- Toggle best/worst -->
+    <div class="toggle-bar">
+      <button class="toggle-btn active-best" id="btn-best" onclick="setMode('best')">🌟 最好情景（10个）</button>
+      <button class="toggle-btn" id="btn-worst" onclick="setMode('worst')">⚠️ 最差情景（10个）</button>
+    </div>
+
+    <!-- Field info card -->
+    <div id="field-info-card" class="field-info"></div>
+
+    <!-- Topics list -->
+    <div id="phone-topics"></div>
+
+    <div style="text-align:center;padding:16px 12px;font-size:11px;color:#404060;">
+      共8大磁场 · 每个磁场最好+最差各10个选题 · 共160条
+    </div>
+    <div class="page-bottom"></div>
+  </div>
+</div>
+
+</div><!-- end main -->
+
+<script>
+// ===== TAB NAVIGATION =====
+function showTab(name) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.currentTarget.classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+// ===== PHONE TOPICS DATA =====
+const FIELDS = [
+  {
+    id:'tianyi', name:'天医星', emoji:'💰', color:'#f59e0b',
+    trait:'主财运 · 婚姻 · 聪明善良', type:'四吉星',
+    numbers:'13/31 · 68/86 · 49/94 · 27/72',
+    best:[
+      '我朋友做生意，明明不怎么努力，钱就是一直进来，她自己也不知道为什么',
+      '我同事一直有贵人帮，升职从来不用自己开口，机会自动找上门',
+      '我老婆说我读书很快就会，她以为我是天才，其实我只是看一遍就记住了',
+      '我做投资，没什么研究，但是每次选的方向都对，身边的人都问我怎么做到的',
+      '我的客户跟我聊完，感觉心情很好，然后就说「就决定是你了」',
+      '我朋友结婚很顺，对象就像从天上掉下来，感情稳定，连争吵都很少',
+      '我做销售，很奇怪，客户自己主动找上门，我从来不需要追人',
+      '我儿子读书，什么都记得住，老师都说他是班上最聪明的，我只是给他换了号码',
+      '我换了号码，半年内赚了以前两年的收入，朋友说我好像变了个人',
+      '我认识一个人，她很温柔善良，但是命很好，钱财从来不愁，贵人不断',
+    ],
+    worst:[
+      '我朋友上个月被骗，因为太信朋友，去刷单，结果损失了两万块',
+      '我帮朋友做保证人，结果被连累破产，一夜之间什么都没了',
+      '我老公太好人，同事向他借钱他全都借，结果没有一个还',
+      '我妈妈被诈骗电话骗了三万，因为对方说是她儿子出事了',
+      '我朋友做生意明明很聪明，但被合伙人骗走了所有资产',
+      '我老板娘心软，员工欺负她，反而把公司搞垮，她还帮那些人说话',
+      '我朋友赚了很多钱，但是一直被亲戚借钱，存了十年还是没有积蓄',
+      '我儿子成绩很好，帮同学，反而害自己考试不及格',
+      '我做了很多好事，身边的人反而背叛我，最亲近的人伤我最深',
+      '我朋友太老实，做生意不会追数，结果钱收不回来，生意做得越大越亏',
+    ]
+  },
+  {
+    id:'shengqi', name:'生气星', emoji:'🍀', color:'#10b981',
+    trait:'贵人缘 · 乐观 · 好运连连', type:'四吉星',
+    numbers:'14/41 · 67/76 · 39/93 · 28/82',
+    best:[
+      '我去任何地方，很容易认识对我有帮助的人，好像贵人会自动找我',
+      '我换工作不用找，都是别人主动介绍，连简历都不用发',
+      '我的孩子很乐观，遇到什么困难都能笑着面对，从来不觉得有什么大不了',
+      '我朋友做生意，不怕亏，因为总是有人拉他一把，逢凶化吉',
+      '我去买房，很神奇，刚好遇到最好的时机，买完之后价格就涨了',
+      '我朋友丢了工作，第二天就有新工作找上门，她自己也很惊讶',
+      '我带朋友去谈生意，她在场竟然帮我成交，说是有她在气氛很好',
+      '我的生意不好，一个陌生人介绍了我最大的客户，就这样改变了一切',
+      '我朋友去哪里都顺，感觉天公在帮他，遇到麻烦都会有人出现解决',
+      '我换了号码，整个人状态变了，开始变积极，身边贵人也多了',
+    ],
+    worst:[
+      '我朋友太乐观，生意亏了还以为下次会好，结果一直亏，最后关门',
+      '我老公说什么都「没问题」，结果问题一个一个出来他才慌',
+      '我认识一个人，年轻运气很好，完全靠运气不努力，40岁什么都没有',
+      '我朋友遇到问题不面对，觉得会自动好，结果拖垮了整个生意',
+      '我孩子太乐天，考试失败不放在心上，成绩越来越差还说「没事的」',
+      '我同事抗压能力高到感觉不出问题，出了大事才说「哦原来这么严重」',
+      '我朋友贵人运很强，但太依赖贵人，自己什么都不做，贵人也累了',
+      '我老板娘很乐观，看不清楚生意的问题，一直说「没事会好的」',
+      '我朋友随遇而安，在同一个地方打滚了十年，薪水跟十年前一样',
+      '我认识的人，说话很好听，态度很好，但是行动力几乎是零，什么都停留在计划',
+    ]
+  },
+  {
+    id:'niannian', name:'延年星', emoji:'💼', color:'#6366f1',
+    trait:'事业 · 领导力 · 专业能力', type:'四吉星',
+    numbers:'19/91 · 78/87 · 34/43 · 26/62',
+    best:[
+      '我朋友30岁就当上总监，因为他天生就有让人跟着走的气质',
+      '我老板做事很认真，整个团队都服他，连最难搞的员工也听他的',
+      '我的同事每次遇到难题，都能想出解决方案，大家第一个就找他',
+      '我朋友一个人管20个人，而且每个人都很服她，从来不乱',
+      '我换了号码，感觉做事更有目标感，半年后升职了，连自己也没预料到',
+      '我客户做了十年同一行，现在是业界权威，开口说话整个行业都会听',
+      '我认识一个人，讲话很有分量，说一次就让人听进去，从来不需要重复',
+      '我朋友白手起家，靠的是比别人更有规划，每一步都走得稳',
+      '我的老板娘做事从来不半途而废，别人放弃的她都撑下去，公司越做越大',
+      '我一个客户做了30年同一件事，现在整个行业都认识他，机会主动找上门',
+    ],
+    worst:[
+      '我朋友太负责任，连别人的问题也要扛，结果累垮了自己',
+      '我老公每天加班到凌晨，孩子长大不认识他，家里只有妈妈',
+      '我认识的人能力很强，但是总是比别人累两倍，身体在发出警告了',
+      '我朋友管太多，员工喘不过气，一个个辞职，最后公司只剩他一个人',
+      '我老板娘做事太完美，自己做到凌晨三点，但是下面的人从来没有成长',
+      '我同事工作能力一流，但身体很差，40岁就有高血压，医生说要减压',
+      '我认识一个人，责任心太重，连睡觉也在想工作，失眠了两年',
+      '我朋友很有领导能力，但感情很差，因为太强势，没有人愿意靠近',
+      '我做了很多，公司赚了，但功劳都是老板的，我连一声谢谢也没有',
+      '我朋友40岁中风，因为一直在为别人的事情操心，自己的事情一个都没做',
+    ]
+  },
+  {
+    id:'fuwei', name:'伏位星', emoji:'🧠', color:'#8b5cf6',
+    trait:'延续 · 思考 · 谨慎稳健', type:'四吉星',
+    numbers:'11 · 22 · 33 · 44 · 66 · 77 · 88 · 99',
+    best:[
+      '我朋友做生意慢慢来，但每年都有稳定收入，十年后比别人多了一栋房子',
+      '我同事投资从来不急，选最安全的方式，十年后他是朋友圈里最有钱的',
+      '我认识一个人，做每件事都很分析，很少出错，大家都说他是最可靠的',
+      '我朋友很耐心，等了三年，终于等到最好的机会，一出手就成功',
+      '我老板娘做事谨慎，生意从来没有大风险，慢慢做成业界最稳定的一家',
+      '我的客户存钱存了十年，现在买房全现金，没有贷款，轻松自在',
+      '我朋友不急不躁，最后稳稳地拿到他想要的东西，别人追不上',
+      '我做事喜欢分析，别人说我太慢，但是我很少做错，省了很多回头路',
+      '我换了号码，开始更懂得规划，不再冲动消费，存款越来越多',
+      '我的同事做事有条理，负责的项目从来没有延误，客户最放心交给他',
+    ],
+    worst:[
+      '我朋友想太多，一个创业的决定想了三年还没有开始做',
+      '我老公太保守，有机会也不敢出手，就这样看着别人赚，他说「再等等」',
+      '我认识一个人，做生意太谨慎，连明显的好机会也放弃，一直原地踏步',
+      '我朋友分析了一年，等他准备好了，市场已经变了，机会没了',
+      '我的同事想很多，但总是等到最后一刻才做，每次都很赶',
+      '我朋友太保守，新的软件、新的方法，一概不学，说「旧的好」',
+      '我老板做事太谨慎，公司一直没有突破，员工一个个离开因为看不到前景',
+      '我认识一个人，很聪明，但是太被动，等别人来找，结果别人找了别人',
+      '我朋友十年没有换工作，说要稳定，但是薪水比十年前只多了三百块',
+      '我老公考虑太多，连度假去哪里也分析了两个月，最后旅游季结束都没出发',
+    ]
+  },
+  {
+    id:'jueming', name:'绝命星', emoji:'⚡', color:'#ef4444',
+    trait:'敢冲 · 投资 · 执行力强', type:'四凶星',
+    numbers:'12/21 · 69/96 · 48/84 · 37/73',
+    best:[
+      '我朋友敢冲，别人不敢做的生意他做，结果三年赚了别人十年的钱',
+      '我认识的人，做生意大起大落，但每次都站起来了，比跌倒前更强',
+      '我同事投资敢押注，一次赚了别人几年的收入，大家都说他运气好',
+      '我朋友创业失败三次，第四次成功，现在公司有五十个员工',
+      '我老板做事很拼，凌晨三点还在跟客户谈生意，就是这种拼劲让他成功',
+      '我认识一个人，做网络生意从0到月入五万，就是因为比别人更敢试',
+      '我朋友冲动买了一块地，当时大家说他傻，现在那块地值原来的十倍',
+      '我做生意从来不怕亏，因为每次亏了都学到了，越亏越有经验',
+      '我朋友在最低谷的时候，反而想到了一个让他翻身的办法',
+      '我换了号码，开始敢做以前不敢做的事，跨出那一步之后生意有了突破',
+    ],
+    worst:[
+      '我朋友冲动投资，三个月亏掉了存了五年的钱，现在还在慢慢还债',
+      '我老公说要创业，没有任何计划就开始，第一年就关店亏了十几万',
+      '我认识一个人，做生意很敢，但一直大起大落，到60岁还是没有积累',
+      '我朋友炒股票，一时冲动all in所有积蓄，结果归零，家里差点撑不住',
+      '我同事做事靠感觉，经常做了才后悔，说「早知道我就不这样做了」',
+      '我老板娘很有魄力，但员工受不了她说话不经大脑，团队一直不稳定',
+      '我认识的人，创业三次，每次都因为太冲动、没有计划而失败',
+      '我朋友敢借钱投资，结果借了不该借的数额，现在欠了一身债',
+      '我做事太快，没有想清楚，反而给自己惹了大麻烦，收拾不完',
+      '我朋友签合同不看清楚，结果被人坑了，损失了几十万',
+    ]
+  },
+  {
+    id:'wugui', name:'五鬼星', emoji:'💡', color:'#f97316',
+    trait:'才华 · 创意 · 逆向思维', type:'四凶星',
+    numbers:'18/81 · 79/97 · 36/63 · 24/42',
+    best:[
+      '我是做Marketing的，有什么方法让我变得跟ChatGPT一样，给我出主意停不下来',
+      '我朋友很有创意，想到的方法没有人想到过，靠这个做到月入十万',
+      '我认识一个人，做事跟别人不一样，反而在市场上没有竞争对手',
+      '我朋友做内容创作，每次都有新花样，粉丝一直涨，同行都在研究他怎么做的',
+      '我同事用了一个没人想到的方法，帮公司省了五十万，老板直接给他升职',
+      '我老板娘转型了五次，但每次都做到最好，适应力比任何人都强',
+      '我认识一个人，换了三个行业，每个都做得很好，说「换来换去都是经验」',
+      '我朋友想到了一个App，现在有几万用户，投资人主动找上门',
+      '我的客户做生意专门找别人不做的小市场，结果没有竞争，垄断了整个市场',
+      '我换了号码，开始有很多新想法，整个生意模式完全改变，朋友说我「变了个人」',
+    ],
+    worst:[
+      '我朋友点子很多，但三分钟热度，什么都做了一半，什么都没做完',
+      '我老公做事很有创意，但人生变化太多，家人一直跟不上，孩子说爸爸很奇怪',
+      '我认识一个人，聪明过头，帮别人钻漏洞，搞出了法律问题',
+      '我朋友做生意，想法太超前，市场还没准备好接受，亏了三年',
+      '我同事很有才华，但很神秘，别人搞不懂他，跟他合作很困难',
+      '我认识的人，很聪明，但用错了地方，帮人做假账，最后进去了',
+      '我朋友做投资，用了别人看不懂的方法，自己也搞不清楚，结果亏了',
+      '我老板思维跳跃，员工根本跟不上，公司内部很乱，什么都做了一半',
+      '我认识一个人，做生意一直在变，客户搞不清楚他到底卖什么',
+      '我朋友用了旁门左道的方法，短期赚了钱，但后来出了大问题，全部吐回去',
+    ]
+  },
+  {
+    id:'liusha', name:'六煞星', emoji:'💕', color:'#ec4899',
+    trait:'人际 · 感情 · 细腻敏锐', type:'四凶星',
+    numbers:'16/61 · 47/74 · 38/83 · 29/92',
+    best:[
+      '我朋友人缘超好，走到哪里都有人帮她，出门像有人在前面开路',
+      '我认识一个人，她的异性缘很好，感情一直很顺，老公把她当公主一样',
+      '我同事很会观察人，总是知道别人在想什么，所以从来不会说错话',
+      '我朋友做销售，因为很会感受客户情绪，业绩一直是公司第一',
+      '我老板娘很会跟人打交道，合作从来不破裂，大家都愿意跟她做生意',
+      '我认识的人，交了很多有用的朋友，到哪里都有人脉，什么问题都能解决',
+      '我朋友感情很好，老公对她无微不至，结婚十年感情比谈恋爱时还好',
+      '我做客服，因为能感受到客户心情，很多本来要投诉的，最后说了谢谢',
+      '我认识一个人，很懂得经营关系，生意圈里大家都喜欢她，合作机会不断',
+      '我换了号码，开始更懂得跟人相处，之前很疏远的关系，慢慢变好了',
+    ],
+    worst:[
+      '我有一个朋友，干忧郁，每天想要自残，说感觉自己的情绪控制不了',
+      '我认识一个人，感情受伤之后，好几年走不出来，连工作也做不下去',
+      '我朋友异性缘太好，造成感情混乱，搞到自己很痛苦，另一半也很痛苦',
+      '我老公太在乎别人的看法，别人随便一句话他就难受好几天',
+      '我朋友分手了一次，整个人垮了，连工作也辞掉了，躺了半年',
+      '我认识一个人，因为太敏感，经常误会别人，朋友越来越少，越来越孤单',
+      '我同事情商很高，但太在乎别人感受，自己委屈了也不说，最后得了抑郁症',
+      '我朋友被前任骗了感情和钱，之后不再相信任何人，把自己关起来',
+      '我的客户因为一段感情，整个生意都受影响，六个月没有心情工作',
+      '我认识的人，人缘很好，但总是被人当情绪垃圾桶，自己累到崩溃',
+    ]
+  },
+  {
+    id:'huohai', name:'祸害星', emoji:'🎤', color:'#a78bfa',
+    trait:'口才 · 直率 · 以口为业', type:'四凶星',
+    numbers:'17/71 · 89/98 · 46/64 · 23/32',
+    best:[
+      '我朋友做讲师，一开口就让人信服，课程场场满，连培训公司都来找他签约',
+      '我认识一个人，做销售说话很直接，客户反而很喜欢，说「跟他买东西放心」',
+      '我同事谈判能力一流，靠的就是一张嘴，合同从来没有谈输过',
+      '我朋友做自媒体，讲话很有特色，粉丝涨得比同行快三倍',
+      '我老板娘做演讲培训，靠口才月入十几万，学生都说听她讲课值得',
+      '我认识一个人，做政治，口才好，很快有知名度，成了地方上的意见领袖',
+      '我朋友做主持人，一开口大家都记得他，品牌方主动找他合作',
+      '我做谈判，很直接，反而让对方觉得我可靠，成交率比以前高了两倍',
+      '我认识一个人，做教育，用最直接的方式讲，学生说「第一次真的听懂了」',
+      '我换了号码，开始更敢表达自己，谈生意说话更有力量，成交率明显提高',
+    ],
+    worst:[
+      '我朋友说话太直，得罪了老板，被辞退，他自己还不知道哪里出问题',
+      '我认识一个人，讲话不经大脑，一句话丢了最大的合作伙伴，损失了几十万',
+      '我朋友开了一个玩笑，结果弄到要去报警，说者无心听者有意',
+      '我老公喜欢说大话，客户期待太高，见面之后大失所望，口碑越来越差',
+      '我同事说话很直接，但得罪了太多人，能力很强，但是升不了职',
+      '我认识一个人，很直，朋友越来越少，说「不喜欢他讲话的方式」',
+      '我朋友爱说别人的八卦，最后反过来害了自己，以前说的话被人翻出来',
+      '我老板娘说话很强势，员工心里有话不敢说，一个个默默离职',
+      '我认识的人，因为说错话，被人截图发到网上，被骂了好几个月',
+      '我朋友口才太好，帮人做了传销，觉得自己只是在「解说产品」，最后出事了',
+    ]
+  },
+];
+
+let currentField = 0;
+let currentMode = 'best';
+
+function renderFieldButtons() {
+  const container = document.getElementById('field-scroll');
+  container.innerHTML = FIELDS.map((f,i) => `
+    <button class="field-btn${i===0?' active':''}" id="fbtn-${i}"
+      style="${i===0?'background:'+f.color+';color:#fff;':''}"
+      onclick="selectField(${i})">
+      ${f.emoji} ${f.name}
+    </button>
+  `).join('');
+}
+
+function selectField(idx) {
+  currentField = idx;
+  document.querySelectorAll('.field-btn').forEach((b,i)=>{
+    if(i===idx){
+      b.classList.add('active');
+      b.style.background = FIELDS[i].color;
+      b.style.color = '#fff';
+    } else {
+      b.classList.remove('active');
+      b.style.background = '';
+      b.style.color = '';
+    }
+  });
+  renderContent();
+  // Scroll the field button into view
+  const btn = document.getElementById('fbtn-'+idx);
+  if(btn) btn.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
+}
+
+function setMode(mode) {
+  currentMode = mode;
+  const bestBtn = document.getElementById('btn-best');
+  const worstBtn = document.getElementById('btn-worst');
+  if(mode==='best'){
+    bestBtn.className='toggle-btn active-best';
+    worstBtn.className='toggle-btn';
+  } else {
+    worstBtn.className='toggle-btn active-worst';
+    bestBtn.className='toggle-btn';
+  }
+  renderContent();
+}
+
+function renderContent() {
+  const f = FIELDS[currentField];
+  const isBest = currentMode === 'best';
+  const topics = isBest ? f.best : f.worst;
+  const bgColor = isBest ? 'rgba(52,211,153,0.07)' : 'rgba(239,68,68,0.07)';
+  const borderColor = isBest ? 'rgba(52,211,153,0.25)' : 'rgba(239,68,68,0.25)';
+  const numColors = isBest
+    ? ['#34d399','#6ee7b7','#34d399','#10b981','#34d399','#6ee7b7','#34d399','#10b981','#34d399','#6ee7b7']
+    : ['#f87171','#fca5a5','#f87171','#ef4444','#f87171','#fca5a5','#f87171','#ef4444','#f87171','#fca5a5'];
+
+  // Info card
+  document.getElementById('field-info-card').innerHTML = `
+    <div style="background:${f.color}22;border:1px solid ${f.color}44;border-radius:14px;padding:14px 16px;margin:12px 12px 0;">
+      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
+        <span style="font-size:28px;">${f.emoji}</span>
+        <div>
+          <span style="font-size:10px;font-weight:700;background:${f.color}33;color:${f.color};border-radius:5px;padding:2px 8px;">${f.type}</span>
+          <div style="font-size:20px;font-weight:900;color:#fff;margin-top:3px;">${f.name}</div>
+        </div>
+      </div>
+      <div style="font-size:12px;color:${f.color};font-weight:600;margin-bottom:4px;">${f.trait}</div>
+      <div style="font-size:11px;color:#606080;">代表数字：${f.numbers}</div>
+    </div>
+  `;
+
+  // Topics
+  document.getElementById('phone-topics').innerHTML = topics.map((t,i) => `
+    <div class="topic-num-card" style="background:${bgColor};border:1px solid ${borderColor};">
+      <div class="topic-num-idx" style="color:${numColors[i]};">${i+1}</div>
+      <div class="topic-num-text">${t}</div>
+    </div>
+  `).join('');
+}
+
+// Init phone topics
+window.addEventListener('DOMContentLoaded', ()=>{
+  renderFieldButtons();
+  renderContent();
+});
+
+// ===== TAB NAVIGATION =====
+function showTab(name) {
+  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
+  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+  document.getElementById('tab-' + name).classList.add('active');
+  event.currentTarget.classList.add('active');
+  window.scrollTo(0, 0);
+}
+</script>
+
+</body>
+</html>
