@@ -289,6 +289,52 @@ strong.green { color:#34d399; }
 .cover-line{background:rgba(34,211,238,0.08);border:1px solid rgba(34,211,238,0.2);border-radius:8px;padding:8px;text-align:center;font-size:13px;font-weight:800;color:#a5f3fc;}
 .sf-hint{font-size:10px;color:#505070;margin-top:3px;font-style:italic;}
 
+
+/* Add-card button */
+.add-sc-btn{display:flex;align-items:center;justify-content:center;gap:8px;margin:12px 12px 4px;padding:14px;border-radius:14px;border:2px dashed rgba(96,165,250,0.35);background:rgba(96,165,250,0.05);color:#60a5fa;font-size:14px;font-weight:700;cursor:pointer;transition:all .2s;}
+.add-sc-btn:active{background:rgba(96,165,250,0.12);}
+.custom-sc{border-color:rgba(96,165,250,0.3);}
+
+
+/* 数字能量 knowledge base */
+.de-section{margin:8px 12px 0;}
+.de-cat-head{display:flex;align-items:center;justify-content:space-between;padding:12px 14px;cursor:pointer;border-radius:12px;font-size:13px;font-weight:700;color:#e0e0f0;user-select:none;}
+.de-cat-head .de-arr{font-size:11px;color:#7070a0;transition:transform .25s;}
+.de-cat-head .de-arr.open{transform:rotate(180deg);}
+.de-cat-body{padding:0 14px 14px;}
+.de-field-card{margin-bottom:10px;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,0.08);}
+.de-field-head{display:flex;align-items:center;justify-content:space-between;padding:10px 14px;cursor:pointer;user-select:none;}
+.de-field-title{font-size:13px;font-weight:800;}
+.de-field-nums{font-size:11px;color:#a0a0c0;margin-top:2px;}
+.de-field-body{padding:10px 14px 12px;border-top:1px solid rgba(255,255,255,0.06);}
+.de-row{margin-bottom:8px;}
+.de-row-label{font-size:9px;font-weight:900;text-transform:uppercase;letter-spacing:.8px;color:#6060a0;margin-bottom:3px;}
+.de-row-val{font-size:12px;color:#c8c8e8;line-height:1.6;}
+.de-badge{display:inline-block;border-radius:5px;padding:2px 7px;font-size:10px;font-weight:700;margin:2px;}
+.de-good{background:rgba(52,211,153,0.15);color:#6ee7b7;}
+.de-bad{background:rgba(248,113,113,0.15);color:#fca5a5;}
+.de-num{background:rgba(96,165,250,0.15);color:#93c5fd;font-weight:900;}
+.de-star-table{width:100%;border-collapse:collapse;font-size:11px;margin-top:4px;}
+.de-star-table th{padding:6px 8px;text-align:center;font-size:10px;color:#7070a0;border-bottom:1px solid rgba(255,255,255,0.08);}
+.de-star-table td{padding:6px 8px;text-align:center;border-bottom:1px solid rgba(255,255,255,0.05);}
+.de-star-table .star-name{text-align:left;font-weight:800;font-size:12px;}
+.de-nums-row{display:flex;flex-wrap:wrap;gap:4px;margin:4px 0;}
+.de-num-chip{background:rgba(167,139,250,0.2);color:#c4b5fd;border-radius:5px;padding:3px 8px;font-size:11px;font-weight:800;}
+.de-combo-item{background:rgba(255,255,255,0.04);border-radius:8px;padding:8px 10px;margin-bottom:6px;font-size:12px;color:#c0c0e0;line-height:1.6;}
+.de-combo-item strong{color:#fde68a;}
+.de-danger-section{margin-bottom:10px;}
+.de-danger-title{font-size:12px;font-weight:800;color:#fca5a5;margin-bottom:6px;}
+.de-danger-nums{display:flex;flex-wrap:wrap;gap:5px;}
+.de-danger-num{background:rgba(248,113,113,0.15);color:#fca5a5;border-radius:5px;padding:3px 8px;font-size:11px;font-weight:700;}
+.de-letter-table{width:100%;border-collapse:collapse;font-size:12px;}
+.de-letter-table td{padding:5px;text-align:center;border:1px solid rgba(255,255,255,0.07);}
+.de-letter-table td:first-child{font-weight:800;color:#60a5fa;}
+.de-search{width:100%;padding:10px 14px;background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:10px;color:#e0e0f0;font-size:13px;outline:none;box-sizing:border-box;}
+.de-search::placeholder{color:#505070;}
+.de-zero-card{background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:10px 12px;margin-bottom:8px;}
+.de-zero-title{font-size:12px;font-weight:800;color:#fde68a;margin-bottom:4px;}
+.de-zero-val{font-size:11px;color:#c0c0e0;line-height:1.65;}
+
 </style>
 </head>
 <body>
@@ -311,7 +357,7 @@ strong.green { color:#34d399; }
     <div class="tab-icon">🚀</div>路线
   </div>
   <div class="tab" onclick="showTab('phone')">
-    <div class="tab-icon">📱</div>号码选题
+    <div class="tab-icon">🔮</div>数字能量
   </div>
 </div>
 
@@ -553,7 +599,7 @@ A：这样子不可以，我看起来像风水老师咩？我头发黄黄这样�
       <span class="sc-title">生气磁场：听起来很好，用了躺平</span>
       <span class="sc-arrow" id="arr-2">▼</span>
     </div>
-    <div class="sc-tags"><span class="stag t-type">对话</span><span class="stag t-type">聊观点</span><span class="stag t-field">生气磁场</span><span class="stag t-theme">电话号码</span><span class="stag t-prio">🔥 热门主题</span><span class="stag t-lang">💬 balia</span><span class="stag t-lang">💬 settle</span></div>
+    <div class="sc-tags"><span class="stag t-type">对话</span><span class="stag t-type">聊观点</span><span class="stag t-field">生气磁场</span><span class="stag t-theme">电话号码</span><span class="stag t-prio">🔥 热门主题</span><span class="stag t-lang">💬 settle</span></div>
   </div>
   <div class="sc-body" id="sb-2" style="display:none">
     <div class="sf-row"><span class="sf-label">🎬 拍摄类型</span><span class="sf-val" contenteditable="true" data-ekey="2-type" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">对话 · 聊观点</span></div><div class="sf-row"><span class="sf-label">⏱ 预计时长</span><span class="sf-val" contenteditable="true" data-ekey="2-dur" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">60–90 秒</span></div><div class="sf-row"><span class="sf-label">🏠 建议场景 / 置景</span><div class="sf-val" contenteditable="true" data-ekey="2-scene" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">两人坐谈，自然随意，可在咖啡厅或工作室。B 像在讲身边真实故事。</div></div><div class="sf-row"><span class="sf-label">🎭 IP 情绪建议</span><div class="sf-val" contenteditable="true" data-ekey="2-emo" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">B（IP）是见多识广的顾问，半认真半搞笑。把自己当做在吐槽朋友故事的大哥，但引出的结论是真知识。</div></div><div class="sf-row"><span class="sf-label">✨ 磁场主题</span><span class="sf-val" contenteditable="true" data-ekey="2-field" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">生气磁场 14/41 67/76 93/39 28/82</span></div><div class="sf-row"><span class="sf-label">📌 拍摄主题</span><span class="sf-val" contenteditable="true" data-ekey="2-theme" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">电话号码</span></div><div class="sf-row"><span class="sf-label">📈 情绪曲线</span><span class="sf-val" contenteditable="true" data-ekey="2-curve" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">😏 吐槽朋友开场 → 😂 笑点堆叠（友族/5个孩子） → 🎯 引入号码 → 😮 揭示&quot;生气&quot;名字误解 → 💡 真相揭示</span></div><div class="sf-row"><span class="sf-label">🎣 开篇钩子</span><div class="sf-val" contenteditable="true" data-ekey="2-hook" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">【人群】你有没有认识那种，每天嘻嘻哈哈但就是没有上进心的人？/ 【奇葩猎奇】30岁5个孩子月收2千</div></div><div class="sf-row"><span class="sf-label">📝 内容脚本</span><div class="sf-val" contenteditable="true" data-ekey="2-script" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">A：欸，我有一个朋友哦，他每个月赚两千块，每天在家里嘻嘻哈哈的。
@@ -687,7 +733,7 @@ B：对，号码的平衡才是关键。一个 professional 的看法是：70% �
       <span class="sc-title">六煞磁场最好：帅哥美女的号码</span>
       <span class="sc-arrow" id="arr-6">▼</span>
     </div>
-    <div class="sc-tags"><span class="stag t-type">对话</span><span class="stag t-type">教知识</span><span class="stag t-field">六煞磁场</span><span class="stag t-theme">电话号码</span><span class="stag t-prio">🔥 热门主题</span><span class="stag t-lang">💬 atas</span><span class="stag t-lang">💬 形象</span></div>
+    <div class="sc-tags"><span class="stag t-type">对话</span><span class="stag t-type">教知识</span><span class="stag t-field">六煞磁场</span><span class="stag t-theme">电话号码</span><span class="stag t-prio">🔥 热门主题</span><span class="stag t-lang">💬 形象</span></div>
   </div>
   <div class="sc-body" id="sb-6" style="display:none">
     <div class="sf-row"><span class="sf-label">🎬 拍摄类型</span><span class="sf-val" contenteditable="true" data-ekey="6-type" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">对话 · 教知识</span></div><div class="sf-row"><span class="sf-label">⏱ 预计时长</span><span class="sf-val" contenteditable="true" data-ekey="6-dur" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">45–60 秒</span></div><div class="sf-row"><span class="sf-label">🏠 建议场景 / 置景</span><div class="sf-val" contenteditable="true" data-ekey="6-scene" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">两人对谈，A 从外表切入，话题自然过渡到号码。IP 可以穿搭整洁上镜。</div></div><div class="sf-row"><span class="sf-label">🎭 IP 情绪建议</span><div class="sf-val" contenteditable="true" data-ekey="6-emo" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">B（IP）假装被嘲外表，但从容带过，自信引出号码知识。语气轻松 atas。</div></div><div class="sf-row"><span class="sf-label">✨ 磁场主题</span><span class="sf-val" contenteditable="true" data-ekey="6-field" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">六煞磁场 16/61、38/83</span></div><div class="sf-row"><span class="sf-label">📌 拍摄主题</span><span class="sf-val" contenteditable="true" data-ekey="6-theme" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">电话号码</span></div><div class="sf-row"><span class="sf-label">📈 情绪曲线</span><span class="sf-val" contenteditable="true" data-ekey="6-curve" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">🧐 外貌切入 → 😂 穿搭 vs 中装笑点 → 🎯 穿搭与号码的关系 → 💡 六煞磁场揭示</span></div><div class="sf-row"><span class="sf-label">🎣 开篇钩子</span><div class="sf-val" contenteditable="true" data-ekey="6-hook" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">【反差】风水老师穿 T-shirt 不穿中装？/ 【荷尔蒙】帅哥美女的号码都有这个</div></div><div class="sf-row"><span class="sf-label">📝 内容脚本</span><div class="sf-val" contenteditable="true" data-ekey="6-script" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">A：数字能量老师都是穿到这样的咩？
@@ -755,7 +801,7 @@ B：没有这样讲的啦，号码是要两个两个看的。比如4接去9，�
       <span class="sc-title">天医磁场最好：他们说换了号码不一样了</span>
       <span class="sc-arrow" id="arr-8">▼</span>
     </div>
-    <div class="sc-tags"><span class="stag t-type">对话</span><span class="stag t-type">晒过程</span><span class="stag t-field">天医磁场</span><span class="stag t-theme">电话号码</span><span class="stag t-prio">📈 涨粉利器</span><span class="stag t-lang">💬 PRO</span><span class="stag t-lang">💬 atas</span></div>
+    <div class="sc-tags"><span class="stag t-type">对话</span><span class="stag t-type">晒过程</span><span class="stag t-field">天医磁场</span><span class="stag t-theme">电话号码</span><span class="stag t-prio">📈 涨粉利器</span><span class="stag t-lang">💬 PRO</span></div>
   </div>
   <div class="sc-body" id="sb-8" style="display:none">
     <div class="sf-row"><span class="sf-label">🎬 拍摄类型</span><span class="sf-val" contenteditable="true" data-ekey="8-type" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">对话 · 晒过程</span></div><div class="sf-row"><span class="sf-label">⏱ 预计时长</span><span class="sf-val" contenteditable="true" data-ekey="8-dur" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">60–75 秒</span></div><div class="sf-row"><span class="sf-label">🏠 建议场景 / 置景</span><div class="sf-val" contenteditable="true" data-ekey="8-scene" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">两人坐谈，B 展示换号码后的真实反馈（截图/案例），A 半信半疑不断追问。</div></div><div class="sf-row"><span class="sf-label">🎭 IP 情绪建议</span><div class="sf-val" contenteditable="true" data-ekey="8-emo" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">B（IP）从容自信，被质疑时不急不躁，用事实说话。一种「你信不信都是真的」的笃定。</div></div><div class="sf-row"><span class="sf-label">✨ 磁场主题</span><span class="sf-val" contenteditable="true" data-ekey="8-field" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">天医磁场 13/31 68/86 49/94 27/72</span></div><div class="sf-row"><span class="sf-label">📌 拍摄主题</span><span class="sf-val" contenteditable="true" data-ekey="8-theme" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">电话号码</span></div><div class="sf-row"><span class="sf-label">📈 情绪曲线</span><span class="sf-val" contenteditable="true" data-ekey="8-curve" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">😤 被质疑开场 → 🎯 展示成功案例 → 😂 好奇追问 → 💰 笑点结尾（5000块散钱）</span></div><div class="sf-row"><span class="sf-label">🎣 开篇钩子</span><div class="sf-val" contenteditable="true" data-ekey="8-hook" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">【最好案例】换了号码之后他们都说不一样了 / 【反差】5000块叫散钱？</div></div><div class="sf-row"><span class="sf-label">📝 内容脚本</span><div class="sf-val" contenteditable="true" data-ekey="8-script" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">A：呐，抓到，换号码都可以中马票，还讲不可以。
@@ -817,7 +863,7 @@ B：一般上如果一个人赚钱辛苦，或是赚没有什么钱，一般上�
       <span class="sc-title">最贵的号码不是你想的那样</span>
       <span class="sc-arrow" id="arr-10">▼</span>
     </div>
-    <div class="sc-tags"><span class="stag t-type">对话</span><span class="stag t-type">聊观点</span><span class="stag t-field">多磁场</span><span class="stag t-theme">电话号码</span><span class="stag t-prio">🌟 常青内容</span><span class="stag t-lang">💬 atas</span><span class="stag t-lang">💬 professional</span></div>
+    <div class="sc-tags"><span class="stag t-type">对话</span><span class="stag t-type">聊观点</span><span class="stag t-field">多磁场</span><span class="stag t-theme">电话号码</span><span class="stag t-prio">🌟 常青内容</span><span class="stag t-lang">💬 professional</span></div>
   </div>
   <div class="sc-body" id="sb-10" style="display:none">
     <div class="sf-row"><span class="sf-label">🎬 拍摄类型</span><span class="sf-val" contenteditable="true" data-ekey="10-type" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">对话 · 聊观点</span></div><div class="sf-row"><span class="sf-label">⏱ 预计时长</span><span class="sf-val" contenteditable="true" data-ekey="10-dur" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">45–60 秒</span></div><div class="sf-row"><span class="sf-label">🏠 建议场景 / 置景</span><div class="sf-val" contenteditable="true" data-ekey="10-scene" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">两人对谈，A 像是带着外行人认知来问，B 纠正认知。</div></div><div class="sf-row"><span class="sf-label">🎭 IP 情绪建议</span><div class="sf-val" contenteditable="true" data-ekey="10-emo" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">B（IP）淡定反问，像在纠正客户对行业的误解，语气温和但清晰。</div></div><div class="sf-row"><span class="sf-label">✨ 磁场主题</span><span class="sf-val" contenteditable="true" data-ekey="10-field" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">多磁场能量搭配</span></div><div class="sf-row"><span class="sf-label">📌 拍摄主题</span><span class="sf-val" contenteditable="true" data-ekey="10-theme" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">电话号码</span></div><div class="sf-row"><span class="sf-label">📈 情绪曲线</span><span class="sf-val" contenteditable="true" data-ekey="10-curve" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">😕 误解开场（靓号 vs 能量号） → 😂 笑点澄清 → 💡 解释数字能量的真正价值</span></div><div class="sf-row"><span class="sf-label">🎣 开篇钩子</span><div class="sf-val" contenteditable="true" data-ekey="10-hook" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">【争议话题】你不是在卖靓号吗？/ 【揭秘悬念】最贵的号码不是168888</div></div><div class="sf-row"><span class="sf-label">📝 内容脚本</span><div class="sf-val" contenteditable="true" data-ekey="10-script" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">A：你这边最贵的号码多少？
@@ -879,7 +925,7 @@ A：哦……现在医院很贵啊，如果你没有保险很危险，支持一�
       <span class="sc-title">天医磁场两面性：老婆号码揭秘</span>
       <span class="sc-arrow" id="arr-12">▼</span>
     </div>
-    <div class="sc-tags"><span class="stag t-type">对话</span><span class="stag t-type">教知识</span><span class="stag t-field">天医磁场</span><span class="stag t-theme">电话号码</span><span class="stag t-prio">🔥 热门主题</span><span class="stag t-lang">💬 pattern</span><span class="stag t-lang">💬 balia</span></div>
+    <div class="sc-tags"><span class="stag t-type">对话</span><span class="stag t-type">教知识</span><span class="stag t-field">天医磁场</span><span class="stag t-theme">电话号码</span><span class="stag t-prio">🔥 热门主题</span><span class="stag t-lang">💬 pattern</span></div>
   </div>
   <div class="sc-body" id="sb-12" style="display:none">
     <div class="sf-row"><span class="sf-label">🎬 拍摄类型</span><span class="sf-val" contenteditable="true" data-ekey="12-type" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">对话 · 教知识</span></div><div class="sf-row"><span class="sf-label">⏱ 预计时长</span><span class="sf-val" contenteditable="true" data-ekey="12-dur" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">60–75 秒</span></div><div class="sf-row"><span class="sf-label">🏠 建议场景 / 置景</span><div class="sf-val" contenteditable="true" data-ekey="12-scene" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">两人坐谈，A 偷偷问老婆号码，整个对话像在替自己&quot;挖坑&quot;，B 最后揭示天医两面性。</div></div><div class="sf-row"><span class="sf-label">🎭 IP 情绪建议</span><div class="sf-val" contenteditable="true" data-ekey="12-emo" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">B（IP）像在帮人诊断感情问题的顾问，听完「追老婆经历」假装没事，然后认真揭示号码的心软副作用。</div></div><div class="sf-row"><span class="sf-label">✨ 磁场主题</span><span class="sf-val" contenteditable="true" data-ekey="12-field" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">天医磁场 49/94（心软、善良的副作用）</span></div><div class="sf-row"><span class="sf-label">📌 拍摄主题</span><span class="sf-val" contenteditable="true" data-ekey="12-theme" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">电话号码</span></div><div class="sf-row"><span class="sf-label">📈 情绪曲线</span><span class="sf-val" contenteditable="true" data-ekey="12-curve" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">😏 偷偷问老婆号码 → 😂 搞笑追老婆经历 → 🎯 揭示天医磁场心软副作用 → 😅 被骗逻辑揭示</span></div><div class="sf-row"><span class="sf-label">🎣 开篇钩子</span><div class="sf-val" contenteditable="true" data-ekey="12-hook" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">【人群】有没有人用数字能量分析过另一半的号码？/ 【奇葩猎奇】早安晚安就追到人</div></div><div class="sf-row"><span class="sf-label">📝 内容脚本</span><div class="sf-val" contenteditable="true" data-ekey="12-script" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">A：你帮人看号码的是吗？
@@ -911,7 +957,7 @@ B：很多人会以为 49 这样的号码是天医很好，但号码是有两面
       <span class="sc-title">换号码的条件，刁钻到换不到</span>
       <span class="sc-arrow" id="arr-13">▼</span>
     </div>
-    <div class="sc-tags"><span class="stag t-type">对话</span><span class="stag t-type">聊观点</span><span class="stag t-field">多磁场</span><span class="stag t-theme">电话号码</span><span class="stag t-prio">😂 搞笑内容</span><span class="stag t-lang">💬 PROMAX</span><span class="stag t-lang">💬 balia</span></div>
+    <div class="sc-tags"><span class="stag t-type">对话</span><span class="stag t-type">聊观点</span><span class="stag t-field">多磁场</span><span class="stag t-theme">电话号码</span><span class="stag t-prio">😂 搞笑内容</span><span class="stag t-lang">💬 PROMAX</span></div>
   </div>
   <div class="sc-body" id="sb-13" style="display:none">
     <div class="sf-row"><span class="sf-label">🎬 拍摄类型</span><span class="sf-val" contenteditable="true" data-ekey="13-type" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">对话 · 聊观点</span></div><div class="sf-row"><span class="sf-label">⏱ 预计时长</span><span class="sf-val" contenteditable="true" data-ekey="13-dur" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">45–60 秒</span></div><div class="sf-row"><span class="sf-label">🏠 建议场景 / 置景</span><div class="sf-val" contenteditable="true" data-ekey="13-scene" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">两人坐谈，A 像个刁钻客户，越讲条件越荒唐，B 越来越无语。</div></div><div class="sf-row"><span class="sf-label">🎭 IP 情绪建议</span><div class="sf-val" contenteditable="true" data-ekey="13-emo" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">B（IP）从耐心解释到无奈，逐渐失去表情，最后反将。语气是忍耐极限的可爱无奈。</div></div><div class="sf-row"><span class="sf-label">✨ 磁场主题</span><span class="sf-val" contenteditable="true" data-ekey="13-field" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">多磁场（号码选择的原则）</span></div><div class="sf-row"><span class="sf-label">📌 拍摄主题</span><span class="sf-val" contenteditable="true" data-ekey="13-theme" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">电话号码</span></div><div class="sf-row"><span class="sf-label">📈 情绪曲线</span><span class="sf-val" contenteditable="true" data-ekey="13-curve" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">😊 正常开场 → 😅 第一个条件 → 😐 第二个条件 → 😶 第三个条件（全是8） → 😂 反将揭示矛盾</span></div><div class="sf-row"><span class="sf-label">🎣 开篇钩子</span><div class="sf-val" contenteditable="true" data-ekey="13-hook" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">【奇葩猎奇】换号码还有这么多条件？/ 【反差】你的条件比找对象还多</div></div><div class="sf-row"><span class="sf-label">📝 内容脚本</span><div class="sf-val" contenteditable="true" data-ekey="13-script" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">A：我想换一个财运好的号码，但我有几个条件。
@@ -941,7 +987,7 @@ B：你的条件比找另一半还多。不可以有4，不可以有9，全部�
       <span class="sc-title">延年磁场最好：有事业心，但要配合实力</span>
       <span class="sc-arrow" id="arr-14">▼</span>
     </div>
-    <div class="sc-tags"><span class="stag t-type">对话</span><span class="stag t-type">聊观点</span><span class="stag t-field">延年磁场</span><span class="stag t-theme">电话号码</span><span class="stag t-prio">🌟 常青内容</span><span class="stag t-lang">💬 atas</span><span class="stag t-lang">💬 balia</span></div>
+    <div class="sc-tags"><span class="stag t-type">对话</span><span class="stag t-type">聊观点</span><span class="stag t-field">延年磁场</span><span class="stag t-theme">电话号码</span><span class="stag t-prio">🌟 常青内容</span></div>
   </div>
   <div class="sc-body" id="sb-14" style="display:none">
     <div class="sf-row"><span class="sf-label">🎬 拍摄类型</span><span class="sf-val" contenteditable="true" data-ekey="14-type" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">对话 · 聊观点</span></div><div class="sf-row"><span class="sf-label">⏱ 预计时长</span><span class="sf-val" contenteditable="true" data-ekey="14-dur" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">60–75 秒</span></div><div class="sf-row"><span class="sf-label">🏠 建议场景 / 置景</span><div class="sf-val" contenteditable="true" data-ekey="14-scene" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">两人坐谈，A 提出荒唐问题，B 无奈分析，引出延年磁场的特质。</div></div><div class="sf-row"><span class="sf-label">🎭 IP 情绪建议</span><div class="sf-val" contenteditable="true" data-ekey="14-emo" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">B（IP）被荒唐问题惊到，但很快冷静分析，语气是「你有雄心壮志，但先面对现实」。</div></div><div class="sf-row"><span class="sf-label">✨ 磁场主题</span><span class="sf-val" contenteditable="true" data-ekey="14-field" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">延年磁场 19/91 78/87 43/34</span></div><div class="sf-row"><span class="sf-label">📌 拍摄主题</span><span class="sf-val" contenteditable="true" data-ekey="14-theme" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">电话号码</span></div><div class="sf-row"><span class="sf-label">📈 情绪曲线</span><span class="sf-val" contenteditable="true" data-ekey="14-curve" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">😲 荒唐问题开场 → 😂 月供分析笑点 → 💡 延年磁场的事业特质 → ⚡ 有雄心但配合实力</span></div><div class="sf-row"><span class="sf-label">🎣 开篇钩子</span><div class="sf-val" contenteditable="true" data-ekey="14-hook" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">【反差】3000预算要选C300？/ 【奇葩猎奇】这种叫有事业，要最好的</div></div><div class="sf-row"><span class="sf-label">📝 内容脚本</span><div class="sf-val" contenteditable="true" data-ekey="14-script" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">A：3000预算你觉得我应该去买Civic还是C300嘞？
@@ -1077,7 +1123,7 @@ A：19这样的号码勒，就是代表守财，也代表小气。延年磁场�
       <span class="sc-title">延年最差：顶配猪肉粉约会</span>
       <span class="sc-arrow" id="arr-18">▼</span>
     </div>
-    <div class="sc-tags"><span class="stag t-type">对话</span><span class="stag t-type">聊观点</span><span class="stag t-field">延年磁场</span><span class="stag t-theme">电话号码</span><span class="stag t-prio">😂 搞笑内容</span><span class="stag t-lang">💬 cheap</span><span class="stag t-lang">💬 balia</span></div>
+    <div class="sc-tags"><span class="stag t-type">对话</span><span class="stag t-type">聊观点</span><span class="stag t-field">延年磁场</span><span class="stag t-theme">电话号码</span><span class="stag t-prio">😂 搞笑内容</span><span class="stag t-lang">💬 cheap</span></div>
   </div>
   <div class="sc-body" id="sb-18" style="display:none">
     <div class="sf-row"><span class="sf-label">🎬 拍摄类型</span><span class="sf-val" contenteditable="true" data-ekey="18-type" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">对话 · 聊观点</span></div><div class="sf-row"><span class="sf-label">⏱ 预计时长</span><span class="sf-val" contenteditable="true" data-ekey="18-dur" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">45–60 秒</span></div><div class="sf-row"><span class="sf-label">🏠 建议场景 / 置景</span><div class="sf-val" contenteditable="true" data-ekey="18-scene" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">两人坐谈，A 认真描述自己约会的「高规格消费」，B 无奈配合，最后引出号码分析。</div></div><div class="sf-row"><span class="sf-label">🎭 IP 情绪建议</span><div class="sf-val" contenteditable="true" data-ekey="18-emo" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">B（IP）是被荒唐笑死但不表现出来的顾问，表情管理，最后以号码事实收尾。</div></div><div class="sf-row"><span class="sf-label">✨ 磁场主题</span><span class="sf-val" contenteditable="true" data-ekey="18-field" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">延年磁场（小气、守财过度影响感情）</span></div><div class="sf-row"><span class="sf-label">📌 拍摄主题</span><span class="sf-val" contenteditable="true" data-ekey="18-theme" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">电话号码</span></div><div class="sf-row"><span class="sf-label">📈 情绪曲线</span><span class="sf-val" contenteditable="true" data-ekey="18-curve" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">😤 追女难抱怨开场 → 😂 Kopitiam约会 + 顶配猪肉粉笑点 → 😏 老婆很听话引出 → 💡 延年磁场影响感情</span></div><div class="sf-row"><span class="sf-label">🎣 开篇钩子</span><div class="sf-val" contenteditable="true" data-ekey="18-hook" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">【奇葩猎奇】约会去Kopitiam点顶配猪肉粉，这叫高消费 / 【反差】老婆很听话但原因不太对</div></div><div class="sf-row"><span class="sf-label">📝 内容脚本</span><div class="sf-val" contenteditable="true" data-ekey="18-script" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">A：现在追女孩子很难的啦，一下子就不开心。
@@ -1109,7 +1155,7 @@ B：……通常延年磁场守财特质太重的人，感情里也容易 cheap�
       <span class="sc-title">延年最差（女生）：老婆赚两万老公赚二十</span>
       <span class="sc-arrow" id="arr-19">▼</span>
     </div>
-    <div class="sc-tags"><span class="stag t-type">对话</span><span class="stag t-type">聊观点</span><span class="stag t-field">延年磁场</span><span class="stag t-theme">电话号码</span><span class="stag t-prio">🔥 热门主题</span><span class="stag t-lang">💬 terbalik</span><span class="stag t-lang">💬 balia</span></div>
+    <div class="sc-tags"><span class="stag t-type">对话</span><span class="stag t-type">聊观点</span><span class="stag t-field">延年磁场</span><span class="stag t-theme">电话号码</span><span class="stag t-prio">🔥 热门主题</span><span class="stag t-lang">💬 terbalik</span></div>
   </div>
   <div class="sc-body" id="sb-19" style="display:none">
     <div class="sf-row"><span class="sf-label">🎬 拍摄类型</span><span class="sf-val" contenteditable="true" data-ekey="19-type" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">对话 · 聊观点</span></div><div class="sf-row"><span class="sf-label">⏱ 预计时长</span><span class="sf-val" contenteditable="true" data-ekey="19-dur" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">60–75 秒</span></div><div class="sf-row"><span class="sf-label">🏠 建议场景 / 置景</span><div class="sf-val" contenteditable="true" data-ekey="19-scene" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">两人坐谈，A 先分享老婆赚很多，然后一步步揭示自己的情况，越揭示越崩溃。B 最后以号码收尾。</div></div><div class="sf-row"><span class="sf-label">🎭 IP 情绪建议</span><div class="sf-val" contenteditable="true" data-ekey="19-emo" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">B（IP）假装没有在评判，但逐渐被真相震惊。语气是「我不评论你的选择，我只说号码的事」。</div></div><div class="sf-row"><span class="sf-label">✨ 磁场主题</span><span class="sf-val" contenteditable="true" data-ekey="19-field" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">延年磁场 19/91 78/87（女生用→强势、大女人主义）</span></div><div class="sf-row"><span class="sf-label">📌 拍摄主题</span><span class="sf-val" contenteditable="true" data-ekey="19-theme" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">电话号码</span></div><div class="sf-row"><span class="sf-label">📈 情绪曲线</span><span class="sf-val" contenteditable="true" data-ekey="19-curve" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">😊 老婆很厉害开场 → 😮 老公赚多少逐步揭示 → 😂 一天跑一两单笑点 → 💡 女生用延年磁场→强势</span></div><div class="sf-row"><span class="sf-label">🎣 开篇钩子</span><div class="sf-val" contenteditable="true" data-ekey="19-hook" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">【反差】老婆赚2万，老公赚20 / 【人群】那种家里女强男弱的pattern</div></div><div class="sf-row"><span class="sf-label">📝 内容脚本</span><div class="sf-val" contenteditable="true" data-ekey="19-script" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">A：有什么赚钱康头吗？
@@ -1518,6 +1564,9 @@ A：那应该怎样搭配？
 B：比如你做Sales，就侧重生气和天医；你想稳定事业，就侧重延年。PROMAX 的做法是根据你的人生目标来配，不是全放好就好。</div></div><div class="sf-row"><span class="sf-label">🏁 结尾 / 语言钉</span><div class="sf-val" contenteditable="true" data-ekey="30-ending" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">最好的号码不是全吉星，而是根据你的目标侧重的搭配。这才是 PROMAX 的做法。</div></div><div class="sf-row"><span class="sf-label">🖼️ 封面文字</span><div class="cover-preview"><div class="cover-line" contenteditable="true" data-ekey="30-cover1" onblur="saveScEdit(this,this.dataset.ekey)">全部放好星</div><div class="cover-line" contenteditable="true" data-ekey="30-cover2" onblur="saveScEdit(this,this.dataset.ekey)">其实每样都普通</div></div><span class="sf-hint">每行 5-7 字，口语押韵，点击可直接编辑</span></div><div class="sf-row"><span class="sf-label">📱 IG 配文</span><div class="sf-val" contenteditable="true" data-ekey="30-ig" data-ph="点击编辑..." onblur="saveScEdit(this,this.dataset.ekey)">有人问我，可不可以把所有吉星全部放进一个号码？答案出乎你意料 😮 #数字能量 #磁场搭配</div></div>
   </div>
 </div>
+    <div class="add-sc-btn" id="add-sc-btn" onclick="addCustomCard()">
+      <span style="font-size:22px;">＋</span> 新增脚本
+    </div>
     <div class="page-bottom"></div>
   </div>
 </div>
@@ -1962,35 +2011,302 @@ B：比如你做Sales，就侧重生气和天医；你想稳定事业，就侧�
   </div>
 </div>
 
-<!-- ========== TAB 6: PHONE TOPICS ========== -->
+<!-- ========== TAB 6: DIGITAL ENERGY ========== -->
 <div id="tab-phone" class="section">
   <div class="page-top">
-    <div class="sec-lbl">📱 电话号码磁场选题库</div>
-
-    <div class="insight-box" style="margin:0 12px;">
-      <div class="insight-title">🎯 使用方法</div>
-      <div class="insight-item"><span>📌</span><span>选一个磁场 → 切换「最好/最差」→ 每一条都是一个视频开篇情景，老师在拍摄时按自己的语言和经历输出完整内容。</span></div>
-      <div class="insight-item"><span>💡</span><span>开篇情景是钩子，不是完整脚本。情景 → 引入数字能量磁场概念 → 解读 → 改运建议。</span></div>
+    <div class="sec-lbl">🔮 数字能量资料库</div>
+    <div style="padding:0 12px 8px;">
+      <input class="de-search" type="search" placeholder="🔍 搜索磁场名称、号码组合..." oninput="deSearch(this.value)">
     </div>
-
-    <!-- Field selector -->
-    <div class="field-scroll" style="margin-top:14px;" id="field-scroll"></div>
-
-    <!-- Toggle best/worst -->
-    <div class="toggle-bar">
-      <button class="toggle-btn active-best" id="btn-best" onclick="setMode('best')">🌟 最好情景（10个）</button>
-      <button class="toggle-btn" id="btn-worst" onclick="setMode('worst')">⚠️ 最差情景（10个）</button>
+    <div class="de-section">
+  <div style="border-radius:12px;overflow:hidden;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);margin-bottom:2px;">
+    <div class="de-cat-head" onclick="toggleDE('🔢0与5的特殊含义（必看）')">
+      <span>🔢 0 与 5 的特殊含义（必看）</span>
+      <span class="de-arr" id="de-arr-🔢0与5的特殊含义（必看）">▼</span>
     </div>
-
-    <!-- Field info card -->
-    <div id="field-info-card" class="field-info"></div>
-
-    <!-- Topics list -->
-    <div id="phone-topics"></div>
-
-    <div style="text-align:center;padding:16px 12px;font-size:11px;color:#404060;">
-      共8大磁场 · 每个磁场最好+最差各10个选题 · 共160条
+    <div id="de-🔢0与5的特殊含义（必看）" style="display:block">
+      <div class="de-cat-body"><div class="de-zero-card"><div class="de-zero-title">5 的含义（放大）</div><div class="de-zero-val" style="white-space:pre-wrap">5 出现在磁场中间 → 放大过程
+5 出现在磁场后面 → 放大结果</div></div><div class="de-zero-card"><div class="de-zero-title">0 的基础含义</div><div class="de-zero-val" style="white-space:pre-wrap">0 = 归零、隐藏、弱化、陷阱、被套、地下情
+2个0 = 官司、是非（像手铐）
+3个0 = 容易吸引肿瘤、癌症、重大疾病
+4个0 = 四大皆空（财运空、事业空、婚姻空、健康空）</div></div><div class="de-zero-card"><div class="de-zero-title">0 夹在各磁场中间的影响</div><div class="de-zero-val" style="white-space:pre-wrap">生气夹0 → 贵人不显，出家修行
+天医夹0 → 资金被套，借钱没收回来
+延年夹0 → 有能力却施展不出，卖房
+绝命夹0 → 未婚先孕，投资失败，破产
+六煞夹0 → 堕胎，流产
+五鬼夹0 → 隐藏性心脏病（医院查不出）
+祸害夹0 → 隐藏性疾病，小人暗藏</div></div><div class="de-zero-card"><div class="de-zero-title">特殊 0 组合</div><div class="de-zero-val" style="white-space:pre-wrap">301 = 婚姻波折，被冷落；资金被套
+104 = 贵人借不上力
+809 = 有苦难言
+906 = 投资被套
+108 = 埋没的人才
+601 = 隐性桃花或体内长东西
+0越多 = 表面越风光，内心越沧桑</div></div><div class="de-zero-card"><div class="de-zero-title">号码末尾的 0 含义</div><div class="de-zero-val" style="white-space:pre-wrap">末位(第1位)是0 → ① 结果等于0，一场空　② 克孩子（孩子运势健康财运不好）
+末位(第2位)是0 → 克另外一半（男克老婆，女克老公）
+末位(第3位)是0 → 克自己（事业健康财运不好）
+末位(第4位)是0 → ① 克兄弟姐妹　② 克男主人（赚钱最主要的人）
+末位(第5位)是0 → 克父母（女克爸，男克妈；65岁前早亡，65后重病）
+末位(第6位)是0 → 克自己的生意（中断后面的能量链接）</div></div></div>
     </div>
+  </div>
+</div>
+    <div class="de-section">
+  <div style="border-radius:12px;overflow:hidden;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);margin-bottom:2px;">
+    <div class="de-cat-head" onclick="toggleDE('📊八星速查表')">
+      <span>📊 八星速查表</span>
+      <span class="de-arr" id="de-arr-📊八星速查表">▼</span>
+    </div>
+    <div id="de-📊八星速查表" style="display:none">
+      <div class="de-cat-body"><div style="overflow-x:auto;"><table class="de-star-table">
+<tr><th>八星</th><th>特质</th><th>最强</th><th>次强</th><th>次弱</th><th>最弱</th></tr><tr><td class="star-name" style="color:#fbbf24;">天医(土)</td><td style="font-size:10px;color:#a0a0c0;">钱财、婚姻、业绩</td><td><span class="de-num-chip" style="font-size:10px;">13/31</span></td><td><span class="de-num-chip" style="font-size:10px;">68/86</span></td><td><span class="de-num-chip" style="font-size:10px;">49/94</span></td><td><span class="de-num-chip" style="font-size:10px;">27/72</span></td></tr><tr><td class="star-name" style="color:#34d399;">生气(木)</td><td style="font-size:10px;color:#a0a0c0;">贵人、亲戚、朋友、同事</td><td><span class="de-num-chip" style="font-size:10px;">14/41</span></td><td><span class="de-num-chip" style="font-size:10px;">67/76</span></td><td><span class="de-num-chip" style="font-size:10px;">39/93</span></td><td><span class="de-num-chip" style="font-size:10px;">28/82</span></td></tr><tr><td class="star-name" style="color:#f7971e;">延年(金)</td><td style="font-size:10px;color:#a0a0c0;">工作、事业、专业能力、阳刚性</td><td><span class="de-num-chip" style="font-size:10px;">19/91</span></td><td><span class="de-num-chip" style="font-size:10px;">78/87</span></td><td><span class="de-num-chip" style="font-size:10px;">34/43</span></td><td><span class="de-num-chip" style="font-size:10px;">26/62</span></td></tr><tr><td class="star-name" style="color:#60a5fa;">伏位(木)</td><td style="font-size:10px;color:#a0a0c0;">蓄势待发、状况延续、潜龙在渊</td><td><span class="de-num-chip" style="font-size:10px;">11/22</span></td><td><span class="de-num-chip" style="font-size:10px;">99/88</span></td><td><span class="de-num-chip" style="font-size:10px;">66/77</span></td><td><span class="de-num-chip" style="font-size:10px;">33/44</span></td></tr><tr><td class="star-name" style="color:#a78bfa;">六煞(水)</td><td style="font-size:10px;color:#a0a0c0;">偏桃花、女性化、家庭、房子、店铺、时尚</td><td><span class="de-num-chip" style="font-size:10px;">16/61</span></td><td><span class="de-num-chip" style="font-size:10px;">47/74</span></td><td><span class="de-num-chip" style="font-size:10px;">38/83</span></td><td><span class="de-num-chip" style="font-size:10px;">29/92</span></td></tr><tr><td class="star-name" style="color:#f87171;">祸害(土)</td><td style="font-size:10px;color:#a0a0c0;">口舌是非、小人、病痛、意外伤灾</td><td><span class="de-num-chip" style="font-size:10px;">17/71</span></td><td><span class="de-num-chip" style="font-size:10px;">89/98</span></td><td><span class="de-num-chip" style="font-size:10px;">46/64</span></td><td><span class="de-num-chip" style="font-size:10px;">23/32</span></td></tr><tr><td class="star-name" style="color:#fb923c;">五鬼(火)</td><td style="font-size:10px;color:#a0a0c0;">变动改革、异地国外、血光、捉摸不定</td><td><span class="de-num-chip" style="font-size:10px;">18/81</span></td><td><span class="de-num-chip" style="font-size:10px;">79/97</span></td><td><span class="de-num-chip" style="font-size:10px;">36/63</span></td><td><span class="de-num-chip" style="font-size:10px;">24/42</span></td></tr><tr><td class="star-name" style="color:#f472b6;">绝命(金)</td><td style="font-size:10px;color:#a0a0c0;">投资、开支、破财</td><td><span class="de-num-chip" style="font-size:10px;">12/21</span></td><td><span class="de-num-chip" style="font-size:10px;">69/96</span></td><td><span class="de-num-chip" style="font-size:10px;">48/84</span></td><td><span class="de-num-chip" style="font-size:10px;">37/73</span></td></tr></table></div></div>
+    </div>
+  </div>
+</div>
+    <div class="de-section">
+  <div style="border-radius:12px;overflow:hidden;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);margin-bottom:2px;">
+    <div class="de-cat-head" onclick="toggleDE('📐好号码标准&全阳号警告')">
+      <span>📐 好号码标准 & 全阳号警告</span>
+      <span class="de-arr" id="de-arr-📐好号码标准&全阳号警告">▼</span>
+    </div>
+    <div id="de-📐好号码标准&全阳号警告" style="display:none">
+      <div class="de-cat-body"><div class="de-zero-card">
+  <div class="de-zero-title">✅ 好号码的标准</div>
+  <div class="de-zero-val">1. 号码磁场能量必须由低走高（才能驾驭）
+2. 手机号中能量最强的星耀决定号主的主要性格
+3. 吉凶搭配 70% 吉星 + 30% 凶星 最为平衡
+4. 全阳号（全吉星）= 早亡号，4年内必插水</div>
+</div><div class="de-zero-card"><div class="de-zero-title" style="color:#f87171;">⚠️ 全阳号（早亡号）</div><div class="de-zero-val">如果号码全部都是吉星（四吉星），代表「全阳号」。能量全部倒转，4年内必定插水（极度不好）。
+
+好的号码必须：有吉有凶，能量由低走高，才能驾驭。</div></div></div>
+    </div>
+  </div>
+</div>
+    <div class="de-section">
+  <div style="border-radius:12px;overflow:hidden;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);margin-bottom:2px;">
+    <div class="de-cat-head" onclick="toggleDE('✨四吉星详解')">
+      <span>✨ 四吉星详解</span>
+      <span class="de-arr" id="de-arr-✨四吉星详解">▼</span>
+    </div>
+    <div id="de-✨四吉星详解" style="display:none">
+      <div class="de-cat-body"><div class="de-field-card" id="de-star-天医" style="background:rgba(251,191,36,0.15);border-color:rgba(255,255,255,0.1);">
+  <div class="de-field-head" onclick="toggleDECard('天医')">
+    <div>
+      <div class="de-field-title" style="color:#fbbf24;">天医 (土) <span class="de-badge de-good">✨ 四吉星</span></div>
+      <div class="de-field-nums">13/31　68/86　49/94　27/72</div>
+    </div>
+    <span class="de-arr" id="de-arr-star-天医">▼</span>
+  </div>
+  <div id="de-body-天医" style="display:none">
+    <div class="de-field-body">
+      <div style="margin-bottom:10px;"><div class="de-row-label">数字组合强弱</div><div class="de-nums-row"><span class="de-num-chip">13/31</span><span class="de-num-chip">68/86</span><span class="de-num-chip">49/94</span><span class="de-num-chip">27/72</span></div><div class="de-row-val" style="font-size:11px;color:#7070a0;">最强13/31　次强68/86　次弱49/94　最弱27/72</div></div>
+      <div class="de-row"><div class="de-row-label">核心</div><div class="de-row-val">钱财、婚姻、业绩</div></div><div class="de-row"><div class="de-row-label">优点</div><div class="de-row-val">聪明、财富、业绩好、心胸开阔、善解人意</div></div><div class="de-row"><div class="de-row-label">缺点</div><div class="de-row-val">没主见、单纯容易被骗</div></div><div class="de-row"><div class="de-row-label">事业</div><div class="de-row-val">钱财，工资，业绩，保险，金融，文艺，资金流</div></div><div class="de-row"><div class="de-row-label">钱财</div><div class="de-row-val">财源，财路，意外之财，富有</div></div><div class="de-row"><div class="de-row-label">感情</div><div class="de-row-val">正桃花，婚姻，婚外情</div></div><div class="de-row"><div class="de-row-label">健康</div><div class="de-row-val">血压，血液循环，眼耳鼻病</div></div><div class="de-row"><div class="de-row-label">学习</div><div class="de-row-val">有天赋，宗教玄学</div></div><div class="de-row"><div class="de-row-label">在前（磁场前面）</div><div class="de-row-val">① 钱的来源和职业方向　② 对象特征和情况　③ 血液血压等疾病原因</div></div><div class="de-row"><div class="de-row-label">在后（磁场后面）</div><div class="de-row-val">① 钱的去向和工作情况　② 婚后状况和感情态度</div></div><div class="de-row"><div class="de-row-label">叠加（连续出现）</div><div class="de-row-val">① 得财延续　② 稳定收入　③ 感情长期甜蜜　④ 血液疾病短时间难根治</div></div><div class="de-row"><div class="de-row-label">分散</div><div class="de-row-val">① 好多段感情　② 财路多</div></div><div class="de-row"><div class="de-row-label">尾号</div><div class="de-row-val">① 婚外情桃花多　② 财运旺机遇多　③ 血液疾病（老年更重）</div></div><div class="de-row"><div class="de-row-label">化解关系</div><div class="de-row-val">一个天医可制服一个绝命</div></div>
+    </div>
+  </div>
+</div>
+<div class="de-field-card" id="de-star-生气" style="background:rgba(52,211,153,0.12);border-color:rgba(255,255,255,0.1);">
+  <div class="de-field-head" onclick="toggleDECard('生气')">
+    <div>
+      <div class="de-field-title" style="color:#34d399;">生气 (木) <span class="de-badge de-good">✨ 四吉星</span></div>
+      <div class="de-field-nums">14/41　67/76　39/93　28/82</div>
+    </div>
+    <span class="de-arr" id="de-arr-star-生气">▼</span>
+  </div>
+  <div id="de-body-生气" style="display:none">
+    <div class="de-field-body">
+      <div style="margin-bottom:10px;"><div class="de-row-label">数字组合强弱</div><div class="de-nums-row"><span class="de-num-chip">14/41</span><span class="de-num-chip">67/76</span><span class="de-num-chip">39/93</span><span class="de-num-chip">28/82</span></div><div class="de-row-val" style="font-size:11px;color:#7070a0;">最强14/41　次强67/76　次弱39/93　最弱28/82</div></div>
+      <div class="de-row"><div class="de-row-label">核心</div><div class="de-row-val">贵人、亲戚、朋友、同事</div></div><div class="de-row"><div class="de-row-label">优点</div><div class="de-row-val">乐天派、有贵人帮、思维活跃、沟通能力强、好名声</div></div><div class="de-row"><div class="de-row-label">缺点</div><div class="de-row-val">企图心不强、懒散、没主见、无奈</div></div><div class="de-row"><div class="de-row-label">事业</div><div class="de-row-val">服务业，意外之财，贵人送财，逢凶化吉</div></div><div class="de-row"><div class="de-row-label">钱财</div><div class="de-row-val">贵人带来财运，服务业得财</div></div><div class="de-row"><div class="de-row-label">感情</div><div class="de-row-val">开心甜蜜，正桃花，好心情</div></div><div class="de-row"><div class="de-row-label">健康</div><div class="de-row-val">肠胃，感情，身心开朗</div></div><div class="de-row"><div class="de-row-label">学习</div><div class="de-row-val">全方位学习，接受新知识</div></div><div class="de-row"><div class="de-row-label">在前（磁场前面）</div><div class="de-row-val">① 贵人情况　② 对什么满足/看得开　③ 无奈或懒惰的原因　④ 肠胃疾病原因</div></div><div class="de-row"><div class="de-row-label">在后（磁场后面）</div><div class="de-row-val">① 贵人的作用好坏　② 贵人的表现</div></div><div class="de-row"><div class="de-row-label">叠加（连续出现）</div><div class="de-row-val">贵人持续出现，长期得到帮助</div></div><div class="de-row"><div class="de-row-label">分散</div><div class="de-row-val">各方来源的贵人支持</div></div><div class="de-row"><div class="de-row-label">尾号</div><div class="de-row-val">贵人在最后出现，结果顺利</div></div><div class="de-row"><div class="de-row-label">化解关系</div><div class="de-row-val">生气/生气+延年/生气+伏位相连，可化解一个祸害</div></div>
+    </div>
+  </div>
+</div>
+<div class="de-field-card" id="de-star-延年" style="background:rgba(247,151,30,0.12);border-color:rgba(255,255,255,0.1);">
+  <div class="de-field-head" onclick="toggleDECard('延年')">
+    <div>
+      <div class="de-field-title" style="color:#f7971e;">延年 (金) <span class="de-badge de-good">✨ 四吉星</span></div>
+      <div class="de-field-nums">19/91　78/87　34/43　26/62</div>
+    </div>
+    <span class="de-arr" id="de-arr-star-延年">▼</span>
+  </div>
+  <div id="de-body-延年" style="display:none">
+    <div class="de-field-body">
+      <div style="margin-bottom:10px;"><div class="de-row-label">数字组合强弱</div><div class="de-nums-row"><span class="de-num-chip">19/91</span><span class="de-num-chip">78/87</span><span class="de-num-chip">34/43</span><span class="de-num-chip">26/62</span></div><div class="de-row-val" style="font-size:11px;color:#7070a0;">最强19/91　次强78/87　次弱34/43　最弱26/62</div></div>
+      <div class="de-row"><div class="de-row-label">核心</div><div class="de-row-val">工作、事业、专业能力、阳刚性</div></div><div class="de-row"><div class="de-row-label">优点</div><div class="de-row-val">自主性强、责任心强、判断力强、追求完美、不乱花钱</div></div><div class="de-row"><div class="de-row-label">缺点</div><div class="de-row-val">大男/女子主义、好面子、心软、劳碌、压力大</div></div><div class="de-row"><div class="de-row-label">事业</div><div class="de-row-val">喜欢主导，专业能力强，奔波劳碌，善于经营</div></div><div class="de-row"><div class="de-row-label">钱财</div><div class="de-row-val">懂得守财，善于理财，铁公鸡</div></div><div class="de-row"><div class="de-row-label">感情</div><div class="de-row-val">专一，不轻易劈腿，固执，霸道</div></div><div class="de-row"><div class="de-row-label">健康</div><div class="de-row-val">压力病，劳累</div></div><div class="de-row"><div class="de-row-label">学习</div><div class="de-row-val">能抓住重点，聪明</div></div><div class="de-row"><div class="de-row-label">在前（磁场前面）</div><div class="de-row-val">① 所从事行业性质　② 责任心放在什么上面　③ 善于经营什么　④ 对什么挑剔讲究　⑤ 压力来源</div></div><div class="de-row"><div class="de-row-label">在后（磁场后面）</div><div class="de-row-val">① 工作态度，感情状态　② 能力特长用到了哪里</div></div><div class="de-row"><div class="de-row-label">叠加（连续出现）</div><div class="de-row-val">事业持续发展，能力不断加强</div></div><div class="de-row"><div class="de-row-label">分散</div><div class="de-row-val">多方面能力展示</div></div><div class="de-row"><div class="de-row-label">尾号</div><div class="de-row-val">事业成功，守业能力强</div></div><div class="de-row"><div class="de-row-label">化解关系</div><div class="de-row-val">一个延年可压服一个六煞</div></div>
+    </div>
+  </div>
+</div>
+<div class="de-field-card" id="de-star-伏位" style="background:rgba(96,165,250,0.12);border-color:rgba(255,255,255,0.1);">
+  <div class="de-field-head" onclick="toggleDECard('伏位')">
+    <div>
+      <div class="de-field-title" style="color:#60a5fa;">伏位 (木) <span class="de-badge de-good">✨ 四吉星</span></div>
+      <div class="de-field-nums">11/22　88/99　66/77　33/44</div>
+    </div>
+    <span class="de-arr" id="de-arr-star-伏位">▼</span>
+  </div>
+  <div id="de-body-伏位" style="display:none">
+    <div class="de-field-body">
+      <div style="margin-bottom:10px;"><div class="de-row-label">数字组合强弱</div><div class="de-nums-row"><span class="de-num-chip">11/22</span><span class="de-num-chip">88/99</span><span class="de-num-chip">66/77</span><span class="de-num-chip">33/44</span></div><div class="de-row-val" style="font-size:11px;color:#7070a0;">最强11/22　次强99/88　次弱66/77　最弱33/44</div></div>
+      <div class="de-row"><div class="de-row-label">核心</div><div class="de-row-val">蓄势待发、状况延续、潜龙在渊</div></div><div class="de-row"><div class="de-row-label">优点</div><div class="de-row-val">有耐心毅力、等待机会、一鸣惊人</div></div><div class="de-row"><div class="de-row-label">缺点</div><div class="de-row-val">不易变动、被动保守、不敢冒险、易有外债、内心矛盾</div></div><div class="de-row"><div class="de-row-label">事业</div><div class="de-row-val">保守被动，等待时机，慢工细活，研究分析行业</div></div><div class="de-row"><div class="de-row-label">钱财</div><div class="de-row-val">稳定求财，保守求财</div></div><div class="de-row"><div class="de-row-label">感情</div><div class="de-row-val">过于保守、胡思乱想、处理感情像含羞草</div></div><div class="de-row"><div class="de-row-label">健康</div><div class="de-row-val">心脏、脑部、血稠、隐性疾病</div></div><div class="de-row"><div class="de-row-label">学习</div><div class="de-row-val">坐得住，擅长思考分析，逻辑推理，灵感强</div></div><div class="de-row"><div class="de-row-label">在前（磁场前面）</div><div class="de-row-val">伏位在前：能量延续前面的磁场</div></div><div class="de-row"><div class="de-row-label">在后（磁场后面）</div><div class="de-row-val">伏位在后：能量延续并放大前面的磁场</div></div><div class="de-row"><div class="de-row-label">叠加（连续出现）</div><div class="de-row-val">长期稳定，但停滞不前</div></div><div class="de-row"><div class="de-row-label">分散</div><div class="de-row-val">伏位独立出现时保守性明显</div></div><div class="de-row"><div class="de-row-label">尾号</div><div class="de-row-val">结果平稳，不大起大落</div></div><div class="de-row"><div class="de-row-label">化解关系</div><div class="de-row-val">生气+伏位相连可化解一个祸害；延年+伏位相连可化解一个五鬼</div></div>
+    </div>
+  </div>
+</div></div>
+    </div>
+  </div>
+</div>
+    <div class="de-section">
+  <div style="border-radius:12px;overflow:hidden;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);margin-bottom:2px;">
+    <div class="de-cat-head" onclick="toggleDE('⚠️四凶星详解')">
+      <span>⚠️ 四凶星详解</span>
+      <span class="de-arr" id="de-arr-⚠️四凶星详解">▼</span>
+    </div>
+    <div id="de-⚠️四凶星详解" style="display:none">
+      <div class="de-cat-body"><div class="de-field-card" id="de-star-六煞" style="background:rgba(167,139,250,0.12);border-color:rgba(255,255,255,0.1);">
+  <div class="de-field-head" onclick="toggleDECard('六煞')">
+    <div>
+      <div class="de-field-title" style="color:#a78bfa;">六煞 (水) <span class="de-badge de-bad">⚠️ 四凶星</span></div>
+      <div class="de-field-nums">16/61　47/74　38/83　29/92</div>
+    </div>
+    <span class="de-arr" id="de-arr-star-六煞">▼</span>
+  </div>
+  <div id="de-body-六煞" style="display:none">
+    <div class="de-field-body">
+      <div style="margin-bottom:10px;"><div class="de-row-label">数字组合强弱</div><div class="de-nums-row"><span class="de-num-chip">16/61</span><span class="de-num-chip">47/74</span><span class="de-num-chip">38/83</span><span class="de-num-chip">29/92</span></div><div class="de-row-val" style="font-size:11px;color:#7070a0;">最强16/61　次强47/74　次弱38/83　最弱29/92</div></div>
+      <div class="de-row"><div class="de-row-label">核心</div><div class="de-row-val">偏桃花、女性化、家庭、房子、店铺、时尚</div></div><div class="de-row"><div class="de-row-label">优点</div><div class="de-row-val">美女帅哥、时尚、异性缘好、沟通力强、有魅力</div></div><div class="de-row"><div class="de-row-label">缺点</div><div class="de-row-val">犹豫不决、情绪化、感情用事、不开心、烦躁</div></div><div class="de-row"><div class="de-row-label">事业</div><div class="de-row-val">服务业，女性行业，房产中介</div></div><div class="de-row"><div class="de-row-label">钱财</div><div class="de-row-val">人际关系得财，不易守财，因情损财</div></div><div class="de-row"><div class="de-row-label">感情</div><div class="de-row-val">感情丰富，婚姻不顺，易有第三者，为情所困</div></div><div class="de-row"><div class="de-row-label">健康</div><div class="de-row-val">失眠多梦，抑郁，皮肤，肠胃疾病</div></div><div class="de-row"><div class="de-row-label">学习</div><div class="de-row-val">对美有鉴赏力，难以安静学习</div></div><div class="de-row"><div class="de-row-label">在前（磁场前面）</div><div class="de-row-val">① 魅力来源　② 女性/家/店面情况　③ 不开心原因　④ 肠胃皮肤病原因</div></div><div class="de-row"><div class="de-row-label">在后（磁场后面）</div><div class="de-row-val">① 肠胃皮肤病后果　② 身边女性的打算和行为</div></div><div class="de-row"><div class="de-row-label">叠加（连续出现）</div><div class="de-row-val">感情问题反复出现，情绪长期起伏</div></div><div class="de-row"><div class="de-row-label">分散</div><div class="de-row-val">多方感情线同时存在</div></div><div class="de-row"><div class="de-row-label">尾号</div><div class="de-row-val">最终因情困扰或破财</div></div><div class="de-row"><div class="de-row-label">化解关系</div><div class="de-row-val">一个延年可压服一个六煞</div></div>
+    </div>
+  </div>
+</div>
+<div class="de-field-card" id="de-star-祸害" style="background:rgba(248,113,113,0.12);border-color:rgba(255,255,255,0.1);">
+  <div class="de-field-head" onclick="toggleDECard('祸害')">
+    <div>
+      <div class="de-field-title" style="color:#f87171;">祸害 (土) <span class="de-badge de-bad">⚠️ 四凶星</span></div>
+      <div class="de-field-nums">17/71　89/98　46/64　23/32</div>
+    </div>
+    <span class="de-arr" id="de-arr-star-祸害">▼</span>
+  </div>
+  <div id="de-body-祸害" style="display:none">
+    <div class="de-field-body">
+      <div style="margin-bottom:10px;"><div class="de-row-label">数字组合强弱</div><div class="de-nums-row"><span class="de-num-chip">17/71</span><span class="de-num-chip">89/98</span><span class="de-num-chip">46/64</span><span class="de-num-chip">23/32</span></div><div class="de-row-val" style="font-size:11px;color:#7070a0;">最强17/71　次强89/98　次弱46/64　最弱23/32</div></div>
+      <div class="de-row"><div class="de-row-label">核心</div><div class="de-row-val">口舌是非、小人、病痛、意外伤灾</div></div><div class="de-row"><div class="de-row-label">优点</div><div class="de-row-val">口才好，能言善辩</div></div><div class="de-row"><div class="de-row-label">缺点</div><div class="de-row-val">花言巧语、脾气差、易激怒别人、爱面子、抱怨、小人</div></div><div class="de-row"><div class="de-row-label">事业</div><div class="de-row-val">以口为业，老师，业务员，餐饮，娱乐</div></div><div class="de-row"><div class="de-row-label">钱财</div><div class="de-row-val">是非中损财，小人搞破坏</div></div><div class="de-row"><div class="de-row-label">感情</div><div class="de-row-val">花言巧语说假话，易争吵，易分手</div></div><div class="de-row"><div class="de-row-label">健康</div><div class="de-row-val">车祸，意外伤灾，咽喉/口腔/淋巴/肺气管/呼吸疾病</div></div><div class="de-row"><div class="de-row-label">学习</div><div class="de-row-val">语言能力好</div></div><div class="de-row"><div class="de-row-label">在前（磁场前面）</div><div class="de-row-val">① 身体不好原因　② 小人特点　③ 意外伤害来源　④ 生气抱怨原因</div></div><div class="de-row"><div class="de-row-label">在后（磁场后面）</div><div class="de-row-val">是非的后果，病痛的结果</div></div><div class="de-row"><div class="de-row-label">叠加（连续出现）</div><div class="de-row-val">是非口舌持续，病痛反复</div></div><div class="de-row"><div class="de-row-label">分散</div><div class="de-row-val">多方小人同时存在</div></div><div class="de-row"><div class="de-row-label">尾号</div><div class="de-row-val">结果因是非受损</div></div><div class="de-row"><div class="de-row-label">化解关系</div><div class="de-row-val">生气/生气+延年/生气+伏位相连可化解一个祸害</div></div>
+    </div>
+  </div>
+</div>
+<div class="de-field-card" id="de-star-五鬼" style="background:rgba(251,146,60,0.12);border-color:rgba(255,255,255,0.1);">
+  <div class="de-field-head" onclick="toggleDECard('五鬼')">
+    <div>
+      <div class="de-field-title" style="color:#fb923c;">五鬼 (火) <span class="de-badge de-bad">⚠️ 四凶星</span></div>
+      <div class="de-field-nums">18/81　79/97　36/63　24/42</div>
+    </div>
+    <span class="de-arr" id="de-arr-star-五鬼">▼</span>
+  </div>
+  <div id="de-body-五鬼" style="display:none">
+    <div class="de-field-body">
+      <div style="margin-bottom:10px;"><div class="de-row-label">数字组合强弱</div><div class="de-nums-row"><span class="de-num-chip">18/81</span><span class="de-num-chip">79/97</span><span class="de-num-chip">36/63</span><span class="de-num-chip">24/42</span></div><div class="de-row-val" style="font-size:11px;color:#7070a0;">最强18/81　次强79/97　次弱36/63　最弱24/42</div></div>
+      <div class="de-row"><div class="de-row-label">核心</div><div class="de-row-val">变动改革、异地国外、血光、捉摸不定</div></div><div class="de-row"><div class="de-row-label">优点</div><div class="de-row-val">才华好，反应快，学习强，鬼点子多，易与玄学结缘</div></div><div class="de-row"><div class="de-row-label">缺点</div><div class="de-row-val">好幻想、反复无常、不稳定、缺安全感、疑心病重</div></div><div class="de-row"><div class="de-row-label">事业</div><div class="de-row-val">宗教，企划，贸易公司，偏门生意，异地工作</div></div><div class="de-row"><div class="de-row-label">钱财</div><div class="de-row-val">红包，暗财，突然破财</div></div><div class="de-row"><div class="de-row-label">感情</div><div class="de-row-val">不安分，三角恋外遇，离过婚；36/42异国恋多</div></div><div class="de-row"><div class="de-row-label">健康</div><div class="de-row-val">心脏血液，女性妇科，男性肺部，老年脑部，中邪</div></div><div class="de-row"><div class="de-row-label">学习</div><div class="de-row-val">有天赋，动脑，艺术类</div></div><div class="de-row"><div class="de-row-label">在前（磁场前面）</div><div class="de-row-val">① 变动原因　② 感情不稳定原因　③ 命理/宗教缘人特征　④ 后悔反悔的事</div></div><div class="de-row"><div class="de-row-label">在后（磁场后面）</div><div class="de-row-val">① 变动的情况　② 变动后带来的后果</div></div><div class="de-row"><div class="de-row-label">叠加（连续出现）</div><div class="de-row-val">变动频繁，不稳定持续</div></div><div class="de-row"><div class="de-row-label">分散</div><div class="de-row-val">多方变动因素</div></div><div class="de-row"><div class="de-row-label">尾号</div><div class="de-row-val">结果变动，出乎意料</div></div><div class="de-row"><div class="de-row-label">化解关系</div><div class="de-row-val">生气+天医+延年/延年+伏位相连可化解一个五鬼</div></div>
+    </div>
+  </div>
+</div>
+<div class="de-field-card" id="de-star-绝命" style="background:rgba(244,114,182,0.12);border-color:rgba(255,255,255,0.1);">
+  <div class="de-field-head" onclick="toggleDECard('绝命')">
+    <div>
+      <div class="de-field-title" style="color:#f472b6;">绝命 (金) <span class="de-badge de-bad">⚠️ 四凶星</span></div>
+      <div class="de-field-nums">12/21　69/96　48/84　37/73</div>
+    </div>
+    <span class="de-arr" id="de-arr-star-绝命">▼</span>
+  </div>
+  <div id="de-body-绝命" style="display:none">
+    <div class="de-field-body">
+      <div style="margin-bottom:10px;"><div class="de-row-label">数字组合强弱</div><div class="de-nums-row"><span class="de-num-chip">12/21</span><span class="de-num-chip">69/96</span><span class="de-num-chip">48/84</span><span class="de-num-chip">37/73</span></div><div class="de-row-val" style="font-size:11px;color:#7070a0;">最强12/21　次强69/96　次弱48/84　最弱37/73</div></div>
+      <div class="de-row"><div class="de-row-label">核心</div><div class="de-row-val">投资、开支、破财</div></div><div class="de-row"><div class="de-row-label">优点</div><div class="de-row-val">很会赚钱，意外之财，头脑反应快，企图心强，记忆力好</div></div><div class="de-row"><div class="de-row-label">缺点</div><div class="de-row-val">冲动暴躁、情绪不稳、好赌、易有官司</div></div><div class="de-row"><div class="de-row-label">事业</div><div class="de-row-val">辛苦，独来独往，流动性职业，风险行业，敢冲敢做</div></div><div class="de-row"><div class="de-row-label">钱财</div><div class="de-row-val">不会守财，大起大落，投资风险高</div></div><div class="de-row"><div class="de-row-label">感情</div><div class="de-row-val">难有结果，重视朋友，家庭协调差，易离婚</div></div><div class="de-row"><div class="de-row-label">健康</div><div class="de-row-val">肝胆，肾，糖尿病，泌尿系统</div></div><div class="de-row"><div class="de-row-label">学习</div><div class="de-row-val">头脑反应快，但冲动影响学习</div></div><div class="de-row"><div class="de-row-label">在前（磁场前面）</div><div class="de-row-val">① 破财花销原因　② 不适合做的事　③ 感情不稳定因素　④ 泌尿生殖系统疾病原因</div></div><div class="de-row"><div class="de-row-label">在后（磁场后面）</div><div class="de-row-val">① 钱的流向　② 思想状态　③ 变动后的情况</div></div><div class="de-row"><div class="de-row-label">叠加（连续出现）</div><div class="de-row-val">破财持续，投资连续失败</div></div><div class="de-row"><div class="de-row-label">分散</div><div class="de-row-val">多方破财线索</div></div><div class="de-row"><div class="de-row-label">尾号</div><div class="de-row-val">结果破财，投资失败</div></div><div class="de-row"><div class="de-row-label">化解关系</div><div class="de-row-val">一个天医可制服一个绝命</div></div>
+    </div>
+  </div>
+</div></div>
+    </div>
+  </div>
+</div>
+    <div class="de-section">
+  <div style="border-radius:12px;overflow:hidden;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);margin-bottom:2px;">
+    <div class="de-cat-head" onclick="toggleDE('🔗磁场组合&化解关系')">
+      <span>🔗 磁场组合 & 化解关系</span>
+      <span class="de-arr" id="de-arr-🔗磁场组合&化解关系">▼</span>
+    </div>
+    <div id="de-🔗磁场组合&化解关系" style="display:none">
+      <div class="de-cat-body"><div class="de-row-label">化解关系</div><div class="de-combo-item"><strong>天医 化解 绝命</strong><br>一个天医可制服一个绝命</div><div class="de-combo-item"><strong>延年 化解 六煞</strong><br>一个延年可压服一个六煞</div><div class="de-combo-item"><strong>生气/生气+延年/生气+伏位 化解 祸害</strong><br>三组之一相连可化解一个祸害</div><div class="de-combo-item"><strong>生气+天医+延年 / 延年+伏位 化解 五鬼</strong><br>两组之一相连可化解一个五鬼</div><div class="de-row-label" style="margin-top:10px;">星耀组合效果</div><div class="de-combo-item"><strong>天医+延年+生气</strong> → 完整婚恋，婚后幸福</div><div class="de-combo-item"><strong>天医+任意凶星</strong> → 感情破裂，分手</div><div class="de-combo-item"><strong>延年+任意凶星</strong> → 工作不愉悦，跳槽</div><div class="de-combo-item"><strong>六煞+绝命</strong> → 容易看破红尘</div><div class="de-combo-item"><strong>绝命+五鬼 / 五鬼+绝命</strong> → 意外伤灾</div><div class="de-combo-item"><strong>五鬼+六煞 / 六煞+五鬼</strong> → 抑郁，出轨</div><div class="de-combo-item"><strong>生气+天医</strong> → 招正桃花</div><div class="de-row-label" style="margin-top:10px;">如何选择赚钱渠道（天医前面的星）</div><div class="de-combo-item"><strong>生气+天医</strong> → 贵人来财</div><div class="de-combo-item"><strong>延年+天医</strong> → 专业技能来财</div><div class="de-combo-item"><strong>绝命+天医</strong> → 白手起家，投资来财</div><div class="de-combo-item"><strong>五鬼+天医</strong> → 投资来财，意外之财</div><div class="de-combo-item"><strong>六煞+天医</strong> → 人脉来财</div><div class="de-combo-item"><strong>祸害+天医</strong> → 口才来财</div></div>
+    </div>
+  </div>
+</div>
+    <div class="de-section">
+  <div style="border-radius:12px;overflow:hidden;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);margin-bottom:2px;">
+    <div class="de-cat-head" onclick="toggleDE('🚗车牌能量')">
+      <span>🚗 车牌能量</span>
+      <span class="de-arr" id="de-arr-🚗车牌能量">▼</span>
+    </div>
+    <div id="de-🚗车牌能量" style="display:none">
+      <div class="de-cat-body"><div class="de-zero-val" style="white-space:pre-wrap;margin-bottom:10px;">英文字母也要看（对照表在下方）。车牌同样两个两个看。
+
+<b style="color:#fbbf24;">天医</b> → 福气、来财
+<b style="color:#34d399;">生气</b> → 带来贵人、开心
+<b style="color:#f7971e;">延年</b> → 安全驾驶但压力大
+<b style="color:#60a5fa;">伏位</b> → 有耐心
+<b style="color:#a78bfa;">六煞</b> → 开车容易郁闷，被人剐蹭撞击，心情不好
+<b style="color:#f87171;">祸害</b> → 容易吸引意外，路怒症，吵架，零件（冷气、水管、引擎）容易坏
+<b style="color:#fb923c;">五鬼</b> → 胡思乱想造成车祸，血光，突然来的意外（108 一撞就byebye）
+<b style="color:#f472b6;">绝命</b> 73/37 → 主动冲动超速踩快油，主动造成车祸
+
+车牌能量越少越好（越简单越好）</div></div>
+    </div>
+  </div>
+</div>
+    <div class="de-section">
+  <div style="border-radius:12px;overflow:hidden;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);margin-bottom:2px;">
+    <div class="de-cat-head" onclick="toggleDE('🏠门牌能量')">
+      <span>🏠 门牌能量</span>
+      <span class="de-arr" id="de-arr-🏠门牌能量">▼</span>
+    </div>
+    <div id="de-🏠门牌能量" style="display:none">
+      <div class="de-cat-body"><div class="de-zero-val" style="white-space:pre-wrap;">门牌也是两个两个看，影响住在里面的所有人。
+
+<b style="color:#fbbf24;">天医</b> 13/31 → 旺最赚钱的人，吸财，佛缘
+<b style="color:#34d399;">生气</b> → 开心乐观，时常有朋友来玩
+<b style="color:#f7971e;">延年</b> → 睡不着，谈工作，压力（26比较容易休息）
+<b style="color:#60a5fa;">伏位</b> → 无太多能量，看前面的磁场
+<b style="color:#f472b6;">绝命</b> → 脾气臭（尤其女性）
+<b style="color:#f87171;">祸害</b> → 很容易吵架，做事两头不到岸，呼吸系统出问题
+<b style="color:#fb923c;">五鬼</b> → 灵异，噩梦，熬夜，忘东忘西，破财
+<b style="color:#a78bfa;">六煞</b> → 内耗，焦虑，郁闷，皮肤敏感，总是出事，不断往外花钱</div></div>
+    </div>
+  </div>
+</div>
+    <div class="de-section">
+  <div style="border-radius:12px;overflow:hidden;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);margin-bottom:2px;">
+    <div class="de-cat-head" onclick="toggleDE('🚨危险号码参考')">
+      <span>🚨 危险号码参考</span>
+      <span class="de-arr" id="de-arr-🚨危险号码参考">▼</span>
+    </div>
+    <div id="de-🚨危险号码参考" style="display:none">
+      <div class="de-cat-body"><div class="de-danger-section">
+  <div class="de-danger-title">🩸 重大意外凶险血光号码</div>
+  <div class="de-danger-nums"><span class="de-danger-num">818</span><span class="de-danger-num">851</span><span class="de-danger-num">158</span><span class="de-danger-num">810</span><span class="de-danger-num">180</span><span class="de-danger-num">118</span><span class="de-danger-num">811</span><span class="de-danger-num">181</span><span class="de-danger-num">816</span><span class="de-danger-num">817</span></div>
+</div>
+<div class="de-danger-section">
+  <div class="de-danger-title">☠️ 往生号码</div>
+  <div class="de-danger-nums"><span class="de-danger-num">108</span><span class="de-danger-num">801</span><span class="de-danger-num">1058</span><span class="de-danger-num">1508</span><span class="de-danger-num">8501</span><span class="de-danger-num">8051</span><span class="de-danger-num">709</span><span class="de-danger-num">907</span><span class="de-danger-num">7509</span><span class="de-danger-num">7059</span><span class="de-danger-num">9057</span><span class="de-danger-num">9507</span></div>
+</div>
+<div class="de-danger-section">
+  <div class="de-danger-title">🏥 重大疾病号码</div>
+  <div class="de-danger-nums"><span class="de-danger-num">812</span><span class="de-danger-num">218</span><span class="de-danger-num">212</span><span class="de-danger-num">121</span><span class="de-danger-num">102</span><span class="de-danger-num">201</span><span class="de-danger-num">716</span><span class="de-danger-num">618</span><span class="de-danger-num">8012</span><span class="de-danger-num">8102</span><span class="de-danger-num">8512</span><span class="de-danger-num">8152</span><span class="de-danger-num">152</span><span class="de-danger-num">251</span><span class="de-danger-num">617</span><span class="de-danger-num">718</span><span class="de-danger-num">2018</span><span class="de-danger-num">2518</span><span class="de-danger-num">2108</span><span class="de-danger-num">2158</span><span class="de-danger-num">217</span><span class="de-danger-num">712</span><span class="de-danger-num">171</span><span class="de-danger-num">711</span><span class="de-danger-num">817</span><span class="de-danger-num">612</span><span class="de-danger-num">216</span><span class="de-danger-num">816</span><span class="de-danger-num">157</span><span class="de-danger-num">751</span><span class="de-danger-num">107</span><span class="de-danger-num">701</span><span class="de-danger-num">1507</span><span class="de-danger-num">1057</span><span class="de-danger-num">7501</span><span class="de-danger-num">7051</span><span class="de-danger-num">8559</span><span class="de-danger-num">9558</span><span class="de-danger-num">8509</span><span class="de-danger-num">8059</span><span class="de-danger-num">9508</span><span class="de-danger-num">9805</span></div>
+</div></div>
+    </div>
+  </div>
+</div>
+    <div class="de-section">
+  <div style="border-radius:12px;overflow:hidden;background:rgba(255,255,255,0.04);border:1px solid rgba(255,255,255,0.08);margin-bottom:2px;">
+    <div class="de-cat-head" onclick="toggleDE('🔤英文字母对照表（车牌用）')">
+      <span>🔤 英文字母对照表（车牌用）</span>
+      <span class="de-arr" id="de-arr-🔤英文字母对照表（车牌用）">▼</span>
+    </div>
+    <div id="de-🔤英文字母对照表（车牌用）" style="display:none">
+      <div class="de-cat-body"><table class="de-letter-table"><tr><td>A</td><td>B</td><td>C</td><td>D</td><td>E</td><td>F</td><td>G</td><td>H</td><td>I</td><td>J</td><td>K</td><td>L</td><td>M</td></tr><tr><td style="color:#c4b5fd;">1</td><td style="color:#c4b5fd;">2</td><td style="color:#c4b5fd;">3</td><td style="color:#c4b5fd;">4</td><td style="color:#c4b5fd;">5</td><td style="color:#c4b5fd;">6</td><td style="color:#c4b5fd;">7</td><td style="color:#c4b5fd;">8</td><td style="color:#c4b5fd;">9</td><td style="color:#c4b5fd;">10</td><td style="color:#c4b5fd;">11</td><td style="color:#c4b5fd;">12</td><td style="color:#c4b5fd;">13</td></tr><tr><td>N</td><td>O</td><td>P</td><td>Q</td><td>R</td><td>S</td><td>T</td><td>U</td><td>V</td><td>W</td><td>X</td><td>Y</td><td>Z</td></tr><tr><td style="color:#c4b5fd;">14</td><td style="color:#c4b5fd;">15</td><td style="color:#c4b5fd;">16</td><td style="color:#c4b5fd;">17</td><td style="color:#c4b5fd;">18</td><td style="color:#c4b5fd;">19</td><td style="color:#c4b5fd;">20</td><td style="color:#c4b5fd;">21</td><td style="color:#c4b5fd;">22</td><td style="color:#c4b5fd;">23</td><td style="color:#c4b5fd;">24</td><td style="color:#c4b5fd;">25</td><td style="color:#c4b5fd;">26</td></tr></table><div style="font-size:11px;color:#7070a0;margin-top:6px;">车牌英文字母先转换成数字，再与车牌号码一起两个两个看。</div></div>
+    </div>
+  </div>
+</div>
     <div class="page-bottom"></div>
   </div>
 </div>
@@ -2243,6 +2559,7 @@ function renderFieldButtons(){
 function selectField(idx){
   currentField = idx;
   restoreSC();
+  restoreCustomCards();
   renderFieldButtons();
   renderContent();
 }
@@ -2586,6 +2903,121 @@ function restoreSC(){
     }
   }
   updateScProg();
+}
+
+
+var _customCount = parseInt(localStorage.getItem('sc-custom-count')||'0');
+
+function addCustomCard(){
+  _customCount++;
+  localStorage.setItem('sc-custom-count', _customCount);
+  var id = 'c'+_customCount;
+  var card = buildCustomCard(id, {});
+  var btn = document.getElementById('add-sc-btn');
+  btn.parentNode.insertBefore(card, btn);
+  // auto-open
+  toggleCustomSC(id);
+}
+
+function buildCustomCard(id, data){
+  var fields = [
+    ['type','🎬 拍摄类型',''],['dur','⏱ 预计时长',''],
+    ['scene','🏠 场景/置景',''],['emo','🎭 IP情绪建议',''],
+    ['field','✨ 磁场主题',''],['theme','📌 拍摄主题','电话号码'],
+    ['curve','📈 情绪曲线',''],['hook','🎣 开篇钩子',''],
+    ['script','📝 内容脚本',''],['ending','🏁 结尾/语言钉',''],
+    ['cover','🖼️ 封面文字 L1',''],['cover2','🖼️ 封面文字 L2',''],
+    ['ig','📱 IG配文','']
+  ];
+  var bodyHtml = fields.map(function(f){
+    var key=id+'-'+f[0];
+    var saved=localStorage.getItem('sc-edit-'+key)||data[f[0]]||'';
+    return '<div class="sf-row"><span class="sf-label">'+f[1]+'</span>'+
+      '<span class="sf-val" contenteditable="true" data-ekey="'+key+'" data-ph="点击输入..." '+
+      'onblur="saveScEdit(this,this.dataset.ekey)">'+saved+'</span></div>';
+  }).join('');
+
+  var el=document.createElement('div');
+  el.className='sc-card custom-sc'; el.id='sc-'+id;
+  el.innerHTML=
+    '<div class="sc-head" onclick="toggleCustomSC(\''+id+'\')">'+
+    '<div class="sc-title-row">'+
+    '<input type="checkbox" class="sc-check" id="chk-'+id+'" onclick="markCustomFilmed(event,\''+id+'\')">'+
+    '<span class="sc-num">✏️</span>'+
+    '<span class="sc-title" contenteditable="true" data-ekey="'+id+'-title" '+
+    'onblur="saveScEdit(this,this.dataset.ekey)" onclick="event.stopPropagation()" '+
+    'style="border-bottom:1px dashed rgba(96,165,250,0.3)">点击输入标题...</span>'+
+    '<span class="sc-arrow" id="arr-'+id+'">▼</span></div></div>'+
+    '<div class="sc-body" id="sb-'+id+'" style="display:none">'+bodyHtml+'</div>';
+  return el;
+}
+
+function toggleCustomSC(id){
+  var b=document.getElementById('sb-'+id);
+  var a=document.getElementById('arr-'+id);
+  if(!b)return;
+  var open=b.style.display!=='none';
+  b.style.display=open?'none':'block';
+  a.classList.toggle('open',!open);
+}
+
+function markCustomFilmed(evt,id){
+  evt.stopPropagation();
+  var chk=document.getElementById('chk-'+id);
+  var card=document.getElementById('sc-'+id);
+  localStorage.setItem('sc-filmed-'+id,chk.checked?'1':'0');
+  card.classList.toggle('filmed',chk.checked);
+}
+
+function restoreCustomCards(){
+  var count=parseInt(localStorage.getItem('sc-custom-count')||'0');
+  _customCount=count;
+  var btn=document.getElementById('add-sc-btn');
+  if(!btn)return;
+  for(var i=1;i<=count;i++){
+    var id='c'+i;
+    var card=buildCustomCard(id,{});
+    btn.parentNode.insertBefore(card,btn);
+    // restore title
+    var titleEl=card.querySelector('[data-ekey="'+id+'-title"]');
+    var savedTitle=localStorage.getItem('sc-edit-'+id+'-title');
+    if(savedTitle&&titleEl)titleEl.innerText=savedTitle;
+    // restore filmed
+    var chk=document.getElementById('chk-'+id);
+    if(chk&&localStorage.getItem('sc-filmed-'+id)==='1'){
+      chk.checked=true; card.classList.add('filmed');
+    }
+  }
+}
+
+
+function toggleDE(id){
+  var el=document.getElementById('de-'+id);
+  var arr=document.getElementById('de-arr-'+id);
+  if(!el)return;
+  var open=el.style.display!=='none';
+  el.style.display=open?'none':'block';
+  arr.classList.toggle('open',!open);
+}
+function toggleDECard(id){
+  var el=document.getElementById('de-body-'+id);
+  var arr=document.getElementById('de-arr-star-'+id);
+  if(!el)return;
+  var open=el.style.display!=='none';
+  el.style.display=open?'none':'block';
+  arr.classList.toggle('open',!open);
+}
+
+function deSearch(q){
+  q=q.trim().toLowerCase();
+  if(!q){
+    document.querySelectorAll('.de-field-card,.de-section').forEach(function(el){el.style.display='';});
+    return;
+  }
+  document.querySelectorAll('.de-field-card').forEach(function(card){
+    var txt=card.innerText.toLowerCase();
+    card.style.display=txt.includes(q)?'':'none';
+  });
 }
 
 window.addEventListener('DOMContentLoaded', ()=>{
