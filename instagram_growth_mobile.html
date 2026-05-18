@@ -1314,136 +1314,68 @@ function setMode(mode){
   renderContent();
 }
 
+function togglePhone(uid){
+  const body = document.getElementById('pb-'+uid);
+  if(!body) return;
+  body.classList.toggle('open');
+  const arr = document.getElementById('pa-'+uid);
+  if(arr) arr.textContent = body.classList.contains('open') ? '▲' : '▼';
+}
+
 function renderContent(){
   const f = FIELDS[currentField];
   const items = f[currentMode];
-  const colorMap = {'best':'#16a34a','worst':'#dc2626'};
-  const col = colorMap[currentMode];
-  document.getElementById('phone-topics').innerHTML = `
-    <div style="display:flex;gap:8px;margin-bottom:12px;">
-      <button id="btn-best" onclick="setMode('best')" style="flex:1;padding:8px;border:none;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;transition:.2s;background:${currentMode==='best'?'#22c55e':'#e8e8e8'};color:${currentMode==='best'?'#fff':'#555'}">✅ 吉星案例</button>
-      <button id="btn-worst" onclick="setMode('worst')" style="flex:1;padding:8px;border:none;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;transition:.2s;background:${currentMode==='worst'?'#ef4444':'#e8e8e8'};color:${currentMode==='worst'?'#fff':'#555'}">⚠️ 凶星案例</button>
-    </div>
-    <div style="background:${f.color}18;border-left:4px solid ${f.color};border-radius:0 10px 10px 0;padding:10px 12px;margin-bottom:12px;">
-      <div style="font-weight:700;color:${f.color};font-size:15px;">${f.name} — ${currentMode==='best'?'吉星开场':'凶星开场'}</div>
-      <div style="font-size:12px;color:#666;margin-top:3px;">点击案例复制开场白</div>
-    </div>
-    ${items.map((item,i)=>`
-      <div onclick="navigator.clipboard&&navigator.clipboard.writeText('我认识一个人：${item.replace(/'/g,"\\'")}').then(()=>alert('已复制！'))" style="background:#fff;border:1px solid ${col}33;border-radius:10px;padding:10px 12px;margin-bottom:8px;cursor:pointer;display:flex;align-items:flex-start;gap:8px;">
-        <span style="color:${col};font-weight:700;min-width:22px;">${i+1}.</span>
-        <span style="color:#333;font-size:14px;line-height:1.5;">${item}</span>
-      </div>
-    `).join('')}
-  `;
+  const isBest = currentMode === 'best';
+  const col = isBest ? '#22c55e' : '#ef4444';
+  const label = isBest ? '吉星开场' : '凶星开场';
+  document.getElementById('phone-topics').innerHTML =
+    '<div style="display:flex;gap:8px;margin-bottom:14px;">' +
+      '<button id="btn-best" onclick="setMode('best')" style="flex:1;padding:9px;border:none;border-radius:12px;font-weight:700;font-size:13px;cursor:pointer;background:' + (isBest?'#22c55e':'rgba(255,255,255,0.08)') + ';color:' + (isBest?'#fff':'rgba(255,255,255,0.5)') + '">✅ 吉星案例</button>' +
+      '<button id="btn-worst" onclick="setMode('worst')" style="flex:1;padding:9px;border:none;border-radius:12px;font-weight:700;font-size:13px;cursor:pointer;background:' + (!isBest?'#ef4444':'rgba(255,255,255,0.08)') + ';color:' + (!isBest?'#fff':'rgba(255,255,255,0.5)') + '">⚠️ 凶星案例</button>' +
+    '</div>' +
+    '<div style="background:' + f.color + '22;border-left:4px solid ' + f.color + ';border-radius:0 12px 12px 0;padding:10px 14px;margin-bottom:14px;">' +
+      '<div style="font-weight:800;color:' + f.color + ';font-size:15px;">' + f.name + ' — ' + label + '</div>' +
+      '<div style="font-size:11px;color:rgba(255,255,255,0.4);margin-top:3px;">点击展开 · 复制开场白</div>' +
+    '</div>' +
+    items.map(function(item,i){
+      var uid = 'ph_' + currentField + '_' + currentMode + '_' + i;
+      var preview = item.length > 22 ? item.slice(0,22) + '…' : item;
+      return '<div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:14px;margin-bottom:10px;overflow:hidden;">' +
+        '<button onclick="togglePhone(' + "'" + uid + "'" + ')" style="display:flex;align-items:center;justify-content:space-between;width:100%;padding:14px;background:none;border:none;font-family:inherit;cursor:pointer;text-align:left;gap:8px;">' +
+          '<div style="flex:1;min-width:0;">' +
+            '<div style="display:flex;align-items:center;gap:8px;margin-bottom:4px;">' +
+              '<span style="background:' + col + ';color:#fff;border-radius:50%;width:22px;height:22px;display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:800;flex-shrink:0;">' + (i+1) + '</span>' +
+              '<span style="font-size:12px;color:' + col + ';font-weight:700;">' + (isBest ? '✅ 吉星场景' : '⚠️ 凶星场景') + '</span>' +
+            '</div>' +
+            '<div style="font-size:13px;color:rgba(255,255,255,0.75);line-height:1.4;padding-left:30px;">' + preview + '</div>' +
+          '</div>' +
+          '<span id="pa-' + uid + '" style="color:' + f.color + ';font-size:11px;flex-shrink:0;">▼</span>' +
+        '</button>' +
+        '<div id="pb-' + uid + '" class="boom-body">' +
+          '<div style="padding:0 14px 14px 14px;">' +
+            '<div style="background:rgba(255,255,255,0.05);border-radius:10px;padding:12px;margin-bottom:10px;">' +
+              '<div style="font-size:13px;color:rgba(255,255,255,0.9);line-height:1.6;">' + item + '</div>' +
+            '</div>' +
+            '<button onclick="navigator.clipboard&&navigator.clipboard.writeText(' + "'" + item.replace(/'/g,"\'") + "'" + ').then(function(){alert(' + "'已复制！'" + ')})" style="width:100%;padding:9px;background:' + f.color + ';border:none;border-radius:10px;color:#fff;font-size:13px;font-weight:700;cursor:pointer;margin-bottom:10px;">📋 复制开场白</button>' +
+            '<div style="background:rgba(255,255,255,0.04);border-radius:8px;padding:8px 10px;">' +
+              '<div style="font-size:10px;color:rgba(255,255,255,0.4);font-weight:700;margin-bottom:4px;">📝 脚本结构</div>' +
+              '<div style="font-size:11px;color:rgba(255,255,255,0.45);line-height:1.6;">开场情景 → 引入' + f.name + '概念 → 数字解读 → 改运建议 → 互动钩子</div>' +
+            '</div>' +
+          '</div>' +
+        '</div>' +
+      '</div>';
+    }).join('');
 }
-
-// ── TOPIC SECTION ──────────────────────────────────────────────
-const TOPIC_CATS = [
-  {id:'plate',  name:'🚗 车牌',   color:'#ff6496'},
-  {id:'phone',  name:'📱 手机号', color:'#a855f7'},
-  {id:'house',  name:'🏠 门牌/楼层', color:'#f59e0b'},
-  {id:'birth',  name:'🎂 生日',   color:'#06b6d4'},
-  {id:'general',name:'💡 通用',   color:'#22c55e'},
-];
-
-const TOPIC_DATA = [
-  // 车牌
-  {cat:'plate', title:'你的车牌号藏着你的人生密码', hooks:[
-    {elem:'警示恐惧', text:'很多人开了十年的车，但从来不知道自己的车牌在影响他们的财运'},
-    {elem:'揭秘悬念', text:'为什么同样努力，有些人的事业一直卡住？答案可能就在你每天看的车牌号'},
-    {elem:'情感共鸣', text:'我也曾经觉得数字只是数字，直到我换了车牌，生意才开始顺了'},
-    {elem:'身份认同', text:'马来西亚做生意的你，一定要了解这件事，因为它和你的财富直接挂钩'},
-    {elem:'对比反差', text:'同一个路段，两辆车，一个越来越顺，一个越来越堵，区别只有这个'},
-    {elem:'互动参与', text:'把你的车牌号码打在评论区，我来帮你解读你的能量磁场'},
-    {elem:'实用价值', text:'教你用三秒钟判断你的车牌号是在帮你还是在拖累你'},
-    {elem:'争议话题', text:'有人说车牌只是号码，但这些年我见过太多人因为换了车牌，命运真的改变了'},
-  ]},
-  {cat:'plate', title:'为什么老板都在选这几个车牌数字', hooks:[
-    {elem:'警示恐惧', text:'如果你的车牌有这个组合，小心它正在悄悄影响你的贵人运'},
-    {elem:'揭秘悬念', text:'马来西亚顶级富商最爱的车牌号码，背后有一个共同规律'},
-    {elem:'情感共鸣', text:'我帮一个朋友分析车牌，他第一反应是不信，后来他说"怎么这么准"'},
-    {elem:'身份认同', text:'做生意的人，你的车牌就是你的移动名片，它在说什么？'},
-    {elem:'对比反差', text:'有些车牌吸财，有些车牌漏财，同样的努力，结果却差十万八千里'},
-    {elem:'互动参与', text:'你觉得车牌号码会影响运气吗？评论区说说你的看法'},
-    {elem:'实用价值', text:'三个步骤，自己在家就能判断车牌号码的能量属性'},
-    {elem:'争议话题', text:'很多人觉得这是迷信，但科学无法解释的事，不代表它不存在'},
-  ]},
-  // 手机号
-  {cat:'phone', title:'你的手机号码泄露了你的性格密码', hooks:[
-    {elem:'警示恐惧', text:'你现在用的手机号，可能正在影响你接到的贵人和机会'},
-    {elem:'揭秘悬念', text:'为什么有些人手机一响就是好消息，有些人每次接电话都是麻烦？'},
-    {elem:'情感共鸣', text:'我换手机号那一年，接到的机会和以前完全不一样，我才开始认真研究这个'},
-    {elem:'身份认同', text:'如果你是做销售、做生意的，这条视频你一定要看完'},
-    {elem:'对比反差', text:'同一个业务团队，有人电话响不停，有人等了一整天没有一个客户来电'},
-    {elem:'互动参与', text:'把你的手机尾四位打在评论区，我来帮你看看你的人际磁场'},
-    {elem:'实用价值', text:'教你看手机号的三个关键位置，判断你的财运和贵人运'},
-    {elem:'争议话题', text:'你相信手机号码会影响你接到的机会吗？很多人不信，但结果让他们改变了想法'},
-  ]},
-  {cat:'phone', title:'换了手机号之后，我的生意真的变了', hooks:[
-    {elem:'警示恐惧', text:'如果你的手机号里有这个数字组合，你的财运可能一直被拦截着'},
-    {elem:'揭秘悬念', text:'同样的产品，同样的价格，为什么有些销售接单接到手软，有些一单都难？'},
-    {elem:'情感共鸣', text:'我的学员换了手机号三个月后跟我说，感觉整个人的状态都不一样了'},
-    {elem:'身份认同', text:'马来西亚做业务的朋友，你的手机号码正在帮你还是在拖你？'},
-    {elem:'对比反差', text:'一个号码帮你吸引贵人，一个号码让你总是遇到麻烦客户，差别就在这里'},
-    {elem:'互动参与', text:'你有没有因为号码问题而烦恼过？评论区分享你的故事'},
-    {elem:'实用价值', text:'五分钟内，教你自己判断手机号码的吉凶能量'},
-    {elem:'争议话题', text:'有人说换手机号太麻烦，但如果现在的号一直让你走霉运，你还会说麻烦吗？'},
-  ]},
-  // 门牌/楼层
-  {cat:'house', title:'你住的楼层正在影响你的健康和财运', hooks:[
-    {elem:'警示恐惧', text:'有些楼层住进去就开始漏财，有些楼层越住越旺，你知道自己住的是哪种吗？'},
-    {elem:'揭秘悬念', text:'为什么同一栋楼，有些人越住越顺，有些人越住越难？答案就在楼层数字'},
-    {elem:'情感共鸣', text:'我有个学员搬到新楼层半年，感情、事业、健康同时改善，她说她都不敢相信'},
-    {elem:'身份认同', text:'正在考虑买房或换房的你，这条信息可能帮你省下几十万的错误决定'},
-    {elem:'对比反差', text:'同一个小区，一楼层的人生意越做越大，另一楼层的人连续换了三份工作'},
-    {elem:'互动参与', text:'你现在住几楼？评论区告诉我，我来帮你分析这个楼层的能量'},
-    {elem:'实用价值', text:'教你用数字能量学，在五分钟内判断一个楼层是否适合你'},
-    {elem:'争议话题', text:'楼层影响运势？很多人第一反应是不信，但我帮上千人分析后发现规律很明显'},
-  ]},
-  // 生日
-  {cat:'birth', title:'你的生日数字决定了你最适合做什么生意', hooks:[
-    {elem:'警示恐惧', text:'很多人一生努力，却做了不适合自己天赋的事，原因可能就在生日数字里'},
-    {elem:'揭秘悬念', text:'为什么有些人天生就适合做销售，有些人适合做管理？生日数字有答案'},
-    {elem:'情感共鸣', text:'我分析自己生日那天，才终于明白为什么有些事我怎么做都很吃力'},
-    {elem:'身份认同', text:'正在创业或考虑转行的你，这条视频可能帮你找到最适合的方向'},
-    {elem:'对比反差', text:'同样努力，有人越做越顺，有人越做越累，不是能力问题，是方向问题'},
-    {elem:'互动参与', text:'把你的生日（月份+日期）打在评论区，我来帮你看看你的天赋磁场'},
-    {elem:'实用价值', text:'三个步骤，用生日数字找出你最强的能量磁场和最适合的事业方向'},
-    {elem:'争议话题', text:'用生日判断天赋？听起来像命理，但背后的数字逻辑让很多理性的人也改变了看法'},
-  ]},
-  // 通用
-  {cat:'general', title:'为什么有些人天生就比较旺？', hooks:[
-    {elem:'警示恐惧', text:'如果你总是感觉努力但事倍功半，问题可能不在你的行动，而在你的能量磁场'},
-    {elem:'揭秘悬念', text:'易经数字能量学到底是什么？为什么全球华人圈里越来越多成功人士在研究这个？'},
-    {elem:'情感共鸣', text:'我以前觉得这种东西是老一辈的迷信，直到有一天我亲眼看到它改变了一个朋友的人生'},
-    {elem:'身份认同', text:'如果你相信数字背后有规律，相信每个人都有属于自己的能量密码，这条视频是为你拍的'},
-    {elem:'对比反差', text:'同样的起点，有些人越走越宽，有些人越走越窄，差别不只是努力，还有方向'},
-    {elem:'互动参与', text:'你相信数字能量会影响人的运势吗？评论区告诉我你的想法'},
-    {elem:'实用价值', text:'今天教你用一个简单的方法，在三分钟内了解自己的基本能量磁场'},
-    {elem:'争议话题', text:'有人说这是迷信，有人说这是科学，但不管你信什么，数字背后的规律真实存在'},
-  ]},
-  {cat:'general', title:'改变这一件事，我的人生开始不一样了', hooks:[
-    {elem:'警示恐惧', text:'你身边那些一直卡住的人，很可能都在用和自己能量相冲的数字'},
-    {elem:'揭秘悬念', text:'易经数字能量学里有一个概念，叫做"磁场共振"，懂了这个，你会看世界的眼光都不同'},
-    {elem:'情感共鸣', text:'学了数字能量学之后，我开始看懂一些以前不明白的事，包括为什么某些人总是吸引麻烦'},
-    {elem:'身份认同', text:'给所有想要突破现状、活得更清醒的人——这是一套值得花时间了解的系统'},
-    {elem:'对比反差', text:'同样的号码，用对了是助力，用错了是阻力，关键在于你有没有意识到这件事'},
-    {elem:'互动参与', text:'如果你想了解自己的数字能量，评论区留下你的出生年月日，我会一一回复'},
-    {elem:'实用价值', text:'今天分享数字能量学入门最重要的三个概念，学完你就能自己开始分析'},
-    {elem:'争议话题', text:'很多人问我，学这个有什么用？我的答案是：当你开始看懂数字背后的语言，决策会变得清晰很多'},
-  ]},
-];
-
-let currentCat = 'plate';
 
 function renderTopicCats(){
   const bar = document.getElementById('cat-filter-bar');
   if(!bar) return;
-  bar.innerHTML = TOPIC_CATS.map(c=>`
-    <button class="cat-f-btn${c.id===currentCat?' active':''}"
-      style="background:${c.id===currentCat?c.color:'#f0f0f0'};color:${c.id===currentCat?'#fff':'#555'};border:none;border-radius:10px;padding:6px 14px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;"
-      onclick="switchCat('${c.id}')">${c.name}</button>
-  `).join('');
+  bar.innerHTML = TOPIC_CATS.map(function(c){
+    var active = c.id === currentCat;
+    return '<button class="cat-f-btn' + (active?' active':'') + '"' +
+      ' style="background:' + (active?c.color:'rgba(255,255,255,0.1)') + ';color:' + (active?'#fff':'rgba(255,255,255,0.6)') + ';border:1px solid ' + (active?c.color:'rgba(255,255,255,0.15)') + ';border-radius:20px;padding:7px 16px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;transition:.2s;"' +
+      ' onclick="switchCat(' + "'" + c.id + "'" + ')">' + c.name + '</button>';
+  }).join('');
 }
 
 function switchCat(catId){
@@ -1463,106 +1395,35 @@ function toggleBoom(id){
 function renderTopics(catId){
   const sec = document.getElementById('topic-sections');
   if(!sec) return;
-  const items = TOPIC_DATA.filter(t=>t.cat===catId);
-  const cat = TOPIC_CATS.find(c=>c.id===catId)||{color:'#ff6496'};
-  if(!items.length){ sec.innerHTML='<p style="text-align:center;color:#aaa;padding:20px;">暂无选题</p>'; return; }
-  sec.innerHTML = items.map((t,i)=>{
+  const items = TOPIC_DATA.filter(function(t){ return t.cat===catId; });
+  const cat = TOPIC_CATS.find(function(c){ return c.id===catId; })||{color:'#ff6496'};
+  if(!items.length){ sec.innerHTML='<p style="text-align:center;color:rgba(255,255,255,0.3);padding:20px;">暂无选题</p>'; return; }
+  sec.innerHTML = items.map(function(t,i){
     const uid = catId+'_'+i;
-    return `
-    <div style="background:#fff;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.07);margin-bottom:12px;overflow:hidden;">
-      <button class="boom-toggle" onclick="toggleBoom('${uid}')" style="display:flex;align-items:center;justify-content:space-between;width:100%;padding:14px;background:none;border:none;font-family:inherit;cursor:pointer;text-align:left;">
-        <div>
-          <div style="font-weight:700;color:#1a1a1a;font-size:14px;">${t.title}</div>
-          <div style="font-size:11px;color:#999;margin-top:3px;">展开查看 8 种爆款开场白</div>
-        </div>
-        <span id="arr-${uid}" style="color:${cat.color};font-size:12px;margin-left:8px;">▼</span>
-      </button>
-      <div id="boom-${uid}" class="boom-body">
-        <div style="padding:0 14px 14px;">
-          ${t.hooks.map(h=>`
-            <div class="boom-row" style="display:flex;gap:8px;padding:8px;background:#f8f8f8;border-radius:8px;margin-bottom:6px;cursor:pointer;" 
-              onclick="navigator.clipboard&&navigator.clipboard.writeText('${h.text.replace(/'/g,"\\'")}').then(()=>alert('已复制！'))">
-              <span style="background:${cat.color};color:#fff;border-radius:6px;padding:2px 7px;font-size:11px;font-weight:700;white-space:nowrap;flex-shrink:0;">${h.elem}</span>
-              <span style="font-size:13px;color:#333;line-height:1.5;">${h.text}</span>
-            </div>
-          `).join('')}
-        </div>
-      </div>
-    </div>`;
+    return '<div style="background:rgba(255,255,255,0.06);border:1px solid rgba(255,255,255,0.1);border-radius:16px;margin-bottom:12px;overflow:hidden;">' +
+      '<button class="boom-toggle" onclick="toggleBoom(' + "'" + uid + "'" + ')" style="display:flex;align-items:center;justify-content:space-between;width:100%;padding:16px;background:none;border:none;font-family:inherit;cursor:pointer;text-align:left;gap:10px;">' +
+        '<div style="flex:1;min-width:0;">' +
+          '<div style="font-weight:700;color:#fff;font-size:14px;line-height:1.4;">' + t.title + '</div>' +
+          '<div style="font-size:11px;color:rgba(255,255,255,0.35);margin-top:4px;">展开查看 8 种爆款开场白 · 点击直接复制</div>' +
+        '</div>' +
+        '<span id="arr-' + uid + '" style="color:' + cat.color + ';font-size:12px;flex-shrink:0;background:' + cat.color + '22;border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;">▼</span>' +
+      '</button>' +
+      '<div id="boom-' + uid + '" class="boom-body">' +
+        '<div style="padding:0 14px 14px;">' +
+          '<div style="height:1px;background:rgba(255,255,255,0.08);margin-bottom:12px;"></div>' +
+          t.hooks.map(function(h){
+            return '<div style="display:flex;gap:8px;padding:10px;background:rgba(255,255,255,0.04);border-radius:10px;margin-bottom:8px;cursor:pointer;border:1px solid rgba(255,255,255,0.06);"' +
+              ' onclick="navigator.clipboard&&navigator.clipboard.writeText(' + "'" + h.text.replace(/'/g,"\'") + "'" + ').then(function(){alert(' + "'已复制！'" + ')})">' +
+              '<span style="background:' + cat.color + ';color:#fff;border-radius:8px;padding:3px 8px;font-size:10px;font-weight:800;white-space:nowrap;flex-shrink:0;align-self:flex-start;">' + h.elem + '</span>' +
+              '<span style="font-size:13px;color:rgba(255,255,255,0.8);line-height:1.55;">' + h.text + '</span>' +
+            '</div>';
+          }).join('') +
+        '</div>' +
+      '</div>' +
+    '</div>';
   }).join('');
 }
 
-
-// ===== DYNAMIC CALENDAR =====
-const CAL_MONTHS = [
-  { year:2026, month:4, label:'2026年5月', startDay:5, days:31,  // May: starts Fri
-    events:{8:'课',9:'课',23:'课',30:'课'},
-    ig:[4,18]
-  },
-  { year:2026, month:5, label:'2026年6月', startDay:1, days:30,  // June: starts Mon
-    events:{6:'慈',21:'课',27:'课'},
-    ig:[1,15,29]
-  },
-  { year:2026, month:6, label:'2026年7月', startDay:3, days:31,  // July: starts Wed
-    events:{3:'课',4:'课',5:'课',11:'课',18:'营',19:'营',25:'课'},
-    ig:[13,27]
-  }
-];
-let calIdx = 0;
-
-function renderCalendar(){
-  const m = CAL_MONTHS[calIdx];
-  const today = new Date();
-  const todayD = (today.getFullYear()===2026 && today.getMonth()===m.month) ? today.getDate() : -1;
-
-  // Build day cells
-  let cells = '';
-  // empty leading cells
-  for(let i=0;i<m.startDay;i++) cells += '<div class="cal-cell"></div>';
-  for(let d=1;d<=m.days;d++){
-    const dow = (m.startDay + d - 1) % 7; // 0=Sun,3=Wed
-    const isWed = dow === 3;
-    const hasEv = m.events[d];
-    const isIg = m.ig.includes(d);
-    const isToday = d === todayD;
-    let cls = 'cal-cell';
-    if(isWed) cls += ' wed-day';
-    if(hasEv) cls += ' has-ev';
-    if(isToday) cls += ' today';
-    let dots = '';
-    if(isWed) dots += '<div class="ev-dot wed"></div>';
-    if(hasEv && !isWed) dots += '<div class="ev-dot"></div>';
-    if(isIg) dots += '<div class="ev-dot ig"></div>';
-    cells += `<div class="${cls}"><span class="cal-num">${d}</span>${dots}</div>`;
-  }
-
-  document.getElementById('cal-container').innerHTML = `
-    <div class="card" style="padding:14px;">
-      <div style="display:flex;align-items:center;justify-content:space-between;margin-bottom:12px;">
-        <button onclick="calNav(-1)" style="background:rgba(255,255,255,0.1);border:none;border-radius:50%;width:32px;height:32px;color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;">${calIdx===0?'<span style=opacity:.3>‹</span>':'‹'}</button>
-        <div style="font-size:14px;font-weight:800;color:#fff;">🗓 ${m.label}</div>
-        <button onclick="calNav(1)" style="background:rgba(255,255,255,0.1);border:none;border-radius:50%;width:32px;height:32px;color:#fff;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;">${calIdx===CAL_MONTHS.length-1?'<span style=opacity:.3>›</span>':'›'}</button>
-      </div>
-      <div class="cal-grid">
-        <div class="cal-hdr">日</div><div class="cal-hdr">一</div><div class="cal-hdr">二</div>
-        <div class="cal-hdr wed">三🎓</div><div class="cal-hdr">四</div><div class="cal-hdr">五</div><div class="cal-hdr">六</div>
-        ${cells}
-      </div>
-      <div style="display:flex;flex-wrap:wrap;gap:10px;font-size:10px;color:#7070a0;margin-top:8px;">
-        <span>🔴 周三线上课</span>
-        <span>🔵 实体活动</span>
-        <span style="color:#22d3ee;">🔵 IG数据上传</span>
-        <span>🟣 今天</span>
-      </div>
-    </div>`;
-}
-
-function calNav(dir){
-  const next = calIdx + dir;
-  if(next < 0 || next >= CAL_MONTHS.length) return;
-  calIdx = next;
-  renderCalendar();
-}
 
 window.addEventListener('DOMContentLoaded', ()=>{
   renderFieldButtons();
