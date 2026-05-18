@@ -195,6 +195,64 @@ strong.green { color:#34d399; }
 
 /* Divider */
 .div { height:1px; background:rgba(255,255,255,0.06); margin:16px 12px 4px; }
+
+/* ===== WEEKLY ACTION PLAN ===== */
+.week-plan-item{display:flex;gap:10px;align-items:flex-start;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05);}
+.week-plan-item:last-child{border-bottom:none;padding-bottom:0;}
+.w-dot{width:7px;height:7px;border-radius:50%;flex-shrink:0;margin-top:5px;}
+.w-text{font-size:12px;color:#d0d0e8;line-height:1.6;flex:1;}
+.w-tag{font-size:10px;font-weight:700;border-radius:4px;padding:1px 6px;display:inline-block;margin-bottom:3px;}
+.w-day{font-size:10px;color:#7070a0;margin-top:2px;}
+
+/* ===== TOPIC CATEGORIES ===== */
+.cat-filter{display:flex;gap:8px;overflow-x:auto;padding:0 12px 4px;-webkit-overflow-scrolling:touch;}
+.cat-filter::-webkit-scrollbar{display:none;}
+.cat-f-btn{flex-shrink:0;border:none;border-radius:10px;padding:8px 14px;font-size:12px;font-weight:700;cursor:pointer;transition:all .2s;background:rgba(255,255,255,0.07);color:#9090b0;font-family:inherit;}
+.cat-f-btn.active{color:#fff;}
+.t-section{display:none;}
+.t-section.active{display:block;}
+.boom-toggle{display:flex;align-items:center;justify-content:space-between;cursor:pointer;margin-top:8px;padding:7px 10px;background:rgba(255,255,255,0.05);border-radius:8px;font-size:11px;color:#8080c0;border:none;width:100%;font-family:inherit;text-align:left;}
+.boom-body{display:none;padding-top:6px;}
+.boom-body.open{display:block;}
+.boom-row{display:flex;gap:8px;padding:6px 8px;border-radius:7px;margin-bottom:4px;align-items:flex-start;background:rgba(255,255,255,0.03);}
+.boom-icon{font-size:13px;flex-shrink:0;}
+.boom-label{font-size:10px;font-weight:700;color:#fff;min-width:55px;flex-shrink:0;margin-top:1px;}
+.boom-hook{font-size:11px;color:#c0c0d8;line-height:1.5;flex:1;}
+
+/* ===== CALENDAR ===== */
+.cal-grid{display:grid;grid-template-columns:repeat(7,1fr);gap:2px;margin-bottom:8px;}
+.cal-hdr{font-size:9px;font-weight:700;color:#505070;text-align:center;padding:3px 0;}
+.cal-hdr.wed{color:#ff8ab8;}
+.cal-cell{border-radius:6px;min-height:32px;display:flex;flex-direction:column;align-items:center;padding:3px 1px;}
+.cal-num{font-size:11px;font-weight:600;color:#7070a0;line-height:1.6;}
+.cal-cell.today .cal-num{background:rgba(255,100,150,0.3);color:#fff;border-radius:50%;width:20px;height:20px;display:flex;align-items:center;justify-content:center;font-size:10px;}
+.cal-cell.wed-day{background:rgba(255,100,150,0.06);}
+.cal-cell.wed-day .cal-num{color:#ff8ab8;}
+.cal-cell.has-ev{background:rgba(96,165,250,0.1);border:1px solid rgba(96,165,250,0.15);}
+.cal-cell.has-ev .cal-num{color:#93c5fd;font-weight:800;}
+.ev-dot{width:4px;height:4px;border-radius:50%;background:#93c5fd;margin-top:1px;}
+.ev-dot.wed{background:#ff6496;}
+.ev-list-item{display:flex;gap:10px;padding:10px 0;border-bottom:1px solid rgba(255,255,255,0.05);}
+.ev-list-item:last-child{border-bottom:none;}
+.ev-dbox{min-width:46px;border-radius:8px;padding:6px 8px;text-align:center;flex-shrink:0;}
+.ev-dnum{font-size:17px;font-weight:900;line-height:1;}
+.ev-dmon{font-size:9px;font-weight:700;text-transform:uppercase;margin-top:1px;}
+.ev-iname{font-size:13px;font-weight:700;color:#fff;margin-bottom:3px;line-height:1.4;}
+.ev-iloc{font-size:10px;color:#7070a0;line-height:1.4;}
+.ev-itag{font-size:10px;font-weight:700;border-radius:4px;padding:1px 7px;display:inline-block;margin-bottom:4px;}
+
+/* ===== MONTH MATRIX ===== */
+.mm-track{margin-bottom:14px;}
+.mm-header{display:flex;justify-content:space-between;align-items:baseline;margin-bottom:6px;}
+.mm-title{font-size:13px;font-weight:700;color:#fff;}
+.mm-dates{font-size:10px;color:#7070a0;}
+.mm-bar-bg{height:32px;background:rgba(255,255,255,0.06);border-radius:10px;position:relative;overflow:visible;}
+.mm-bar-fill{height:100%;border-radius:10px;display:flex;align-items:center;padding:0 10px;font-size:11px;font-weight:700;color:#fff;}
+.mm-goal{display:flex;justify-content:space-between;font-size:11px;margin-top:5px;}
+.mm-goal-num{font-weight:700;}
+.mm-ev-list{display:flex;flex-wrap:wrap;gap:4px;margin-top:6px;}
+.mm-ev-chip{font-size:10px;background:rgba(255,255,255,0.06);border-radius:5px;padding:2px 7px;color:#9090c0;}
+.mm-ev-chip.primary{background:rgba(255,100,150,0.12);color:#ff8ab8;}
 </style>
 </head>
 <body>
@@ -282,6 +340,68 @@ strong.green { color:#34d399; }
         <div class="kpi-val">10,840</div>
         <div class="kpi-lbl">参与账号数</div>
         <div class="kpi-sub">6,348次主页访问</div>
+      </div>
+    </div>
+
+    <!-- Weekly Action Plan -->
+    <div class="sec-lbl">📋 本周行动计划 · 5月18–24日</div>
+    <div class="card" style="border-color:rgba(255,150,100,0.3);background:rgba(255,120,60,0.05);">
+      <div class="card-title">🎬 本周要拍的内容 <span class="badge">3条Reels</span></div>
+      <div class="week-plan-item">
+        <div class="w-dot" style="background:#ff6496;"></div>
+        <div class="w-text">
+          <div class="w-tag" style="background:rgba(255,100,150,0.2);color:#ff8ab8;">周一 18号</div>
+          <strong style="color:#fff;">🚗 车牌警示型：</strong>"看到这种车牌，最好避开——数字能量真实分析"<br>
+          <span style="color:#ff6496;font-size:11px;">⚠️ 文案还没写 · 需要今天完成</span>
+        </div>
+      </div>
+      <div class="week-plan-item">
+        <div class="w-dot" style="background:#a78bfa;"></div>
+        <div class="w-text">
+          <div class="w-tag" style="background:rgba(167,139,250,0.2);color:#c4b5fd;">周三 20号</div>
+          <strong style="color:#fff;">🏠 门牌警示型：</strong>"住了这种门牌的人，感情特别难——真实案例"<br>
+          <span style="color:#ff6496;font-size:11px;">⚠️ 脚本大纲还没写</span>
+        </div>
+      </div>
+      <div class="week-plan-item">
+        <div class="w-dot" style="background:#f7971e;"></div>
+        <div class="w-text">
+          <div class="w-tag" style="background:rgba(247,151,30,0.2);color:#fbbf24;">周五 22号</div>
+          <strong style="color:#fff;">🚗 车牌测评型：</strong>"全马最常见5种车牌，哪个最招财？哪个最危险？"<br>
+          <span style="color:#34d399;font-size:11px;">✅ 可复用既有分析素材</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="card mt8" style="border-color:rgba(52,211,153,0.25);background:rgba(52,211,153,0.04);">
+      <div class="card-title">✅ 本周准备事项</div>
+      <div class="week-plan-item">
+        <div class="w-dot" style="background:#34d399;"></div>
+        <div class="w-text"><strong style="color:#fff;">周六23号 SRW初级班</strong> — Raia Hotel, Kuching<br><span style="color:#7070a0;">提前准备课程材料 · 到Kuching后可拍内容素材</span></div>
+      </div>
+      <div class="week-plan-item">
+        <div class="w-dot" style="background:#34d399;"></div>
+        <div class="w-text">每条视频发布后 <strong style="color:#fff;">30分钟内</strong> 积极回复所有评论（算法奖励期）</div>
+      </div>
+      <div class="week-plan-item">
+        <div class="w-dot" style="background:#34d399;"></div>
+        <div class="w-text">本周内告诉我最新粉丝数，更新Dashboard进度条</div>
+      </div>
+    </div>
+
+    <div class="card mt8" style="border-color:rgba(96,165,250,0.25);background:rgba(96,165,250,0.04);">
+      <div class="card-title">✍️ 需要写文案的选题</div>
+      <div class="week-plan-item">
+        <div class="w-dot" style="background:#60a5fa;"></div>
+        <div class="w-text"><strong style="color:#fff;">"看到这种车牌千万要小心"</strong><br>需要：钩子开篇 + 标题 + Caption（去选题tab选模板）</div>
+      </div>
+      <div class="week-plan-item">
+        <div class="w-dot" style="background:#60a5fa;"></div>
+        <div class="w-text"><strong style="color:#fff;">"住这种门牌感情容易出问题"</strong><br>需要：脚本大纲 · 可用情感共鸣型开篇</div>
+      </div>
+      <div class="week-plan-item">
+        <div class="w-dot" style="background:#60a5fa;"></div>
+        <div class="w-text"><strong style="color:#fff;">手机号100人挑战 EP.2</strong><br>需要：开篇文案 · 用互动参与型元素</div>
       </div>
     </div>
 
@@ -464,105 +584,17 @@ strong.green { color:#34d399; }
   <div class="page-top">
     <div class="sec-lbl">🎬 爆款视频选题库</div>
 
-    <div class="sec-pad">
+    <!-- Category filter -->
+    <div class="cat-filter" id="cat-filter-bar"></div>
 
-      <div class="topic-card">
-        <span class="topic-cat cat-plate">🚗 车牌 · 警示型</span>
-        <div class="topic-title">看到这种车牌，千万不要跟在后面开车</div>
-        <div class="topic-hook">复制"SIAM远点"爆款公式 — 制造恐惧感+强迫分享冲动。观众会立刻@有这种车牌的朋友。</div>
-        <div class="topic-tags"><span class="topic-tag">#车牌号码</span><span class="topic-tag">#数字能量</span><span class="topic-tag">#车牌分析</span></div>
-        <div class="vp vp-high">🔥 爆款潜力：极高 · 预估10万+浏览</div>
-      </div>
-
-      <div class="topic-card">
-        <span class="topic-cat cat-plate">🚗 车牌 · 测评型</span>
-        <div class="topic-title">马来西亚最常见的5个车牌，哪个最招财？哪个最危险？</div>
-        <div class="topic-hook">排名式内容让人忍不住看完。"最常见"引发强共鸣，人人都想知道自己的车牌上榜没有。</div>
-        <div class="topic-tags"><span class="topic-tag">#招财车牌</span><span class="topic-tag">#车牌排行</span></div>
-        <div class="vp vp-high">🔥 爆款潜力：极高 · 评论区会很热闹</div>
-      </div>
-
-      <div class="topic-card">
-        <span class="topic-cat cat-plate">🚗 车牌 · 互动型</span>
-        <div class="topic-title">把你的车牌号码放评论区，我来告诉你能不能开Grab/送货</div>
-        <div class="topic-hook">极强互动收割机。粉丝疯狂留车牌号，评论区爆炸 = 算法大推。</div>
-        <div class="topic-tags"><span class="topic-tag">#车牌测评</span><span class="topic-tag">#Grab司机</span></div>
-        <div class="vp vp-high">🔥 爆款潜力：极高 · 评论数可达1000+</div>
-      </div>
-
-      <div class="topic-card">
-        <span class="topic-cat cat-plate">🚗 车牌 · 故事型</span>
-        <div class="topic-title">这辆车牌让他破产了——真实案例分析</div>
-        <div class="topic-hook">真实案例+数字能量解读。情节感强，让人想分享"警示"给身边有车的人。</div>
-        <div class="topic-tags"><span class="topic-tag">#真实案例</span><span class="topic-tag">#车牌能量</span></div>
-        <div class="vp vp-high">🔥 爆款潜力：高</div>
-      </div>
-
-      <div class="topic-card">
-        <span class="topic-cat cat-house">🏠 门牌 · 警示型</span>
-        <div class="topic-title">住在这种门牌号的人，夫妻关系一定很差</div>
-        <div class="topic-hook">家庭关系是所有人痛点。"住在XX号"直接让人对号入座，分享给老公/老婆。</div>
-        <div class="topic-tags"><span class="topic-tag">#门牌号码</span><span class="topic-tag">#婚姻</span><span class="topic-tag">#数字能量</span></div>
-        <div class="vp vp-high">🔥 爆款潜力：极高 · 情感共鸣强</div>
-      </div>
-
-      <div class="topic-card">
-        <span class="topic-cat cat-house">🏠 门牌 · 测评型</span>
-        <div class="topic-title">你的单位门牌适合做生意吗？3秒看出来</div>
-        <div class="topic-hook">"3秒看出来"降低进入门槛，适合做生意的人群高度感兴趣，转发率高。</div>
-        <div class="topic-tags"><span class="topic-tag">#门牌</span><span class="topic-tag">#做生意</span><span class="topic-tag">#招财</span></div>
-        <div class="vp vp-high">🔥 爆款潜力：高</div>
-      </div>
-
-      <div class="topic-card">
-        <span class="topic-cat cat-phone">📱 手机号码 · 互动型</span>
-        <div class="topic-title">100人挑战 EP.2：把手机号最后4位放评论，我帮你测</div>
-        <div class="topic-hook">系列续集增加忠实粉丝粘性。参与门槛低，每个人都能玩，评论区自然爆炸。</div>
-        <div class="topic-tags"><span class="topic-tag">#手机号码</span><span class="topic-tag">#数字测评</span><span class="topic-tag">#互动</span></div>
-        <div class="vp vp-med">⚡ 爆款潜力：中高 · 粉丝粘性强</div>
-      </div>
-
-      <div class="topic-card">
-        <span class="topic-cat cat-phone">📱 手机号码 · 警示型</span>
-        <div class="topic-title">这种手机号码的人，钱永远存不住</div>
-        <div class="topic-hook">财富焦虑是最大公约数。让人立刻对照自己的号码，分享冲动极强。</div>
-        <div class="topic-tags"><span class="topic-tag">#手机号码</span><span class="topic-tag">#财运</span><span class="topic-tag">#数字能量</span></div>
-        <div class="vp vp-high">🔥 爆款潜力：高</div>
-      </div>
-
-      <div class="topic-card">
-        <span class="topic-cat cat-phone">📱 手机号码 · 职业型</span>
-        <div class="topic-title">适合做销售的手机号码长什么样？</div>
-        <div class="topic-hook">职场定向内容让目标人群精准共鸣。销售/创业者会主动分享给同行。</div>
-        <div class="topic-tags"><span class="topic-tag">#销售</span><span class="topic-tag">#手机号码</span><span class="topic-tag">#事业</span></div>
-        <div class="vp vp-med">⚡ 爆款潜力：中高</div>
-      </div>
-
-      <div class="topic-card">
-        <span class="topic-cat cat-emotion">💬 情感 · 观点型</span>
-        <div class="topic-title">为什么有些人天生有贵人缘？答案在数字里</div>
-        <div class="topic-hook">将情感话题与数字能量结合。"贵人缘"是所有人都想要的，共鸣超强。</div>
-        <div class="topic-tags"><span class="topic-tag">#贵人</span><span class="topic-tag">#数字能量</span><span class="topic-tag">#人际关系</span></div>
-        <div class="vp vp-high">🔥 爆款潜力：高</div>
-      </div>
-
-      <div class="topic-card">
-        <span class="topic-cat cat-emotion">💬 婚姻 · 警示型</span>
-        <div class="topic-title">选错号码结婚，离婚率高3倍——真实数据</div>
-        <div class="topic-hook">婚姻+数字能量+数据感=极强分享动机。已婚/准备结婚人群必看。</div>
-        <div class="topic-tags"><span class="topic-tag">#婚姻</span><span class="topic-tag">#结婚</span><span class="topic-tag">#数字能量</span></div>
-        <div class="vp vp-high">🔥 爆款潜力：极高</div>
-      </div>
-
-      <div class="topic-card">
-        <span class="topic-cat cat-series">🎯 改运系列</span>
-        <div class="topic-title">你的手机号码不改，打工命很难变老板命</div>
-        <div class="topic-hook">阶层跃升焦虑+解决方案。"打工/老板"对比极具张力，触发转发。</div>
-        <div class="topic-tags"><span class="topic-tag">#改运</span><span class="topic-tag">#创业</span><span class="topic-tag">#财运</span></div>
-        <div class="vp vp-high">🔥 爆款潜力：高 · 导流效果极佳</div>
-      </div>
-
+    <!-- Tip -->
+    <div style="margin:10px 12px 0;background:rgba(255,100,150,0.07);border-radius:10px;padding:10px 12px;font-size:11px;color:#a0a0c0;line-height:1.6;">
+      💡 点击选题卡下方的 <strong style="color:#ff8ab8;">「展开八大爆款开篇」</strong> 可查看8种不同元素的视频开篇钩子，直接用于写文案
     </div>
+
+    <!-- Topic sections (rendered by JS) -->
+    <div id="topic-sections"></div>
+
     <div class="page-bottom"></div>
   </div>
 </div>
@@ -661,6 +693,187 @@ strong.green { color:#34d399; }
       </div>
     </div>
 
+    <!-- Calendar -->
+    <div class="sec-lbl">📅 课程行程日历</div>
+    <div class="card">
+      <div style="font-size:13px;font-weight:800;color:#fff;margin-bottom:10px;">🗓 2026年5月</div>
+      <div class="cal-grid">
+        <div class="cal-hdr">日</div><div class="cal-hdr">一</div><div class="cal-hdr">二</div>
+        <div class="cal-hdr wed">三🎓</div><div class="cal-hdr">四</div><div class="cal-hdr">五</div><div class="cal-hdr">六</div>
+        <!-- Row 1 -->
+        <div class="cal-cell"></div><div class="cal-cell"></div><div class="cal-cell"></div>
+        <div class="cal-cell"></div><div class="cal-cell"></div>
+        <div class="cal-cell"><span class="cal-num">1</span></div>
+        <div class="cal-cell"><span class="cal-num">2</span></div>
+        <!-- Row 2 -->
+        <div class="cal-cell"><span class="cal-num">3</span></div><div class="cal-cell"><span class="cal-num">4</span></div>
+        <div class="cal-cell"><span class="cal-num">5</span></div><div class="cal-cell wed-day"><span class="cal-num">6</span><div class="ev-dot wed"></div></div>
+        <div class="cal-cell"><span class="cal-num">7</span></div>
+        <div class="cal-cell has-ev"><span class="cal-num">8</span><div class="ev-dot"></div></div>
+        <div class="cal-cell has-ev"><span class="cal-num">9</span><div class="ev-dot"></div></div>
+        <!-- Row 3 -->
+        <div class="cal-cell"><span class="cal-num">10</span></div><div class="cal-cell"><span class="cal-num">11</span></div>
+        <div class="cal-cell"><span class="cal-num">12</span></div><div class="cal-cell wed-day"><span class="cal-num">13</span><div class="ev-dot wed"></div></div>
+        <div class="cal-cell"><span class="cal-num">14</span></div>
+        <div class="cal-cell"><span class="cal-num">15</span></div><div class="cal-cell"><span class="cal-num">16</span></div>
+        <!-- Row 4 -->
+        <div class="cal-cell"><span class="cal-num">17</span></div>
+        <div class="cal-cell today"><span class="cal-num">18</span></div>
+        <div class="cal-cell"><span class="cal-num">19</span></div>
+        <div class="cal-cell wed-day"><span class="cal-num">20</span><div class="ev-dot wed"></div></div>
+        <div class="cal-cell"><span class="cal-num">21</span></div>
+        <div class="cal-cell"><span class="cal-num">22</span></div>
+        <div class="cal-cell has-ev"><span class="cal-num">23</span><div class="ev-dot"></div></div>
+        <!-- Row 5 -->
+        <div class="cal-cell"><span class="cal-num">24</span></div>
+        <div class="cal-cell"><span class="cal-num">25</span></div>
+        <div class="cal-cell"><span class="cal-num">26</span></div>
+        <div class="cal-cell wed-day"><span class="cal-num">27</span><div class="ev-dot wed"></div></div>
+        <div class="cal-cell"><span class="cal-num">28</span></div>
+        <div class="cal-cell"><span class="cal-num">29</span></div>
+        <div class="cal-cell has-ev"><span class="cal-num">30</span><div class="ev-dot"></div></div>
+        <!-- Row 6 -->
+        <div class="cal-cell"><span class="cal-num">31</span></div>
+      </div>
+      <div style="display:flex;gap:12px;font-size:10px;color:#7070a0;margin-top:4px;">
+        <span>🔴 周三 = 线上课</span><span>🔵 = 实体课程/活动</span><span>🟣 = 今天</span>
+      </div>
+    </div>
+
+    <!-- Upcoming events list -->
+    <div class="sec-lbl">📌 接下来的行程</div>
+    <div class="card">
+      <!-- May events -->
+      <div style="font-size:11px;font-weight:800;color:#ff6496;letter-spacing:1px;margin-bottom:10px;">MAY 2026</div>
+      <div class="ev-list-item">
+        <div class="ev-dbox" style="background:rgba(255,100,150,0.12);">
+          <div class="ev-dnum" style="color:#ff6496;">8</div>
+          <div class="ev-dmon" style="color:#ff6496;">MAY</div>
+        </div>
+        <div>
+          <div class="ev-itag" style="background:rgba(167,139,250,0.15);color:#c4b5fd;">私董会</div>
+          <div class="ev-iname">约KL私董吃饭</div>
+          <div class="ev-iloc">吉隆坡</div>
+        </div>
+      </div>
+      <div class="ev-list-item">
+        <div class="ev-dbox" style="background:rgba(255,100,150,0.12);">
+          <div class="ev-dnum" style="color:#ff6496;">9</div>
+          <div class="ev-dmon" style="color:#ff6496;">MAY</div>
+        </div>
+        <div>
+          <div class="ev-itag" style="background:rgba(255,100,150,0.15);color:#ff8ab8;">初级班</div>
+          <div class="ev-iname">KL 初级班 · Ryanner Academy</div>
+          <div class="ev-iloc">Suite 26-01 Level 26, Menara Vista Petaling, 137, Jalan Puchong, KL</div>
+        </div>
+      </div>
+      <div class="ev-list-item">
+        <div class="ev-dbox" style="background:rgba(96,165,250,0.12);">
+          <div class="ev-dnum" style="color:#93c5fd;">23</div>
+          <div class="ev-dmon" style="color:#60a5fa;">MAY</div>
+        </div>
+        <div>
+          <div class="ev-itag" style="background:rgba(255,100,150,0.15);color:#ff8ab8;">初级班</div>
+          <div class="ev-iname">SRW 初级班 · Raia Hotel Kuching</div>
+          <div class="ev-iloc">1, Jalan Lapangan Terbang, Richmond Hill, 93250 Kuching, Sarawak</div>
+        </div>
+      </div>
+      <div class="ev-list-item">
+        <div class="ev-dbox" style="background:rgba(96,165,250,0.12);">
+          <div class="ev-dnum" style="color:#93c5fd;">30</div>
+          <div class="ev-dmon" style="color:#60a5fa;">MAY</div>
+        </div>
+        <div>
+          <div class="ev-itag" style="background:rgba(255,100,150,0.15);color:#ff8ab8;">初级班</div>
+          <div class="ev-iname">JB 初级班 · KSL Resort</div>
+          <div class="ev-iloc">Johor Bahru</div>
+        </div>
+      </div>
+
+      <!-- June -->
+      <div style="font-size:11px;font-weight:800;color:#34d399;letter-spacing:1px;margin:14px 0 10px;">JUNE 2026</div>
+      <div class="ev-list-item">
+        <div class="ev-dbox" style="background:rgba(52,211,153,0.12);">
+          <div class="ev-dnum" style="color:#34d399;">6</div>
+          <div class="ev-dmon" style="color:#34d399;">JUN</div>
+        </div>
+        <div>
+          <div class="ev-itag" style="background:rgba(52,211,153,0.15);color:#6ee7b7;">慈善</div>
+          <div class="ev-iname">HOPE 慈善活动</div>
+          <div class="ev-iloc">待确认地点</div>
+        </div>
+      </div>
+      <div class="ev-list-item">
+        <div class="ev-dbox" style="background:rgba(96,165,250,0.12);">
+          <div class="ev-dnum" style="color:#93c5fd;">21</div>
+          <div class="ev-dmon" style="color:#60a5fa;">JUN</div>
+        </div>
+        <div>
+          <div class="ev-itag" style="background:rgba(255,100,150,0.15);color:#ff8ab8;">初级班</div>
+          <div class="ev-iname">KL 初级班 · Galleria Avenue One U</div>
+          <div class="ev-iloc">吉隆坡</div>
+        </div>
+      </div>
+      <div class="ev-list-item">
+        <div class="ev-dbox" style="background:rgba(96,165,250,0.12);">
+          <div class="ev-dnum" style="color:#93c5fd;">27</div>
+          <div class="ev-dmon" style="color:#60a5fa;">JUN</div>
+        </div>
+        <div>
+          <div class="ev-itag" style="background:rgba(255,100,150,0.15);color:#ff8ab8;">初级班</div>
+          <div class="ev-iname">JB 初级班 · KSL Resort</div>
+          <div class="ev-iloc">Johor Bahru</div>
+        </div>
+      </div>
+
+      <!-- July -->
+      <div style="font-size:11px;font-weight:800;color:#a78bfa;letter-spacing:1px;margin:14px 0 10px;">JULY 2026</div>
+      <div class="ev-list-item">
+        <div class="ev-dbox" style="background:rgba(167,139,250,0.12);">
+          <div class="ev-dnum" style="color:#a78bfa;">3–5</div>
+          <div class="ev-dmon" style="color:#a78bfa;">JUL</div>
+        </div>
+        <div>
+          <div class="ev-itag" style="background:rgba(167,139,250,0.2);color:#c4b5fd;">高级班</div>
+          <div class="ev-iname">JB 第四届高级班 · KSL Resort</div>
+          <div class="ev-iloc">Johor Bahru · 3天课程</div>
+        </div>
+      </div>
+      <div class="ev-list-item">
+        <div class="ev-dbox" style="background:rgba(167,139,250,0.12);">
+          <div class="ev-dnum" style="color:#a78bfa;">11</div>
+          <div class="ev-dmon" style="color:#a78bfa;">JUL</div>
+        </div>
+        <div>
+          <div class="ev-itag" style="background:rgba(255,100,150,0.15);color:#ff8ab8;">初级班</div>
+          <div class="ev-iname">PN 初级班</div>
+          <div class="ev-iloc">待确认地点</div>
+        </div>
+      </div>
+      <div class="ev-list-item">
+        <div class="ev-dbox" style="background:rgba(247,151,30,0.12);">
+          <div class="ev-dnum" style="color:#f7971e;">18–19</div>
+          <div class="ev-dmon" style="color:#f7971e;">JUL</div>
+        </div>
+        <div>
+          <div class="ev-itag" style="background:rgba(247,151,30,0.15);color:#fbbf24;">周年营</div>
+          <div class="ev-iname">Port Dickson 生活营 · 一周年</div>
+          <div class="ev-iloc">Port Dickson</div>
+        </div>
+      </div>
+      <div class="ev-list-item">
+        <div class="ev-dbox" style="background:rgba(52,211,153,0.12);">
+          <div class="ev-dnum" style="color:#34d399;">25</div>
+          <div class="ev-dmon" style="color:#34d399;">JUL</div>
+        </div>
+        <div>
+          <div class="ev-itag" style="background:rgba(52,211,153,0.15);color:#6ee7b7;">海外</div>
+          <div class="ev-iname">新加坡 · Lovorth Events & Media</div>
+          <div class="ev-iloc">72 Bendemeer Rd, Luzerne #03-15/16, Singapore 339941</div>
+        </div>
+      </div>
+    </div>
+
     <!-- Formula guide -->
     <div class="sec-lbl">⚡ 爆款公式 & 制作指南</div>
 
@@ -740,6 +953,74 @@ strong.green { color:#34d399; }
         <div class="phase-item">推出"家铭老师数字改运系列"品牌内容</div>
         <div class="phase-item">建立Telegram/WhatsApp社群导流</div>
         <div class="phase-item">考虑1–2条Boost Reel（助推热门内容）</div>
+      </div>
+    </div>
+
+    <!-- Month 1-2-3 Progress Matrix -->
+    <div class="sec-lbl">📊 三个月冲刺进度表</div>
+    <div class="card">
+      <div style="font-size:12px;color:#7070a0;margin-bottom:14px;">目标：2,123 粉丝 → <strong style="color:#ff6496;">10,000 粉丝</strong> · 预计 4–6 个月</div>
+
+      <!-- Month 1 -->
+      <div class="mm-track">
+        <div class="mm-header">
+          <div class="mm-title">🟠 第一个月</div>
+          <div class="mm-dates">5月18日 — 6月17日</div>
+        </div>
+        <div class="mm-bar-bg">
+          <div class="mm-bar-fill" style="width:21%;background:linear-gradient(90deg,#ff6496,#f7971e);">现在 2,123</div>
+        </div>
+        <div class="mm-goal" style="color:#f7971e;"><span>目标：→ 4,000 粉丝</span><span class="mm-goal-num">需增 +1,877</span></div>
+        <div class="mm-ev-list">
+          <span class="mm-ev-chip primary">23号 SRW初级班</span>
+          <span class="mm-ev-chip primary">30号 JB初级班</span>
+          <span class="mm-ev-chip">每周3条Reels</span>
+          <span class="mm-ev-chip">专注车牌+门牌</span>
+        </div>
+      </div>
+
+      <!-- Month 2 -->
+      <div class="mm-track">
+        <div class="mm-header">
+          <div class="mm-title">🔵 第二个月</div>
+          <div class="mm-dates">6月18日 — 7月17日</div>
+        </div>
+        <div class="mm-bar-bg">
+          <div class="mm-bar-fill" style="width:40%;background:linear-gradient(90deg,#60a5fa,#a78bfa);">目标 4,000</div>
+        </div>
+        <div class="mm-goal" style="color:#60a5fa;"><span>目标：→ 7,000 粉丝</span><span class="mm-goal-num">需增 +3,000</span></div>
+        <div class="mm-ev-list">
+          <span class="mm-ev-chip primary">21号 KL初级班</span>
+          <span class="mm-ev-chip primary">27号 JB初级班</span>
+          <span class="mm-ev-chip">7月3–5 JB高级班</span>
+          <span class="mm-ev-chip">互动系列启动</span>
+        </div>
+      </div>
+
+      <!-- Month 3 -->
+      <div class="mm-track">
+        <div class="mm-header">
+          <div class="mm-title">🟣 第三个月</div>
+          <div class="mm-dates">7月18日 — 8月17日</div>
+        </div>
+        <div class="mm-bar-bg">
+          <div class="mm-bar-fill" style="width:70%;background:linear-gradient(90deg,#a78bfa,#ec4899);">目标 7,000</div>
+        </div>
+        <div class="mm-goal" style="color:#a78bfa;"><span>目标：→ 10,000 粉丝 🎯</span><span class="mm-goal-num">需增 +3,000</span></div>
+        <div class="mm-ev-list">
+          <span class="mm-ev-chip primary">18–19 PD生活营</span>
+          <span class="mm-ev-chip primary">25号 新加坡</span>
+          <span class="mm-ev-chip">冲刺超级爆款</span>
+          <span class="mm-ev-chip">考虑直播</span>
+        </div>
+      </div>
+
+      <!-- Key milestone -->
+      <div style="background:linear-gradient(135deg,rgba(255,100,150,0.12),rgba(167,139,250,0.1));border:1px solid rgba(255,100,150,0.25);border-radius:12px;padding:12px 14px;">
+        <div style="font-size:12px;color:#d0d0e8;line-height:1.8;">
+          🔑 <strong style="color:#ff6496;">关键变量：</strong>每个月只需要 <strong style="color:#fff;">2–3 个爆款帖子</strong>（5万+浏览），粉丝增长就能达标。<br>
+          一个爆款 = 平均 +500 粉丝 · 目标只需 <strong style="color:#f7971e;">10–15 个爆款</strong>！
+        </div>
       </div>
     </div>
 
@@ -912,253 +1193,353 @@ const FIELDS = [
       '我同事工作能力一流，但身体很差，40岁就有高血压，医生说要减压',
       '我认识一个人，责任心太重，连睡觉也在想工作，失眠了两年',
       '我朋友很有领导能力，但感情很差，因为太强势，没有人愿意靠近',
-      '我做了很多，公司赚了，但功劳都是老板的，我连一声谢谢也没有',
       '我朋友40岁中风，因为一直在为别人的事情操心，自己的事情一个都没做',
-    ]
+    ],
   },
+  // 伏位星 (field index 3)
   {
-    id:'fuwei', name:'伏位星', emoji:'🧠', color:'#8b5cf6',
-    trait:'延续 · 思考 · 谨慎稳健', type:'四吉星',
-    numbers:'11 · 22 · 33 · 44 · 66 · 77 · 88 · 99',
+    id:'fuwei', name:'伏位星 ☯️', color:'#8b5cf6',
     best:[
-      '我朋友做生意慢慢来，但每年都有稳定收入，十年后比别人多了一栋房子',
-      '我同事投资从来不急，选最安全的方式，十年后他是朋友圈里最有钱的',
-      '我认识一个人，做每件事都很分析，很少出错，大家都说他是最可靠的',
-      '我朋友很耐心，等了三年，终于等到最好的机会，一出手就成功',
-      '我老板娘做事谨慎，生意从来没有大风险，慢慢做成业界最稳定的一家',
-      '我的客户存钱存了十年，现在买房全现金，没有贷款，轻松自在',
-      '我朋友不急不躁，最后稳稳地拿到他想要的东西，别人追不上',
-      '我做事喜欢分析，别人说我太慢，但是我很少做错，省了很多回头路',
-      '我换了号码，开始更懂得规划，不再冲动消费，存款越来越多',
-      '我的同事做事有条理，负责的项目从来没有延误，客户最放心交给他',
+      '我认识一个人，做同一件事做了20年，现在是这个行业里最被人尊重的专家',
+      '我朋友很稳定，没有大起大落，但每年都在进步，10年后大家才发现他有多厉害',
+      '我有一个前辈，不喜欢出风头，但每一次开会他说的话，所有人都会听',
+      '我认识的人做事很细心，不快但是每次都做对，从来不需要返工',
+      '我朋友用15年做一件事，现在别人要花3倍价钱来请他',
+      '我老板很低调，但公司每年都在稳定增长，从不靠运气',
+      '我认识的人不急不忙，但10年前买的房子现在涨了三倍',
+      '我前辈说，他的成功秘诀就是把一件事做到别人追不上',
+      '我朋友从不跟人争，但每次机会来，都是找他的',
     ],
     worst:[
-      '我朋友想太多，一个创业的决定想了三年还没有开始做',
-      '我老公太保守，有机会也不敢出手，就这样看着别人赚，他说「再等等」',
-      '我认识一个人，做生意太谨慎，连明显的好机会也放弃，一直原地踏步',
-      '我朋友分析了一年，等他准备好了，市场已经变了，机会没了',
-      '我的同事想很多，但总是等到最后一刻才做，每次都很赶',
-      '我朋友太保守，新的软件、新的方法，一概不学，说「旧的好」',
-      '我老板做事太谨慎，公司一直没有突破，员工一个个离开因为看不到前景',
-      '我认识一个人，很聪明，但是太被动，等别人来找，结果别人找了别人',
-      '我朋友十年没有换工作，说要稳定，但是薪水比十年前只多了三百块',
-      '我老公考虑太多，连度假去哪里也分析了两个月，最后旅游季结束都没出发',
-    ]
+      '我认识的人太保守，机会来了也不敢动，最后被别人抢先',
+      '我朋友很稳定，但从来不愿意改变，结果被时代淘汰了',
+      '我老板太谨慎，什么事都要想很久，公司机会一个个溜走',
+      '我认识的人做事没有进展，每年都一样，原地踏步了10年',
+      '我朋友太过坚持，但坚持的方向是错的，坚持越久损失越大',
+      '我同事不喜欢冒险，结果一辈子都在等待，等来了退休',
+      '我认识的人太执着，放不下一段关系，浪费了5年青春',
+      '我朋友太过保守，拒绝了所有新事物，现在后悔莫及',
+      '我老板不敢创新，结果竞争对手超越了，市场份额越来越小',
+    ],
   },
+  // 绝命星 (field index 4)
   {
-    id:'jueming', name:'绝命星', emoji:'⚡', color:'#ef4444',
-    trait:'敢冲 · 投资 · 执行力强', type:'四凶星',
-    numbers:'12/21 · 69/96 · 48/84 · 37/73',
+    id:'jueming', name:'绝命星 ⚡', color:'#ef4444',
     best:[
-      '我朋友敢冲，别人不敢做的生意他做，结果三年赚了别人十年的钱',
-      '我认识的人，做生意大起大落，但每次都站起来了，比跌倒前更强',
-      '我同事投资敢押注，一次赚了别人几年的收入，大家都说他运气好',
-      '我朋友创业失败三次，第四次成功，现在公司有五十个员工',
-      '我老板做事很拼，凌晨三点还在跟客户谈生意，就是这种拼劲让他成功',
-      '我认识一个人，做网络生意从0到月入五万，就是因为比别人更敢试',
-      '我朋友冲动买了一块地，当时大家说他傻，现在那块地值原来的十倍',
-      '我做生意从来不怕亏，因为每次亏了都学到了，越亏越有经验',
-      '我朋友在最低谷的时候，反而想到了一个让他翻身的办法',
-      '我换了号码，开始敢做以前不敢做的事，跨出那一步之后生意有了突破',
+      '我认识的人胆子很大，别人不敢做的他第一个冲，结果成了行业第一',
+      '我朋友在最低潮的时候做了一个大决定，现在是我们圈子里最成功的',
+      '我老板每次危机都当机会，公司越打越强',
+      '我认识的人不怕失败，一次次跌倒一次次站起来，现在没有人敢小看他',
+      '我朋友说他最感谢的是那些逼他的人，因为没有压力他不会成长',
+      '我认识一个创业者，连续失败三次，第四次成功了，现在身价过亿',
+      '我前辈说，越是危险的事，回报越高，关键是你有没有勇气',
+      '我认识的人在行业最黑暗的时候进场，现在收益是别人的十倍',
+      '我朋友说，每一次的绝境都是上天给的机会，你只需要抓住',
     ],
     worst:[
-      '我朋友冲动投资，三个月亏掉了存了五年的钱，现在还在慢慢还债',
-      '我老公说要创业，没有任何计划就开始，第一年就关店亏了十几万',
-      '我认识一个人，做生意很敢，但一直大起大落，到60岁还是没有积累',
-      '我朋友炒股票，一时冲动all in所有积蓄，结果归零，家里差点撑不住',
-      '我同事做事靠感觉，经常做了才后悔，说「早知道我就不这样做了」',
-      '我老板娘很有魄力，但员工受不了她说话不经大脑，团队一直不稳定',
-      '我认识的人，创业三次，每次都因为太冲动、没有计划而失败',
-      '我朋友敢借钱投资，结果借了不该借的数额，现在欠了一身债',
-      '我做事太快，没有想清楚，反而给自己惹了大麻烦，收拾不完',
-      '我朋友签合同不看清楚，结果被人坑了，损失了几十万',
-    ]
+      '我认识的人做事太冲动，没有计划就进场，结果损失惨重',
+      '我朋友太好胜，什么都要争第一，结果得罪了很多人，最后孤立无援',
+      '我认识的人承受不了压力，一遇到困难就放弃，从来没有完成过一件事',
+      '我老板太激进，公司扩张太快，资金断链，差点倒闭',
+      '我朋友什么都敢说，结果说错话，丢失了一个大客户',
+      '我认识的人太冒险，把所有鸡蛋放在一个篮子里，最后全部输光',
+      '我同事脾气太大，一发怒就控制不了，结果和老板大吵，被炒了',
+      '我朋友太好强，明明做不到还要撑面子，结果越陷越深',
+      '我认识的人做事太随意，没有后路就往前冲，结果走投无路',
+    ],
   },
+  // 五鬼星 (field index 5)
   {
-    id:'wugui', name:'五鬼星', emoji:'💡', color:'#f97316',
-    trait:'才华 · 创意 · 逆向思维', type:'四凶星',
-    numbers:'18/81 · 79/97 · 36/63 · 24/42',
+    id:'wugui', name:'五鬼星 👻', color:'#f97316',
     best:[
-      '我是做Marketing的，有什么方法让我变得跟ChatGPT一样，给我出主意停不下来',
-      '我朋友很有创意，想到的方法没有人想到过，靠这个做到月入十万',
-      '我认识一个人，做事跟别人不一样，反而在市场上没有竞争对手',
-      '我朋友做内容创作，每次都有新花样，粉丝一直涨，同行都在研究他怎么做的',
-      '我同事用了一个没人想到的方法，帮公司省了五十万，老板直接给他升职',
-      '我老板娘转型了五次，但每次都做到最好，适应力比任何人都强',
-      '我认识一个人，换了三个行业，每个都做得很好，说「换来换去都是经验」',
-      '我朋友想到了一个App，现在有几万用户，投资人主动找上门',
-      '我的客户做生意专门找别人不做的小市场，结果没有竞争，垄断了整个市场',
-      '我换了号码，开始有很多新想法，整个生意模式完全改变，朋友说我「变了个人」',
+      '我认识的人很聪明，能看见别人看不见的机会，总是快人一步',
+      '我朋友有一种直觉，每次都能在问题变大之前解决掉',
+      '我老板的思维很不一样，别人觉得是问题的，他都能找到出路',
+      '我认识的人很善于读人心，知道客户在想什么，成交率特别高',
+      '我朋友有创意，能把简单的事情做出不一样的感觉，让人印象深刻',
+      '我认识的人总是能找到捷径，同样的目标他用一半的时间达到',
+      '我前辈能感知趋势，在大多数人还没意识到的时候已经布局好了',
+      '我朋友善于变通，遇到问题不会死磕，总能找到另一条路',
+      '我认识的人思维灵活，能把危机变成转机，每次都化险为夷',
     ],
     worst:[
-      '我朋友点子很多，但三分钟热度，什么都做了一半，什么都没做完',
-      '我老公做事很有创意，但人生变化太多，家人一直跟不上，孩子说爸爸很奇怪',
-      '我认识一个人，聪明过头，帮别人钻漏洞，搞出了法律问题',
-      '我朋友做生意，想法太超前，市场还没准备好接受，亏了三年',
-      '我同事很有才华，但很神秘，别人搞不懂他，跟他合作很困难',
-      '我认识的人，很聪明，但用错了地方，帮人做假账，最后进去了',
-      '我朋友做投资，用了别人看不懂的方法，自己也搞不清楚，结果亏了',
-      '我老板思维跳跃，员工根本跟不上，公司内部很乱，什么都做了一半',
-      '我认识一个人，做生意一直在变，客户搞不清楚他到底卖什么',
-      '我朋友用了旁门左道的方法，短期赚了钱，但后来出了大问题，全部吐回去',
-    ]
+      '我认识的人太聪明，喜欢走捷径，结果被人发现，信用全毁',
+      '我朋友太有创意，但从不落实，想法一堆，成果是零',
+      '我老板思维跳跃，但员工跟不上，团队一盘散沙',
+      '我认识的人太爱耍小聪明，结果被合伙人坑了，损失了所有积蓄',
+      '我朋友有点投机取巧，走了很多弯路，最后还是回到原点',
+      '我认识的人太会算计，结果人家都不想跟他合作，越来越孤立',
+      '我同事喜欢钻漏洞，被发现后名声扫地，再也没有人信任他',
+      '我朋友太善变，今天这样明天那样，让人不知道该怎么和他合作',
+      '我认识的人太有心机，把聪明用错地方，结果伤了很多人，也伤了自己',
+    ],
   },
+  // 六煞星 (field index 6)
   {
-    id:'liusha', name:'六煞星', emoji:'💕', color:'#ec4899',
-    trait:'人际 · 感情 · 细腻敏锐', type:'四凶星',
-    numbers:'16/61 · 47/74 · 38/83 · 29/92',
+    id:'liusha', name:'六煞星 🌊', color:'#06b6d4',
     best:[
-      '我朋友人缘超好，走到哪里都有人帮她，出门像有人在前面开路',
-      '我认识一个人，她的异性缘很好，感情一直很顺，老公把她当公主一样',
-      '我同事很会观察人，总是知道别人在想什么，所以从来不会说错话',
-      '我朋友做销售，因为很会感受客户情绪，业绩一直是公司第一',
-      '我老板娘很会跟人打交道，合作从来不破裂，大家都愿意跟她做生意',
-      '我认识的人，交了很多有用的朋友，到哪里都有人脉，什么问题都能解决',
-      '我朋友感情很好，老公对她无微不至，结婚十年感情比谈恋爱时还好',
-      '我做客服，因为能感受到客户心情，很多本来要投诉的，最后说了谢谢',
-      '我认识一个人，很懂得经营关系，生意圈里大家都喜欢她，合作机会不断',
-      '我换了号码，开始更懂得跟人相处，之前很疏远的关系，慢慢变好了',
+      '我认识的人人缘很好，走到哪里都有人帮，从不缺少机会',
+      '我朋友很会说话，跟任何人都能聊得来，客户都变成了朋友',
+      '我老板很懂得维系关系，20年前的客户到现在还在合作',
+      '我认识的人善于建立信任，客户愿意把最重要的事交给他',
+      '我朋友有一种魅力，能让人感觉被重视，所以大家都喜欢靠近他',
+      '我认识的人很会处理冲突，每次都能让两边都满意',
+      '我前辈说，人脉不是认识多少人，是多少人愿意在你困难的时候帮你',
+      '我朋友的成功，60%来自人脉，因为他对每个人都真诚',
+      '我认识的人会用情感连接客户，不是卖产品，是卖信任',
     ],
     worst:[
-      '我有一个朋友，干忧郁，每天想要自残，说感觉自己的情绪控制不了',
-      '我认识一个人，感情受伤之后，好几年走不出来，连工作也做不下去',
-      '我朋友异性缘太好，造成感情混乱，搞到自己很痛苦，另一半也很痛苦',
-      '我老公太在乎别人的看法，别人随便一句话他就难受好几天',
-      '我朋友分手了一次，整个人垮了，连工作也辞掉了，躺了半年',
-      '我认识一个人，因为太敏感，经常误会别人，朋友越来越少，越来越孤单',
-      '我同事情商很高，但太在乎别人感受，自己委屈了也不说，最后得了抑郁症',
-      '我朋友被前任骗了感情和钱，之后不再相信任何人，把自己关起来',
-      '我的客户因为一段感情，整个生意都受影响，六个月没有心情工作',
-      '我认识的人，人缘很好，但总是被人当情绪垃圾桶，自己累到崩溃',
-    ]
+      '我认识的人太依赖关系，一旦关系断了，什么都没有了',
+      '我朋友太好说话，什么都答应，结果被人占便宜，累死自己',
+      '我认识的人喜欢讨好所有人，结果没有人真正尊重他',
+      '我老板太重感情，明明知道合伙人不对，还是不忍心说，最后吃了大亏',
+      '我朋友太念旧，明明关系已经不好了，还是不肯放手，消耗了很多精力',
+      '我认识的人做事太讲人情，结果原则一再妥协，工作越来越难做',
+      '我同事太依赖朋友介绍生意，一旦朋友的资源用完，就不知道怎么办',
+      '我朋友太感性，做决定都靠感觉，结果错误的人际关系影响了事业',
+      '我认识的人把生意和感情混在一起，最后生意做砸，朋友也没了',
+    ],
   },
+  // 祸害星 (field index 7)
   {
-    id:'huohai', name:'祸害星', emoji:'🎤', color:'#a78bfa',
-    trait:'口才 · 直率 · 以口为业', type:'四凶星',
-    numbers:'17/71 · 89/98 · 46/64 · 23/32',
+    id:'huohai', name:'祸害星 🔥', color:'#dc2626',
     best:[
-      '我朋友做讲师，一开口就让人信服，课程场场满，连培训公司都来找他签约',
-      '我认识一个人，做销售说话很直接，客户反而很喜欢，说「跟他买东西放心」',
-      '我同事谈判能力一流，靠的就是一张嘴，合同从来没有谈输过',
-      '我朋友做自媒体，讲话很有特色，粉丝涨得比同行快三倍',
-      '我老板娘做演讲培训，靠口才月入十几万，学生都说听她讲课值得',
-      '我认识一个人，做政治，口才好，很快有知名度，成了地方上的意见领袖',
-      '我朋友做主持人，一开口大家都记得他，品牌方主动找他合作',
-      '我做谈判，很直接，反而让对方觉得我可靠，成交率比以前高了两倍',
-      '我认识一个人，做教育，用最直接的方式讲，学生说「第一次真的听懂了」',
-      '我换了号码，开始更敢表达自己，谈生意说话更有力量，成交率明显提高',
+      '我认识的人经历了很多挫折，但每一次都让他更清楚自己要什么',
+      '我朋友被最信任的人背叛，反而让他学会了辨别人，现在眼光特别准',
+      '我老板说，他最感谢的是那些让他受苦的人，因为那些苦造就了今天的他',
+      '我认识的人经历了破产，重新站起来的他，比以前更有智慧',
+      '我朋友经历了一段很痛的感情，反而让他更珍惜现在的关系',
+      '我认识的人每次遇到障碍，都把它当成修炼，现在他的承受力是常人的三倍',
+      '我前辈说，没有经历过真正的苦难，就不知道自己有多强',
+      '我朋友经历了最黑暗的时期，反而激发了他从未有过的潜能',
+      '我认识的人受过很多委屈，但他把每一个委屈都变成了前进的燃料',
     ],
     worst:[
-      '我朋友说话太直，得罪了老板，被辞退，他自己还不知道哪里出问题',
-      '我认识一个人，讲话不经大脑，一句话丢了最大的合作伙伴，损失了几十万',
-      '我朋友开了一个玩笑，结果弄到要去报警，说者无心听者有意',
-      '我老公喜欢说大话，客户期待太高，见面之后大失所望，口碑越来越差',
-      '我同事说话很直接，但得罪了太多人，能力很强，但是升不了职',
-      '我认识一个人，很直，朋友越来越少，说「不喜欢他讲话的方式」',
-      '我朋友爱说别人的八卦，最后反过来害了自己，以前说的话被人翻出来',
-      '我老板娘说话很强势，员工心里有话不敢说，一个个默默离职',
-      '我认识的人，因为说错话，被人截图发到网上，被骂了好几个月',
-      '我朋友口才太好，帮人做了传销，觉得自己只是在「解说产品」，最后出事了',
-    ]
+      '我认识的人总是遇到烂人，感情、事业都被拖累，好像有人专门来消耗他',
+      '我朋友很努力，但运气一直不好，每次快成功就会出现意外',
+      '我认识的人做了很多好事，但生活一直不顺，总是有意外出现',
+      '我老板遇到一个合伙人专门来破坏，结果公司差点关门',
+      '我朋友遇人不淑，被骗了钱，还被泼脏水，名声受损',
+      '我认识的人总是遇到是非，明明没有做错，但总是被卷进麻烦',
+      '我同事很善良，但偏偏遇到最会利用善良的人，一次又一次受伤',
+      '我朋友说，他这辈子最大的问题不是能力，是身边总有人拖他的后腿',
+      '我认识的人努力了十年，但每次接近目标就会出现一个问题，让他前功尽弃',
+    ],
   },
 ];
 
 let currentField = 0;
 let currentMode = 'best';
 
-function renderFieldButtons() {
-  const container = document.getElementById('field-scroll');
-  container.innerHTML = FIELDS.map((f,i) => `
-    <button class="field-btn${i===0?' active':''}" id="fbtn-${i}"
-      style="${i===0?'background:'+f.color+';color:#fff;':''}"
-      onclick="selectField(${i})">
-      ${f.emoji} ${f.name}
-    </button>
+function renderFieldButtons(){
+  const wrap = document.getElementById('field-btns');
+  if(!wrap) return;
+  wrap.innerHTML = FIELDS.map((f,i)=>`
+    <button class="f-btn${i===currentField?' active':''}"
+      style="${i===currentField?'background:'+f.color+';color:#fff;border-color:'+f.color:'border-color:'+f.color+';color:'+f.color}"
+      onclick="selectField(${i})">${f.name}</button>
   `).join('');
 }
 
-function selectField(idx) {
+function selectField(idx){
   currentField = idx;
-  document.querySelectorAll('.field-btn').forEach((b,i)=>{
-    if(i===idx){
-      b.classList.add('active');
-      b.style.background = FIELDS[i].color;
-      b.style.color = '#fff';
-    } else {
-      b.classList.remove('active');
-      b.style.background = '';
-      b.style.color = '';
-    }
-  });
+  renderFieldButtons();
   renderContent();
-  // Scroll the field button into view
-  const btn = document.getElementById('fbtn-'+idx);
-  if(btn) btn.scrollIntoView({behavior:'smooth',inline:'center',block:'nearest'});
 }
 
-function setMode(mode) {
+function setMode(mode){
   currentMode = mode;
-  const bestBtn = document.getElementById('btn-best');
-  const worstBtn = document.getElementById('btn-worst');
-  if(mode==='best'){
-    bestBtn.className='toggle-btn active-best';
-    worstBtn.className='toggle-btn';
-  } else {
-    worstBtn.className='toggle-btn active-worst';
-    bestBtn.className='toggle-btn';
-  }
+  document.getElementById('btn-best').style.background = mode==='best'?'#22c55e':'#e8e8e8';
+  document.getElementById('btn-best').style.color = mode==='best'?'#fff':'#555';
+  document.getElementById('btn-worst').style.background = mode==='worst'?'#ef4444':'#e8e8e8';
+  document.getElementById('btn-worst').style.color = mode==='worst'?'#fff':'#555';
   renderContent();
 }
 
-function renderContent() {
+function renderContent(){
   const f = FIELDS[currentField];
-  const isBest = currentMode === 'best';
-  const topics = isBest ? f.best : f.worst;
-  const bgColor = isBest ? 'rgba(52,211,153,0.07)' : 'rgba(239,68,68,0.07)';
-  const borderColor = isBest ? 'rgba(52,211,153,0.25)' : 'rgba(239,68,68,0.25)';
-  const numColors = isBest
-    ? ['#34d399','#6ee7b7','#34d399','#10b981','#34d399','#6ee7b7','#34d399','#10b981','#34d399','#6ee7b7']
-    : ['#f87171','#fca5a5','#f87171','#ef4444','#f87171','#fca5a5','#f87171','#ef4444','#f87171','#fca5a5'];
+  const items = f[currentMode];
+  const colorMap = {'best':'#16a34a','worst':'#dc2626'};
+  const col = colorMap[currentMode];
+  document.getElementById('field-content').innerHTML = `
+    <div style="display:flex;gap:8px;margin-bottom:12px;">
+      <button id="btn-best" onclick="setMode('best')" style="flex:1;padding:8px;border:none;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;transition:.2s;background:${currentMode==='best'?'#22c55e':'#e8e8e8'};color:${currentMode==='best'?'#fff':'#555'}">✅ 吉星案例</button>
+      <button id="btn-worst" onclick="setMode('worst')" style="flex:1;padding:8px;border:none;border-radius:10px;font-weight:700;font-size:14px;cursor:pointer;transition:.2s;background:${currentMode==='worst'?'#ef4444':'#e8e8e8'};color:${currentMode==='worst'?'#fff':'#555'}">⚠️ 凶星案例</button>
+    </div>
+    <div style="background:${f.color}18;border-left:4px solid ${f.color};border-radius:0 10px 10px 0;padding:10px 12px;margin-bottom:12px;">
+      <div style="font-weight:700;color:${f.color};font-size:15px;">${f.name} — ${currentMode==='best'?'吉星开场':'凶星开场'}</div>
+      <div style="font-size:12px;color:#666;margin-top:3px;">点击案例复制开场白</div>
+    </div>
+    ${items.map((item,i)=>`
+      <div onclick="navigator.clipboard&&navigator.clipboard.writeText('我认识一个人：${item.replace(/'/g,"\\'")}').then(()=>alert('已复制！'))" style="background:#fff;border:1px solid ${col}33;border-radius:10px;padding:10px 12px;margin-bottom:8px;cursor:pointer;display:flex;align-items:flex-start;gap:8px;">
+        <span style="color:${col};font-weight:700;min-width:22px;">${i+1}.</span>
+        <span style="color:#333;font-size:14px;line-height:1.5;">${item}</span>
+      </div>
+    `).join('')}
+  `;
+}
 
-  // Info card
-  document.getElementById('field-info-card').innerHTML = `
-    <div style="background:${f.color}22;border:1px solid ${f.color}44;border-radius:14px;padding:14px 16px;margin:12px 12px 0;">
-      <div style="display:flex;align-items:center;gap:10px;margin-bottom:8px;">
-        <span style="font-size:28px;">${f.emoji}</span>
+// ── TOPIC SECTION ──────────────────────────────────────────────
+const TOPIC_CATS = [
+  {id:'plate',  name:'🚗 车牌',   color:'#ff6496'},
+  {id:'phone',  name:'📱 手机号', color:'#a855f7'},
+  {id:'house',  name:'🏠 门牌/楼层', color:'#f59e0b'},
+  {id:'birth',  name:'🎂 生日',   color:'#06b6d4'},
+  {id:'general',name:'💡 通用',   color:'#22c55e'},
+];
+
+const TOPIC_DATA = [
+  // 车牌
+  {cat:'plate', title:'你的车牌号藏着你的人生密码', hooks:[
+    {elem:'警示恐惧', text:'很多人开了十年的车，但从来不知道自己的车牌在影响他们的财运'},
+    {elem:'揭秘悬念', text:'为什么同样努力，有些人的事业一直卡住？答案可能就在你每天看的车牌号'},
+    {elem:'情感共鸣', text:'我也曾经觉得数字只是数字，直到我换了车牌，生意才开始顺了'},
+    {elem:'身份认同', text:'马来西亚做生意的你，一定要了解这件事，因为它和你的财富直接挂钩'},
+    {elem:'对比反差', text:'同一个路段，两辆车，一个越来越顺，一个越来越堵，区别只有这个'},
+    {elem:'互动参与', text:'把你的车牌号码打在评论区，我来帮你解读你的能量磁场'},
+    {elem:'实用价值', text:'教你用三秒钟判断你的车牌号是在帮你还是在拖累你'},
+    {elem:'争议话题', text:'有人说车牌只是号码，但这些年我见过太多人因为换了车牌，命运真的改变了'},
+  ]},
+  {cat:'plate', title:'为什么老板都在选这几个车牌数字', hooks:[
+    {elem:'警示恐惧', text:'如果你的车牌有这个组合，小心它正在悄悄影响你的贵人运'},
+    {elem:'揭秘悬念', text:'马来西亚顶级富商最爱的车牌号码，背后有一个共同规律'},
+    {elem:'情感共鸣', text:'我帮一个朋友分析车牌，他第一反应是不信，后来他说"怎么这么准"'},
+    {elem:'身份认同', text:'做生意的人，你的车牌就是你的移动名片，它在说什么？'},
+    {elem:'对比反差', text:'有些车牌吸财，有些车牌漏财，同样的努力，结果却差十万八千里'},
+    {elem:'互动参与', text:'你觉得车牌号码会影响运气吗？评论区说说你的看法'},
+    {elem:'实用价值', text:'三个步骤，自己在家就能判断车牌号码的能量属性'},
+    {elem:'争议话题', text:'很多人觉得这是迷信，但科学无法解释的事，不代表它不存在'},
+  ]},
+  // 手机号
+  {cat:'phone', title:'你的手机号码泄露了你的性格密码', hooks:[
+    {elem:'警示恐惧', text:'你现在用的手机号，可能正在影响你接到的贵人和机会'},
+    {elem:'揭秘悬念', text:'为什么有些人手机一响就是好消息，有些人每次接电话都是麻烦？'},
+    {elem:'情感共鸣', text:'我换手机号那一年，接到的机会和以前完全不一样，我才开始认真研究这个'},
+    {elem:'身份认同', text:'如果你是做销售、做生意的，这条视频你一定要看完'},
+    {elem:'对比反差', text:'同一个业务团队，有人电话响不停，有人等了一整天没有一个客户来电'},
+    {elem:'互动参与', text:'把你的手机尾四位打在评论区，我来帮你看看你的人际磁场'},
+    {elem:'实用价值', text:'教你看手机号的三个关键位置，判断你的财运和贵人运'},
+    {elem:'争议话题', text:'你相信手机号码会影响你接到的机会吗？很多人不信，但结果让他们改变了想法'},
+  ]},
+  {cat:'phone', title:'换了手机号之后，我的生意真的变了', hooks:[
+    {elem:'警示恐惧', text:'如果你的手机号里有这个数字组合，你的财运可能一直被拦截着'},
+    {elem:'揭秘悬念', text:'同样的产品，同样的价格，为什么有些销售接单接到手软，有些一单都难？'},
+    {elem:'情感共鸣', text:'我的学员换了手机号三个月后跟我说，感觉整个人的状态都不一样了'},
+    {elem:'身份认同', text:'马来西亚做业务的朋友，你的手机号码正在帮你还是在拖你？'},
+    {elem:'对比反差', text:'一个号码帮你吸引贵人，一个号码让你总是遇到麻烦客户，差别就在这里'},
+    {elem:'互动参与', text:'你有没有因为号码问题而烦恼过？评论区分享你的故事'},
+    {elem:'实用价值', text:'五分钟内，教你自己判断手机号码的吉凶能量'},
+    {elem:'争议话题', text:'有人说换手机号太麻烦，但如果现在的号一直让你走霉运，你还会说麻烦吗？'},
+  ]},
+  // 门牌/楼层
+  {cat:'house', title:'你住的楼层正在影响你的健康和财运', hooks:[
+    {elem:'警示恐惧', text:'有些楼层住进去就开始漏财，有些楼层越住越旺，你知道自己住的是哪种吗？'},
+    {elem:'揭秘悬念', text:'为什么同一栋楼，有些人越住越顺，有些人越住越难？答案就在楼层数字'},
+    {elem:'情感共鸣', text:'我有个学员搬到新楼层半年，感情、事业、健康同时改善，她说她都不敢相信'},
+    {elem:'身份认同', text:'正在考虑买房或换房的你，这条信息可能帮你省下几十万的错误决定'},
+    {elem:'对比反差', text:'同一个小区，一楼层的人生意越做越大，另一楼层的人连续换了三份工作'},
+    {elem:'互动参与', text:'你现在住几楼？评论区告诉我，我来帮你分析这个楼层的能量'},
+    {elem:'实用价值', text:'教你用数字能量学，在五分钟内判断一个楼层是否适合你'},
+    {elem:'争议话题', text:'楼层影响运势？很多人第一反应是不信，但我帮上千人分析后发现规律很明显'},
+  ]},
+  // 生日
+  {cat:'birth', title:'你的生日数字决定了你最适合做什么生意', hooks:[
+    {elem:'警示恐惧', text:'很多人一生努力，却做了不适合自己天赋的事，原因可能就在生日数字里'},
+    {elem:'揭秘悬念', text:'为什么有些人天生就适合做销售，有些人适合做管理？生日数字有答案'},
+    {elem:'情感共鸣', text:'我分析自己生日那天，才终于明白为什么有些事我怎么做都很吃力'},
+    {elem:'身份认同', text:'正在创业或考虑转行的你，这条视频可能帮你找到最适合的方向'},
+    {elem:'对比反差', text:'同样努力，有人越做越顺，有人越做越累，不是能力问题，是方向问题'},
+    {elem:'互动参与', text:'把你的生日（月份+日期）打在评论区，我来帮你看看你的天赋磁场'},
+    {elem:'实用价值', text:'三个步骤，用生日数字找出你最强的能量磁场和最适合的事业方向'},
+    {elem:'争议话题', text:'用生日判断天赋？听起来像命理，但背后的数字逻辑让很多理性的人也改变了看法'},
+  ]},
+  // 通用
+  {cat:'general', title:'为什么有些人天生就比较旺？', hooks:[
+    {elem:'警示恐惧', text:'如果你总是感觉努力但事倍功半，问题可能不在你的行动，而在你的能量磁场'},
+    {elem:'揭秘悬念', text:'易经数字能量学到底是什么？为什么全球华人圈里越来越多成功人士在研究这个？'},
+    {elem:'情感共鸣', text:'我以前觉得这种东西是老一辈的迷信，直到有一天我亲眼看到它改变了一个朋友的人生'},
+    {elem:'身份认同', text:'如果你相信数字背后有规律，相信每个人都有属于自己的能量密码，这条视频是为你拍的'},
+    {elem:'对比反差', text:'同样的起点，有些人越走越宽，有些人越走越窄，差别不只是努力，还有方向'},
+    {elem:'互动参与', text:'你相信数字能量会影响人的运势吗？评论区告诉我你的想法'},
+    {elem:'实用价值', text:'今天教你用一个简单的方法，在三分钟内了解自己的基本能量磁场'},
+    {elem:'争议话题', text:'有人说这是迷信，有人说这是科学，但不管你信什么，数字背后的规律真实存在'},
+  ]},
+  {cat:'general', title:'改变这一件事，我的人生开始不一样了', hooks:[
+    {elem:'警示恐惧', text:'你身边那些一直卡住的人，很可能都在用和自己能量相冲的数字'},
+    {elem:'揭秘悬念', text:'易经数字能量学里有一个概念，叫做"磁场共振"，懂了这个，你会看世界的眼光都不同'},
+    {elem:'情感共鸣', text:'学了数字能量学之后，我开始看懂一些以前不明白的事，包括为什么某些人总是吸引麻烦'},
+    {elem:'身份认同', text:'给所有想要突破现状、活得更清醒的人——这是一套值得花时间了解的系统'},
+    {elem:'对比反差', text:'同样的号码，用对了是助力，用错了是阻力，关键在于你有没有意识到这件事'},
+    {elem:'互动参与', text:'如果你想了解自己的数字能量，评论区留下你的出生年月日，我会一一回复'},
+    {elem:'实用价值', text:'今天分享数字能量学入门最重要的三个概念，学完你就能自己开始分析'},
+    {elem:'争议话题', text:'很多人问我，学这个有什么用？我的答案是：当你开始看懂数字背后的语言，决策会变得清晰很多'},
+  ]},
+];
+
+let currentCat = 'plate';
+
+function renderTopicCats(){
+  const bar = document.getElementById('cat-filter-bar');
+  if(!bar) return;
+  bar.innerHTML = TOPIC_CATS.map(c=>`
+    <button class="cat-f-btn${c.id===currentCat?' active':''}"
+      style="background:${c.id===currentCat?c.color:'#f0f0f0'};color:${c.id===currentCat?'#fff':'#555'};border:none;border-radius:10px;padding:6px 14px;font-size:13px;font-weight:600;cursor:pointer;white-space:nowrap;"
+      onclick="switchCat('${c.id}')">${c.name}</button>
+  `).join('');
+}
+
+function switchCat(catId){
+  currentCat = catId;
+  renderTopicCats();
+  renderTopics(catId);
+}
+
+function toggleBoom(id){
+  const body = document.getElementById('boom-'+id);
+  if(!body) return;
+  body.classList.toggle('open');
+  const arrow = document.getElementById('arr-'+id);
+  if(arrow) arrow.textContent = body.classList.contains('open') ? '▲' : '▼';
+}
+
+function renderTopics(catId){
+  const sec = document.getElementById('topic-sections');
+  if(!sec) return;
+  const items = TOPIC_DATA.filter(t=>t.cat===catId);
+  const cat = TOPIC_CATS.find(c=>c.id===catId)||{color:'#ff6496'};
+  if(!items.length){ sec.innerHTML='<p style="text-align:center;color:#aaa;padding:20px;">暂无选题</p>'; return; }
+  sec.innerHTML = items.map((t,i)=>{
+    const uid = catId+'_'+i;
+    return `
+    <div style="background:#fff;border-radius:14px;box-shadow:0 2px 10px rgba(0,0,0,.07);margin-bottom:12px;overflow:hidden;">
+      <button class="boom-toggle" onclick="toggleBoom('${uid}')" style="display:flex;align-items:center;justify-content:space-between;width:100%;padding:14px;background:none;border:none;font-family:inherit;cursor:pointer;text-align:left;">
         <div>
-          <span style="font-size:10px;font-weight:700;background:${f.color}33;color:${f.color};border-radius:5px;padding:2px 8px;">${f.type}</span>
-          <div style="font-size:20px;font-weight:900;color:#fff;margin-top:3px;">${f.name}</div>
+          <div style="font-weight:700;color:#1a1a1a;font-size:14px;">${t.title}</div>
+          <div style="font-size:11px;color:#999;margin-top:3px;">展开查看 8 种爆款开场白</div>
+        </div>
+        <span id="arr-${uid}" style="color:${cat.color};font-size:12px;margin-left:8px;">▼</span>
+      </button>
+      <div id="boom-${uid}" class="boom-body">
+        <div style="padding:0 14px 14px;">
+          ${t.hooks.map(h=>`
+            <div class="boom-row" style="display:flex;gap:8px;padding:8px;background:#f8f8f8;border-radius:8px;margin-bottom:6px;cursor:pointer;" 
+              onclick="navigator.clipboard&&navigator.clipboard.writeText('${h.text.replace(/'/g,"\\'")}').then(()=>alert('已复制！'))">
+              <span style="background:${cat.color};color:#fff;border-radius:6px;padding:2px 7px;font-size:11px;font-weight:700;white-space:nowrap;flex-shrink:0;">${h.elem}</span>
+              <span style="font-size:13px;color:#333;line-height:1.5;">${h.text}</span>
+            </div>
+          `).join('')}
         </div>
       </div>
-      <div style="font-size:12px;color:${f.color};font-weight:600;margin-bottom:4px;">${f.trait}</div>
-      <div style="font-size:11px;color:#606080;">代表数字：${f.numbers}</div>
-    </div>
-  `;
-
-  // Topics
-  document.getElementById('phone-topics').innerHTML = topics.map((t,i) => `
-    <div class="topic-num-card" style="background:${bgColor};border:1px solid ${borderColor};">
-      <div class="topic-num-idx" style="color:${numColors[i]};">${i+1}</div>
-      <div class="topic-num-text">${t}</div>
-    </div>
-  `).join('');
+    </div>`;
+  }).join('');
 }
 
-// Init phone topics
 window.addEventListener('DOMContentLoaded', ()=>{
   renderFieldButtons();
   renderContent();
+  renderTopicCats();
+  renderTopics('plate');
 });
-
-// ===== TAB NAVIGATION =====
-function showTab(name) {
-  document.querySelectorAll('.section').forEach(s => s.classList.remove('active'));
-  document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
-  document.getElementById('tab-' + name).classList.add('active');
-  event.currentTarget.classList.add('active');
-  window.scrollTo(0, 0);
-}
 </script>
-
 </body>
 </html>
