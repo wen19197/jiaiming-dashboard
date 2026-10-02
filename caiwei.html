@@ -1,0 +1,329 @@
+<title>如何找到属于你的财位</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Noto+Serif+SC:wght@500;700;900&family=Noto+Sans+SC:wght@400;500;700&display=swap">
+<style>
+/* Layout: one column — input on top, live working steps, then the 九宫 grid beside the result card (stacks on phones) */
+:root {
+  --bg: #f6f5f1;
+  --surface: #ffffff;
+  --ink: #1d2433;
+  --muted: #646a78;
+  --line: #d9d6cd;
+  --accent: #a3262a;        /* 朱砂 seal red */
+  --accent-soft: #f6e4e2;
+  --wood: #2f5a2a;
+  --fire: #a3262a;
+  --earth: #7a4a24;
+  --metal: #b07a1c;
+  --water: #1f3a63;
+  --hl: #fff4d6;
+  --font-display: "Noto Serif SC", "Songti SC", "STSong", serif;
+  --font-body: "Noto Sans SC", "PingFang SC", "Microsoft YaHei", system-ui, sans-serif;
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #14171f; --surface: #1c2029; --ink: #ece9e2; --muted: #a2a6b2; --line: #333846;
+    --accent: #e0605a; --accent-soft: #3a2224;
+    --wood: #7fb771; --fire: #e8706a; --earth: #d29a66; --metal: #e2b452; --water: #86a8dc;
+    --hl: #3a3220; color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --bg: #14171f; --surface: #1c2029; --ink: #ece9e2; --muted: #a2a6b2; --line: #333846;
+  --accent: #e0605a; --accent-soft: #3a2224;
+  --wood: #7fb771; --fire: #e8706a; --earth: #d29a66; --metal: #e2b452; --water: #86a8dc;
+  --hl: #3a3220; color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+body {
+  background: var(--bg); color: var(--ink);
+  font-family: var(--font-body); font-size: 15px; line-height: 1.6;
+  padding-inline: 16px; padding-block: 28px 48px;
+}
+.wrap { max-width: 980px; margin: 0 auto; display: grid; gap: 22px; }
+
+header h1 {
+  font-family: var(--font-display); font-weight: 900;
+  font-size: clamp(28px, 5vw, 40px); line-height: 1.2; margin: 0;
+  text-wrap: balance; letter-spacing: 0.02em;
+}
+header p { margin: 6px 0 0; color: var(--muted); max-width: 60ch; }
+.seal {
+  display: inline-block; font-family: var(--font-display); font-weight: 700;
+  color: var(--accent); border: 2px solid var(--accent); border-radius: 4px;
+  padding: 1px 8px; font-size: 13px; letter-spacing: 0.2em; margin-bottom: 10px;
+}
+
+.panel {
+  background: var(--surface); border: 1px solid var(--line); border-radius: 10px;
+  padding: 20px;
+}
+.label { font-size: 12px; letter-spacing: 0.12em; color: var(--muted); font-weight: 500; }
+
+.inputs { display: flex; flex-wrap: wrap; gap: 20px 32px; align-items: flex-end; }
+.field { display: grid; gap: 6px; }
+#year {
+  font-family: var(--font-display); font-size: 30px; font-weight: 700;
+  width: 7ch; padding: 6px 12px; border: 1.5px solid var(--line); border-radius: 8px;
+  background: var(--bg); color: var(--ink); font-variant-numeric: tabular-nums;
+}
+#year:focus-visible { outline: 2px solid var(--accent); outline-offset: 2px; border-color: var(--accent); }
+.seg { display: inline-flex; border: 1.5px solid var(--line); border-radius: 8px; overflow: hidden; }
+.seg button {
+  font: inherit; font-size: 17px; font-weight: 700; padding: 10px 26px;
+  background: var(--bg); color: var(--muted); border: 0; cursor: pointer;
+}
+.seg button + button { border-left: 1.5px solid var(--line); }
+.seg button[aria-pressed="true"] { background: var(--accent); color: #fff; }
+.seg button:focus-visible { outline: 2px solid var(--accent); outline-offset: -4px; }
+.err { color: var(--accent); font-size: 13px; min-height: 1.4em; margin: 0; }
+
+/* Working steps */
+.steps { display: grid; gap: 0; margin: 0; padding: 0; list-style: none; }
+.steps li {
+  display: grid; grid-template-columns: 7.5em 1fr; gap: 12px; align-items: baseline;
+  padding: 10px 0; border-bottom: 1px dashed var(--line);
+}
+.steps li:last-child { border-bottom: 0; }
+.steps .k { color: var(--muted); font-size: 13px; }
+.steps .v {
+  font-family: var(--font-display); font-size: 19px; font-weight: 500;
+  font-variant-numeric: tabular-nums; min-width: 0; overflow-wrap: anywhere;
+}
+.steps .v b { color: var(--accent); font-weight: 900; }
+
+/* Grid + result */
+.main { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 22px; align-items: start; }
+@media (max-width: 760px) { .main { grid-template-columns: minmax(0, 1fr); } }
+
+.compass { display: grid; grid-template-columns: auto 1fr auto; grid-template-rows: auto 1fr auto; gap: 6px; align-items: center; justify-items: center; }
+.dir { font-family: var(--font-display); font-weight: 700; color: var(--muted); font-size: 15px; }
+.dir.n, .dir.s { grid-column: 2; }
+.dir.e, .dir.w { writing-mode: vertical-rl; letter-spacing: 0.3em; }
+.dir.e { grid-column: 1; grid-row: 2; }
+.dir.w { grid-column: 3; grid-row: 2; }
+.dir.s { grid-row: 1; }
+.dir.n { grid-row: 3; }
+
+.lo {
+  grid-column: 2; grid-row: 2; width: 100%; max-width: 420px;
+  display: grid; grid-template-columns: repeat(3, 1fr);
+  border: 2px solid var(--ink); background: var(--surface);
+}
+.cell {
+  aspect-ratio: 1 / 1; display: grid; place-content: center; text-align: center; gap: 2px;
+  border: 1px solid var(--line); position: relative; transition: background .25s;
+}
+.cell .num { font-family: var(--font-display); font-weight: 700; font-size: clamp(32px, 7vw, 52px); line-height: 1; }
+.cell .gua { font-family: var(--font-display); font-weight: 700; font-size: 14px; letter-spacing: 0.08em; }
+.cell .pos { font-size: 11px; color: var(--muted); }
+.cell.wood { color: var(--wood); } .cell.fire { color: var(--fire); } .cell.earth { color: var(--earth); }
+.cell.metal { color: var(--metal); } .cell.water { color: var(--water); }
+.cell.from { background: var(--accent-soft); }
+.cell.on { background: var(--hl); box-shadow: inset 0 0 0 3px var(--accent); }
+.cell .tag {
+  position: absolute; top: 6px; left: 50%; transform: translateX(-50%);
+  font-size: 11px; font-weight: 700; color: #fff; background: var(--accent);
+  border-radius: 3px; padding: 0 6px; white-space: nowrap;
+}
+.cell.from .tag { background: var(--muted); }
+@media (prefers-reduced-motion: reduce) { .cell { transition: none; } }
+
+.result { display: grid; gap: 14px; }
+.big {
+  font-family: var(--font-display); font-weight: 900; line-height: 1.15;
+  font-size: clamp(30px, 5.5vw, 44px); margin: 0; text-wrap: balance;
+}
+.big .zuo { color: var(--accent); }
+.result p { margin: 0; color: var(--muted); }
+.chips { display: flex; flex-wrap: wrap; gap: 8px; }
+.chip {
+  border: 1px solid var(--line); border-radius: 999px; padding: 2px 12px; font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+.chip strong { font-weight: 700; color: var(--ink); }
+
+/* Reference table */
+.tbl-wrap { overflow-x: auto; }
+table { border-collapse: collapse; width: 100%; min-width: 520px; font-variant-numeric: tabular-nums; }
+th, td { text-align: left; padding: 8px 10px; border-bottom: 1px solid var(--line); font-size: 14px; }
+th { font-size: 12px; letter-spacing: 0.1em; color: var(--muted); font-weight: 500; }
+td.n { font-family: var(--font-display); font-weight: 700; font-size: 18px; }
+tr.on td { background: var(--hl); }
+h2 { font-family: var(--font-display); font-size: 20px; margin: 0 0 12px; }
+.note { font-size: 13px; color: var(--muted); margin: 10px 0 0; }
+</style>
+
+<div class="wrap">
+  <header>
+    <span class="seal">方圆 · 九宫财位</span>
+    <h1>如何找到属于你的财位</h1>
+    <p>输入出生年份、选择性别，按九宫格算出你的命卦数，找到最适合你的坐向。</p>
+  </header>
+
+  <section class="panel inputs" aria-label="输入">
+    <div class="field">
+      <label class="label" for="year">出生年份</label>
+      <input id="year" type="text" inputmode="numeric" maxlength="4" value="1999" autocomplete="off">
+    </div>
+    <div class="field">
+      <span class="label" id="g-label">性别</span>
+      <div class="seg" role="group" aria-labelledby="g-label">
+        <button type="button" id="g-m" data-g="m" aria-pressed="false">男生</button>
+        <button type="button" id="g-f" data-g="f" aria-pressed="true">女生</button>
+      </div>
+    </div>
+    <p class="err" id="err" role="alert"></p>
+  </section>
+
+  <section class="main">
+    <div class="panel">
+      <div class="compass" aria-label="九宫格（上南下北，左东右西）">
+        <span class="dir s">南</span>
+        <span class="dir e">东</span>
+        <div class="lo" id="lo"></div>
+        <span class="dir w">西</span>
+        <span class="dir n">北</span>
+      </div>
+    </div>
+
+    <div class="result">
+      <div class="panel">
+        <div class="label">你的财位坐向</div>
+        <p class="big" id="big"></p>
+        <p id="sub"></p>
+        <div class="chips" id="chips" style="margin-top:12px"></div>
+      </div>
+      <div class="panel">
+        <div class="label" style="margin-bottom:4px">计算过程</div>
+        <ol class="steps" id="steps"></ol>
+      </div>
+    </div>
+  </section>
+
+  <section class="panel">
+    <h2>九宫坐向对照</h2>
+    <div class="tbl-wrap">
+      <table>
+        <thead><tr><th>数字</th><th>卦 · 五行</th><th>方位</th><th>适合坐向</th></tr></thead>
+        <tbody id="ref"></tbody>
+      </table>
+    </div>
+    <p class="note">5 属中宫，没有方位：男生改去 2（坤），女生改去 8（艮）。</p>
+  </section>
+</div>
+
+<script>
+(function () {
+  // Lo Shu layout, top row = 南
+  var LAYOUT = [4, 9, 2, 3, 5, 7, 8, 1, 6];
+  var P = {
+    1: { gua: "坎水", el: "water", pos: "北",   opp: "南" },
+    2: { gua: "坤土", el: "earth", pos: "西南", opp: "东北" },
+    3: { gua: "震木", el: "wood",  pos: "东",   opp: "西" },
+    4: { gua: "巽木", el: "wood",  pos: "东南", opp: "西北" },
+    5: { gua: "中宫土", el: "earth", pos: "中",  opp: "" },
+    6: { gua: "乾金", el: "metal", pos: "西北", opp: "东南" },
+    7: { gua: "兑金", el: "metal", pos: "西",   opp: "东" },
+    8: { gua: "艮土", el: "earth", pos: "东北", opp: "西南" },
+    9: { gua: "离火", el: "fire",  pos: "南",   opp: "北" }
+  };
+  var gender = "f";
+  var $ = function (id) { return document.getElementById(id); };
+
+  // Sum digits repeatedly until one digit; returns the written-out lines.
+  function reduce(n) {
+    var lines = [];
+    while (n > 9) {
+      var d = String(n).split("").map(Number);
+      var s = d.reduce(function (a, b) { return a + b; }, 0);
+      lines.push(d.join("+") + "=" + s);
+      n = s;
+    }
+    return { value: n, lines: lines };
+  }
+
+  function zuoxiang(n) { return "坐" + P[n].pos + "朝" + P[n].opp; }
+
+  function buildGrid(from, to) {
+    var lo = $("lo"); lo.innerHTML = "";
+    LAYOUT.forEach(function (n) {
+      var c = document.createElement("div");
+      c.className = "cell " + P[n].el + (n === to ? " on" : "") + (n === from && from !== to ? " from" : "");
+      var tag = n === to ? '<span class="tag">你的财位</span>' : (n === from && from !== to ? '<span class="tag">算得 5</span>' : "");
+      c.innerHTML = tag + '<span class="num">' + n + '</span><span class="gua">' + P[n].gua + '</span><span class="pos">' + P[n].pos + "</span>";
+      lo.appendChild(c);
+    });
+  }
+
+  function buildRef(active) {
+    $("ref").innerHTML = [1, 2, 3, 4, 5, 6, 7, 8, 9].map(function (n) {
+      var zx = n === 5 ? "男 → 2 坐西南朝东北；女 → 8 坐东北朝西南" : zuoxiang(n);
+      return '<tr class="' + (n === active ? "on" : "") + '"><td class="n">' + n + "</td><td>" + P[n].gua +
+        "</td><td>" + P[n].pos + "</td><td>" + zx + "</td></tr>";
+    }).join("");
+  }
+
+  function render() {
+    var raw = $("year").value.trim();
+    var err = $("err");
+    if (!/^\d{4}$/.test(raw) || +raw < 1900 || +raw > 2100) {
+      err.textContent = "请输入 1900 到 2100 之间的四位数年份，例如 1999。";
+      return;
+    }
+    err.textContent = "";
+
+    var steps = [];
+    var first = raw.split("").join("+") + "=" + raw.split("").reduce(function (a, b) { return a + +b; }, 0);
+    var r = reduce(+raw);
+    var yearLines = [first].concat(r.lines.slice(1));
+    steps.push(["年份数字相加", yearLines.join("　→　") + "，得 <b>" + r.value + "</b>"]);
+
+    var X = r.value, base, formula;
+    if (gender === "m") { base = 11 - X; formula = "11 − " + X + " = " + base; }
+    else { base = X + 4; formula = X + " + 4 = " + base; }
+    var g = reduce(base);
+    var gua = g.value;
+    var fLine = formula + (g.lines.length ? "　→　" + g.lines.join("　→　") : "") + "，得 <b>" + gua + "</b>";
+    steps.push([gender === "m" ? "男生：11 − X" : "女生：X + 4", fLine]);
+
+    var final = gua;
+    if (gua === 5) {
+      final = gender === "m" ? 2 : 8;
+      steps.push(["5 属中宫", (gender === "m" ? "男生" : "女生") + "改去 <b>" + final + "</b>（" + P[final].gua + "）"]);
+    }
+    steps.push(["对应九宫", final + " · " + P[final].gua + " · " + P[final].pos + "方"]);
+
+    $("steps").innerHTML = steps.map(function (s) {
+      return '<li><span class="k">' + s[0] + '</span><span class="v">' + s[1] + "</span></li>";
+    }).join("");
+
+    $("big").innerHTML = '<span class="zuo">坐' + P[final].pos + "</span><br>朝" + P[final].opp;
+    $("sub").textContent = raw + " 年出生的" + (gender === "m" ? "男生" : "女生") + "，命卦落在 " + final + "（" + P[final].gua +
+      "），适合" + zuoxiang(final) + "。";
+    $("chips").innerHTML =
+      '<span class="chip">命卦数 <strong>' + final + "</strong></span>" +
+      '<span class="chip">卦象 <strong>' + P[final].gua + "</strong></span>" +
+      '<span class="chip">方位 <strong>' + P[final].pos + "</strong></span>";
+
+    buildGrid(gua === 5 ? 5 : null, final);
+    buildRef(final);
+  }
+
+  $("year").addEventListener("input", function () {
+    this.value = this.value.replace(/\D/g, "");
+    render();
+  });
+  ["g-m", "g-f"].forEach(function (id) {
+    $(id).addEventListener("click", function () {
+      gender = this.dataset.g;
+      $("g-m").setAttribute("aria-pressed", gender === "m");
+      $("g-f").setAttribute("aria-pressed", gender === "f");
+      render();
+    });
+  });
+  render();
+})();
+</script>
